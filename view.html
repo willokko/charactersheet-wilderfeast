@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizar Personagem</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Detalhes do Personagem</h1>
+    <nav>
+      <button onclick="window.location.href='index.html'" class="btn btn-secondary">Voltar</button>
+      <button onclick="window.location.href='edit.html?index=' + new URLSearchParams(window.location.search).get('index')" class="btn btn-primary">Editar</button>
+      <button id="export-button" class="btn btn-success">Exportar Personagem</button>
+    </nav>
+  </header>
+  <main>
+    <div id="resultado-dados" class="dados-resultado"></div>
+    <div id="character-details"></div>
+    <div id="tracos-selecionados">
+      <!-- Os traços selecionados serão exibidos aqui -->
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista de Personagens</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Personagens Criados</h1>
+    <nav>
+      <button onclick="window.location.href='create.html'" class="btn btn-primary">Criar Personagem</button>
+      <button id="export-characters" class="btn btn-success">Exportar Todos</button>
+      <button id="import-characters" class="btn btn-secondary">Importar</button>
+      <input type="file" id="file-input" hidden accept=".json">
+    </nav>
+  </header>
+  <main>
+    <!-- Sistema de abas -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="characters">Personagens</button>
+      <button class="tab-button" data-tab="monsters">Monstros</button>
+    </div>
+
+    <!-- Conteúdo das abas -->
+    <section id="characters-section" class="tab-content active">
+      <h2>Personagens</h2>
+      <div id="character-list" class="entity-list"></div>
+    </section>
+  
+    <section id="monsters-section" class="tab-content">
+      <h2>Monstros</h2>
+      <div id="monster-list" class="entity-list"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

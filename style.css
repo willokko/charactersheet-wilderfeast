@@ -1,0 +1,939 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  padding: 1em;
+  border-bottom: 1px solid #404040;
+}
+
+header h1 {
+  margin: 0;
+  color: #ffffff;
+}
+
+nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+nav a.btn {
+  background-color: #007BFF;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+nav a.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Conteúdo principal */
+main {
+  padding: 1em;
+}
+
+/* Formulários */
+form fieldset {
+  border: 1px solid #404040;
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: #2d2d2d;
+  border-radius: 6px;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #cccccc;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  background-color: #333333;
+  color: #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Botões */
+.btn {
+  background-color: transparent;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #e0e0e0;
+  color: #1a1a1a;
+  border-color: #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn:focus-visible {
+  outline: none;
+}
+
+.btn-primary {
+  border-color: #007BFF;
+  color: #007BFF;
+}
+
+.btn-primary:hover {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+.btn-success {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Cards de personagem (index.html) */
+.character-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#character-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+#monster-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.character-card h3 {
+  margin: 0.5rem 0 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+/* Imagens dos personagens */
+.character-image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  border: 2px solid #404040;
+}
+
+.character-image-large {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #404040;
+}
+
+/* Grades para os formulários */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.grid-4x3 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+
+/* Botões especiais */
+.danger {
+  background-color: #dc3545;
+  transition: background-color 0.3s ease;
+}
+
+.danger:hover {
+  background-color: #c82333;
+}
+
+.secondary {
+  background-color: #6c757d;
+}
+
+.secondary:hover {
+  background-color: #5a6268;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+/* Adicione estas regras ao style.css */
+
+/* Página de Visualização */
+/* Estilos Gerais */
+
+#character-details {
+  max-width: 1300px;
+  margin: 1rem auto;
+}
+
+.compact-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.compact-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007BFF;
+}
+
+.compact-name {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.main-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr; /* Proporção 1/6 1/6 2/6 2/6 */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.column {
+  background-color: #2d2d2d;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #007BFF;
+}
+
+.small-column {
+  min-width: 0; /* Ajuda no comportamento responsivo */
+}
+
+.large-column {
+  min-width: 0; /* Ajuda no comportamento responsivo */
+}
+
+.column-title {
+  color: #007BFF;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #404040;
+}
+
+/* Grids Internos */
+.styles-grid, .skills-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.style-item, .skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #333333;
+  border-radius: 4px;
+}
+
+.style-label, .skill-label {
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.style-value, .skill-value {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #007BFF;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Seção de Traços */
+.traits-section {
+  background-color: #2d2d2d;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #007BFF;
+}
+
+.traits-title {
+  color: #007BFF;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.traits-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.trait-item {
+  background: #363636;
+  border-radius: 6px;
+  padding: 1rem;
+  border-left: 3px solid #007BFF;
+}
+
+.trait-name {
+  color: #007BFF;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.trait-description {
+  color: #e0e0e0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Utensílio */
+.tool-info p {
+  margin: 0.5rem 0;
+  color: #e0e0e0;
+}
+
+.tool-info strong {
+  color: #007BFF;
+}
+
+/* Estilo para a seção de personagens */
+#characters-section {
+  background-color: #2d2d2d;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #007BFF; /* Azul para personagens */
+}
+
+/* Estilo para a seção de monstros */
+#monsters-section {
+  background-color: #2d2d2d;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #dc3545; /* Vermelho para monstros */
+}
+
+/* Estilo para os títulos das seções */
+#characters-section h2,
+#monsters-section h2 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Estilo para o container das abas */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: -1px;
+}
+
+/* Estilo das abas */
+.tab-button {
+  padding: 0.8rem 2rem;
+  border: 1px solid #404040;
+  background: #1a1a1a; /* Cor padrão para abas inativas */
+  color: #cccccc;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background: #2d2d2d; /* Cor da aba ativa igual ao container */
+  color: #ffffff;
+  border-bottom-color: #2d2d2d; /* Mesma cor do background para criar continuidade */
+  z-index: 2;
+}
+
+.tab-content {
+  display: none;
+  padding: 1rem;
+  border: 1px solid #404040;
+  border-radius: 0 0 8px 8px;
+  background: #2d2d2d; /* Cor do container */
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Mantendo a grid para as listas de personagens e monstros */
+#characters-section,
+#monsters-section {
+  border-radius: 0 8px 8px 8px; /* Remove border-radius superior das seções */
+}
+
+#character-list,
+#monster-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Efeito hover suave */
+.tab-button:hover:not(.active) {
+  background: #363636;
+  color: #ffffff;
+}
+
+/* Ajustes responsivos se necessário */
+@media (max-width: 1200px) {
+  .main-columns {
+    grid-template-columns: 1fr 1fr; /* Em telas menores, 2 colunas */
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-columns {
+    grid-template-columns: 1fr; /* Em telas muito pequenas, 1 coluna */
+  }
+}
+
+/* Estilos para os valores clicáveis e resultados dos dados */
+.style-value {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.style-value:hover {
+  transform: scale(1.1);
+}
+
+.dados-resultado {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #333333;
+  border-radius: 8px;
+  display: none;
+}
+
+.dados-resultado.active {
+  display: block;
+}
+
+.dado {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 5px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  animation: rolagem 0.5s ease-out;
+}
+
+.resultado-total {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+@keyframes rolagem {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+/* Estilos para os dados */
+.roll-options {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #2d2d2d;
+  border-radius: 4px;
+}
+
+.soltar-bicho {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dados {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+/* Container específico para o dado especial (d8/d20) */
+.dado-especial {
+  margin-left: 0.8rem;
+}
+
+.dado {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.dado-d6 {
+  background-color: #007BFF;
+  border-radius: 4px;
+}
+
+/* Estilo para d8 e d20 (losango) */
+.dado-d8, .dado-d20 {
+  background-color: transparent;
+  position: relative;
+}
+
+/* Cria o losango usando pseudo-elemento */
+.dado-d8::before, .dado-d20::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  border: 2px solid;
+  box-sizing: border-box;
+}
+
+.dado-d8 {
+  color: #ff8c00;
+}
+
+.dado-d8::before {
+  border-color: #ff8c00;
+}
+
+.dado-d20 {
+  color: #dc3545;
+}
+
+.dado-d20::before {
+  border-color: #dc3545;
+}
+
+/* Animação existente */
+.dados-resultado.active {
+  animation: fadeInUp 0.3s ease;
+}
+
+/* Estilos para os traços */
+.trait-item {
+  background: #363636;
+  border-radius: 6px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.trait-name {
+  color: #007BFF;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.trait-description {
+  color: #e0e0e0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Estilos para o formulário de adição de traços */
+.tracos-container {
+  background: #2d2d2d;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.item-container {
+  background: #363636;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid #007BFF;
+  margin-bottom: 0.8rem;
+}
+
+.traco-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.add-traco-btn {
+  background-color: transparent;
+  border: 2px solid #007BFF;
+  border-radius: 8px;
+  color: #007BFF;
+  font-family: "Inter var", ui-sans-serif, system-ui;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: auto;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.add-traco-btn:hover {
+  background-color: #007BFF;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.remove-traco-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilo para select */
+select {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #e0e0e0;
+  font-family: "Inter var", ui-sans-serif, system-ui;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  background-color: rgba(224, 224, 224, 0.1);
+}
+
+select:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+/* Ajuste para consistência em diferentes navegadores */
+select option {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+/* Estilo para input de arquivo */
+input[type="file"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #e0e0e0;
+  font-family: "Inter var", ui-sans-serif, system-ui;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: rgba(224, 224, 224, 0.1);
+  border-color: #007BFF;
+}
+
+/* Estilo para o texto do input de arquivo */
+input[type="file"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #0056b3;
+}
+
+/* Mensagem de ajuda */
+.form-text {
+  font-size: 0.875em;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Estilo para os botões de remover */
+.remove-btn,
+.remove-traco-btn,
+.remove-parte-btn {
+  background-color: transparent;
+  border: 2px solid #dc3545;
+  border-radius: 8px;
+  color: #dc3545;
+  font-family: "Inter var", ui-sans-serif, system-ui;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: auto;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.remove-btn:hover,
+.remove-traco-btn:hover,
+.remove-parte-btn:hover {
+  background-color: #dc3545;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste do container dos controles */
+.item-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.8rem;
+}
+
+/* Espaçamento entre múltiplos botões */
+.item-controls button + button {
+  margin-left: 0.5rem;
+}
+
+/* Estilo para os botões de adicionar */
+.add-traco-btn,
+.add-parte-btn {
+  background-color: transparent;
+  border: 2px solid #007BFF;
+  border-radius: 8px;
+  color: #007BFF;
+  font-family: "Inter var", ui-sans-serif, system-ui;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: auto;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.add-traco-btn:hover,
+.add-parte-btn:hover {
+  background-color: #007BFF;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Container para os botões de adicionar */
+.tracos-container,
+.partes-container {
+  margin-bottom: 1rem;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #2d2d2d;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #404040;
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+.traco-option {
+  background-color: #363636;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.traco-option:hover {
+  background-color: #404040;
+  border-left-color: #007BFF;
+}
+
+.traco-option h3 {
+  color: #007BFF;
+  margin: 0 0 0.5rem 0;
+}
+
+.traco-option p {
+  margin: 0;
+  color: #e0e0e0;
+}
