@@ -878,62 +878,190 @@ input[type="file"]::file-selector-button:hover {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.85);
+  padding: 1rem;
+  overflow-y: auto;
 }
 
 .modal-content {
   background-color: #2d2d2d;
-  margin: 10% auto;
-  padding: 20px;
+  margin: 2rem auto;
+  padding: 1.5rem;
   border: 1px solid #404040;
-  border-radius: 8px;
-  width: 80%;
+  border-radius: 12px;
+  width: 90%;
   max-width: 600px;
-  max-height: 70vh;
-  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #404040;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #404040;
+}
+
+.modal-header h2 {
+  color: #007BFF;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .close {
   color: #aaa;
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+  line-height: 1;
+  padding: 0.5rem;
+  margin: -0.5rem;
+  transition: color 0.3s ease;
 }
 
 .close:hover {
   color: #fff;
 }
 
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
 .traco-option {
   background-color: #363636;
-  padding: 1rem;
-  margin-bottom: 0.8rem;
-  border-radius: 6px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-left: 3px solid transparent;
+  border-left: 4px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .traco-option:hover {
   background-color: #404040;
   border-left-color: #007BFF;
+  transform: translateX(4px);
 }
 
 .traco-option h3 {
   color: #007BFF;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 .traco-option p {
   margin: 0;
   color: #e0e0e0;
+  line-height: 1.4;
+}
+
+/* Ajustes responsivos para o modal */
+@media (max-width: 768px) {
+  .modal {
+    padding: 0.5rem;
+  }
+
+  .modal-content {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-body {
+    max-height: 70vh;
+  }
+
+  .traco-option {
+    padding: 1rem;
+  }
+
+  .traco-option h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 0.5rem auto;
+    border-radius: 8px;
+  }
+
+  .modal-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .close {
+    font-size: 1.8rem;
+  }
+
+  .modal-body {
+    max-height: 75vh;
+  }
+
+  .traco-option {
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .traco-option h3 {
+    font-size: 1rem;
+  }
+
+  .traco-option p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustes responsivos para a grade de habilidades */
+@media (max-width: 768px) {
+  .grid-4x3 {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+    gap: 0.5em;
+  }
+
+  .grid-4x3 div {
+    font-size: 0.9rem; /* Texto um pouco menor */
+  }
+
+  .grid-4x3 input[type="number"] {
+    padding: 0.4em; /* Input um pouco menor */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-4x3 {
+    grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+  }
+
+  .grid-4x3 div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .grid-4x3 label {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .grid-4x3 input[type="number"] {
+    width: 80px; /* Largura fixa para inputs em telas pequenas */
+  }
 }
