@@ -15,7 +15,24 @@
     </nav>
   </header>
   <main>
+    <!-- Contador de Resistência -->
+    <div id="resistance-container" class="resistance-container">
+      <h3 class="resistance-title">Resistência</h3>
+      <div class="resistance-value-container">
+        <span id="resistance-value">20</span>/<span id="resistance-max">20</span>
+      </div>
+      <div class="resistance-slider-container">
+        <div id="health-bar-fill" class="health-bar-fill"></div>
+        <input type="range" id="resistance-slider" class="resistance-slider" min="0" max="20" value="20" step="1">
+      </div>
+      <div class="resistance-buttons">
+        <button id="decrease-resistance" class="btn btn-sm btn-danger">-</button>
+        <button id="increase-resistance" class="btn btn-sm btn-primary">+</button>
+      </div>
+    </div>
+    
     <div id="character-details"></div>
+    
     <div id="tracos-selecionados">
       <!-- Os traços selecionados serão exibidos aqui -->
     </div>

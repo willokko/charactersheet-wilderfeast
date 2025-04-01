@@ -755,11 +755,10 @@ input[type="file"] {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  background-color: transparent;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  background-color: #333333;
   color: #e0e0e0;
-  font-family: "Inter var", ui-sans-serif, system-ui;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1218,31 +1217,272 @@ input[type="file"]::file-selector-button:hover {
   margin-top: 0.5rem;
 }
 
-/* Estilo para a checkbox "Soltar o Bicho" na seção de estilos */
+/* Estilo para a checkbox "Soltar o Bicho" */
 .soltar-bicho-container {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.2rem;
   display: flex;
   justify-content: center;
 }
 
 .soltar-bicho-checkbox {
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #e0e0e0;
-  font-size: 0.9rem;
-  background-color: #1a1a1a;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #404040;
+  gap: 0.8rem;
+  color: #c9b67a;
+  font-family: 'Philosopher', serif;
+  font-size: 1rem;
+  background-color: rgba(20, 26, 15, 0.8);
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #5c7e38;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  border-radius: 4px;
 }
 
 .soltar-bicho-checkbox:hover {
-  background-color: #333333;
+  background-color: rgba(36, 46, 26, 0.8);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  border-color: #7ca850;
+  transform: translateY(-2px);
 }
 
 .soltar-bicho-checkbox input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #5c7e38;
+  background-color: rgba(20, 26, 15, 0.8);
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.soltar-bicho-checkbox input:checked {
+  background-color: #5c7e38;
+  border-color: #7ca850;
+}
+
+.soltar-bicho-checkbox input:checked::after {
+  content: "✓";
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.soltar-bicho-checkbox:active {
+  transform: translateY(1px);
+}
+
+.soltar-bicho-checkbox input:hover {
+  border-color: #7ca850;
+  box-shadow: 0 0 8px rgba(92, 126, 56, 0.5);
+}
+
+/* Efeito de destaque quando o checkbox estiver marcado */
+.soltar-bicho-checkbox.active {
+  background-color: rgba(36, 46, 26, 0.9);
+  border-color: #7ca850;
+  box-shadow: 0 0 15px rgba(92, 126, 56, 0.5);
+}
+
+/* Contador de Resistência */
+.resistance-container {
+  background-color: rgba(26, 34, 19, 0.85);
+  border: 2px solid #5c7e38;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.resistance-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(233, 87, 63, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.resistance-title {
+  font-family: 'Philosopher', serif;
+  color: #c9b67a;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.resistance-value-container {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e9573f;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Animação para resistência crítica */
+.critical-health {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 20px rgba(231, 76, 60, 1);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+  }
+}
+
+.resistance-slider-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+  position: relative;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  border: 1px solid #441111;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Estilizando o slidebar para parecer uma barra de saúde retangular */
+.resistance-slider {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  outline: none;
   margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* Barra de progresso que parece sangue */
+.health-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #5e0000, #941e1e 30%, #e9573f);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+/* Efeito de pulso na barra quando em estado crítico */
+.health-critical .health-bar-fill {
+  animation: health-pulse 1.5s infinite;
+}
+
+@keyframes health-pulse {
+  0% {
+    background: linear-gradient(90deg, #5e0000, #941e1e 30%, #e9573f);
+  }
+  50% {
+    background: linear-gradient(90deg, #8a0303, #c41e1e 30%, #ff6347);
+  }
+  100% {
+    background: linear-gradient(90deg, #5e0000, #941e1e 30%, #e9573f);
+  }
+}
+
+/* Estilizando o polegar do slider para ficar invisível mas ainda funcional */
+.resistance-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+}
+
+.resistance-slider::-moz-range-thumb {
+  width: 1px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+}
+
+/* Removendo track padrão */
+.resistance-slider::-webkit-slider-runnable-track {
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.resistance-slider::-moz-range-track {
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Animação para resistência crítica */
+.critical-health {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 20px rgba(231, 76, 60, 1);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
+  }
+}
+
+.resistance-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.resistance-buttons .btn {
+  min-width: 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
