@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WilderFeast: Traços</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #traits-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .trait-card {
+      background-color: #2d2d2d;
+      border: 1px solid #404040;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .trait-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .trait-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: #ffffff;
+      border-bottom: 1px solid #404040;
+      padding-bottom: 0.5rem;
+    }
+
+    .trait-card p {
+      margin: 0.5rem 0;
+      color: #e0e0e0;
+      line-height: 1.4;
+    }
+
+    .trait-filter {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .trait-filter input {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.75rem;
+      border: 1px solid #404040;
+      border-radius: 4px;
+      background-color: #333333;
+      color: #e0e0e0;
+    }
+
+    .trait-filter input:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <button onclick="window.location.href='index.html'" class="btn btn-primary">Voltar</button>
+    </nav>
+  </header>
+  <main>
+    <h1>Traços</h1>
+    <div class="trait-filter">
+      <input type="text" id="search-traits" placeholder="Buscar traços..." autocomplete="off">
+    </div>
+    <div id="traits-container">
+      <!-- Os traços serão carregados dinamicamente com JavaScript -->
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const traitsContainer = document.getElementById('traits-container');
+      const searchInput = document.getElementById('search-traits');
+      
+      // Carregar o arquivo traits.json
+      fetch('traits.json')
+        .then(response => response.json())
+        .then(traits => {
+          // Armazenar todos os traços para filtragem posterior
+          const allTraits = traits;
+          
+          // Função para renderizar os traços na página
+          function renderTraits(traitsToRender) {
+            traitsContainer.innerHTML = '';
+            
+            if (traitsToRender.length === 0) {
+              traitsContainer.innerHTML = '<p>Nenhum traço encontrado.</p>';
+              return;
+            }
+            
+            traitsToRender.forEach(trait => {
+              const traitCard = document.createElement('div');
+              traitCard.className = 'trait-card';
+              
+              const traitName = document.createElement('h3');
+              traitName.textContent = trait.nome;
+              
+              const traitDescription = document.createElement('p');
+              traitDescription.textContent = trait.descricao;
+              
+              traitCard.appendChild(traitName);
+              traitCard.appendChild(traitDescription);
+              traitsContainer.appendChild(traitCard);
+            });
+          }
+          
+          // Renderizar todos os traços inicialmente
+          renderTraits(allTraits);
+          
+          // Filtrar traços conforme o usuário digita
+          searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.trim() === '') {
+              renderTraits(allTraits);
+              return;
+            }
+            
+            const filteredTraits = allTraits.filter(trait => 
+              trait.nome.toLowerCase().includes(searchTerm) || 
+              trait.descricao.toLowerCase().includes(searchTerm)
+            );
+            
+            renderTraits(filteredTraits);
+          });
+        })
+        .catch(error => {
+          console.error('Erro ao carregar traços:', error);
+          traitsContainer.innerHTML = '<p>Erro ao carregar traços. Por favor, tente novamente mais tarde.</p>';
+        });
+    });
+  </script>
+</body>
+</html>
