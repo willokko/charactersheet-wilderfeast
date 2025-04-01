@@ -1065,3 +1065,184 @@ input[type="file"]::file-selector-button:hover {
     width: 80px; /* Largura fixa para inputs em telas pequenas */
   }
 }
+
+/* Estilos para os cards de traços no modal */
+.tracos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.search-tracos {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  background-color: #333333;
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+.search-tracos:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.traco-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.traco-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-color: #007BFF;
+}
+
+.traco-card-header {
+  border-bottom: 1px solid #404040;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.traco-card-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.traco-card-desc {
+  color: #e0e0e0;
+  margin: 0.5rem 0 1rem;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+/* Assegura que o botão de adicionar fique no final do card */
+.traco-card .btn {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+/* Estilo para o toaster de dados */
+.dados-toaster {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 350px;
+  transform: translateY(150%);
+  transition: transform 0.3s ease-in-out;
+  visibility: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dados-toaster.show {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.dados-toaster-content {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dados-toaster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #404040;
+}
+
+.dados-toaster-title {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.dados-toaster-close {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.5rem;
+}
+
+.dados-toaster-close:hover {
+  color: #ffffff;
+}
+
+.dados-toaster-body {
+  padding: 1rem;
+}
+
+.dados-toaster h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.dados-toaster .dados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+.dados-toaster .resultado-total {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+/* Estilo para a checkbox "Soltar o Bicho" na seção de estilos */
+.soltar-bicho-container {
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.soltar-bicho-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  background-color: #1a1a1a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #404040;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.soltar-bicho-checkbox:hover {
+  background-color: #333333;
+}
+
+.soltar-bicho-checkbox input {
+  margin: 0;
+}
