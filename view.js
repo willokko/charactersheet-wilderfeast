@@ -314,9 +314,5 @@ document.addEventListener("DOMContentLoaded", function() {
     // Mostra o toaster
     toaster.classList.add('show');
     
-    // Configura para esconder após 5 segundos
-    setTimeout(() => {
-      toaster.classList.remove('show');
-    }, 5000);
   };
 });
