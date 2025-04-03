@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
           </div>
 
-          <!-- Utensílio/Partes (2/6) -->
+          <!-- Utensílio (2/6) -->
           <div class="column large-column">
-            ${character.tipo === "personagem" ? `
-              <h3 class="column-title">🔧 Utensílio</h3>
+            <h3 class="column-title">🔧 Utensílio</h3>
+            ${character.utensilio ? `
               <div class="tool-info">
                 <p><strong>Nome:</strong> ${character.utensilio.nome}</p>
                 <p><strong>Resistência:</strong> ${character.utensilio.resistencia}</p>
@@ -72,34 +72,26 @@ document.addEventListener("DOMContentLoaded", function() {
                         ${tecnica.detalhes ? `<span class="tecnica-tag">${tecnica.detalhes}</span>` : ''}
                         ${tecnica.categoria ? `<span class="tecnica-categoria-tag">${tecnica.categoria}</span>` : ''}
                       </div>
-                      <p class="trait-description">${tecnica.descricao}</p>
+                      <p class="trait-description">${tecnica.descricao || ""}</p>
                     </div>
                   `).join('')}
                 </div>
               ` : `<p>Este utensílio não possui técnicas.</p>`}
-            ` : `
-              <h3 class="column-title">🦾 Partes</h3>
-              <div class="traits-content">
-                ${character.partes ? character.partes.map(parte => `
-                  <div class="trait-item">
-                    <h4 class="trait-name">${parte.nome} (Resistência: ${parte.resistencia})</h4>
-                    <p class="trait-description">${parte.descricao || ""}</p>
-                  </div>
-                `).join('') : '<p>Este monstro não possui partes definidas.</p>'}
-              </div>
-            `}
+            ` : `<p>Este personagem não possui um utensílio.</p>`}
           </div>
 
           <!-- Traços (2/6) -->
           <div class="column large-column">
             <h3 class="column-title">🎭 Traços</h3>
             <div class="traits-content">
-              ${character.tracos.map(traco => `
-                <div class="trait-item">
-                  <h4 class="trait-name">${traco.nome}</h4>
-                  <p class="trait-description">${traco.descricao}</p>
-                </div>
-              `).join('')}
+              ${character.tracos && character.tracos.length > 0 ? 
+                character.tracos.map(traco => `
+                  <div class="trait-item">
+                    <h4 class="trait-name">${traco.nome}</h4>
+                    <p class="trait-description">${traco.descricao}</p>
+                  </div>
+                `).join('') : '<p>Este personagem não possui traços.</p>'
+              }
             </div>
           </div>
         </div>
@@ -143,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (index < 0 || index >= characters.length) return;
     
     const character = characterData || characters[index];
-    const isMonstro = character.tipo === "monstro";
     
     // Elementos do contador de resistência
     const resistanceContainer = document.getElementById("resistance-container");
@@ -156,8 +147,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (!resistanceContainer || !resistanceValue || !resistanceMax || !resistanceSlider || !healthBarFill) return;
     
-    // Configurar valores iniciais baseados no tipo do personagem
-    const maxResistance = isMonstro ? 30 : 20;
+    // Configurar valores iniciais
+    const maxResistance = 20;
     let currentResistance = character.resistenciaAtual !== undefined ? 
                            character.resistenciaAtual : maxResistance;
     
@@ -199,32 +190,9 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         healthBarFill.parentElement.classList.remove('health-critical');
       }
-      
-      // Mudar a cor do texto baseado na resistência restante
-      if (percentage <= 25) {
-        resistanceValue.style.color = "#e74c3c"; // Vermelho para resistência crítica
-        resistanceValue.style.textShadow = "0 0 8px rgba(231, 76, 60, 0.7)";
-      } else if (percentage <= 50) {
-        resistanceValue.style.color = "#e67e22"; // Laranja para resistência baixa
-        resistanceValue.style.textShadow = "0 0 5px rgba(230, 126, 34, 0.5)";
-      } else {
-        resistanceValue.style.color = "#e9573f"; // Cor padrão
-        resistanceValue.style.textShadow = "1px 1px 2px rgba(0, 0, 0, 0.7)";
-      }
-      
-      // Efeito visual para resistência crítica
-      if (percentage <= 10) {
-        resistanceValue.classList.add("critical-health");
-      } else {
-        resistanceValue.classList.remove("critical-health");
-      }
     }
     
-    // Event listeners
-    resistanceSlider.addEventListener("input", function() {
-      updateResistance(parseInt(this.value));
-    });
-    
+    // Event listeners para os botões e o slider
     decreaseButton.addEventListener("click", function() {
       updateResistance(currentResistance - 1);
     });
@@ -232,87 +200,49 @@ document.addEventListener("DOMContentLoaded", function() {
     increaseButton.addEventListener("click", function() {
       updateResistance(currentResistance + 1);
     });
+    
+    resistanceSlider.addEventListener("input", function() {
+      updateResistance(parseInt(this.value));
+    });
   }
   
-  // Inicializar contador de resistência após carregar a página
-  setTimeout(function() {
-    if (document.getElementById("resistance-container")) {
-      configureResistanceCounter();
-    }
+  // Função para rolar dados
+  window.rolarDados = function(estilo, valor) {
+    const numDados = valor;
+    const resultado = [];
+    let sucesso = 0;
     
-    // Configuração do checkbox "Soltar o Bicho"
-    const soltarBichoCheckbox = document.getElementById('soltarBicho');
-    if (soltarBichoCheckbox) {
-      const checkboxLabel = document.querySelector('.soltar-bicho-checkbox');
+    // Verificar se "Soltar o Bicho" está ativado
+    const soltarBicho = document.getElementById('soltarBicho').checked;
+    
+    for (let i = 0; i < numDados; i++) {
+      // Lançar o dado
+      const dado = Math.floor(Math.random() * 6) + 1;
+      resultado.push(dado);
       
-      // Atualiza o estado visual inicial
-      if (soltarBichoCheckbox.checked) {
-        checkboxLabel.classList.add('active');
+      // Contar sucessos
+      if (dado > 3) {
+        sucesso++;
       }
       
-      // Adiciona evento de mudança para atualizar a classe visual
-      soltarBichoCheckbox.addEventListener('change', function() {
-        if (this.checked) {
-          checkboxLabel.classList.add('active');
-        } else {
-          checkboxLabel.classList.remove('active');
-        }
-      });
-    }
-  }, 100);
-
-  // Função para rolar dados atualizada
-  window.rolarDados = function(estilo, quantidade) {
-    const soltarBicho = document.getElementById('soltarBicho').checked;
-    const toaster = document.getElementById('dados-toaster');
-    const toasterBody = toaster.querySelector('.dados-toaster-body');
-    
-    // Atualiza visualmente o estado do label do checkbox
-    const checkboxLabel = document.querySelector('.soltar-bicho-checkbox');
-    if (soltarBicho) {
-      checkboxLabel.classList.add('active');
-    } else {
-      checkboxLabel.classList.remove('active');
+      // Contar sucessos adicionais para "Soltar o Bicho"
+      if (soltarBicho && dado === 6) {
+        sucesso++;
+      }
     }
     
-    // Gera os resultados dos d6
-    const resultados = [];
-    let total = 0;
-    
-    // Se "Soltar o Bicho" estiver marcado, remove 1 d6
-    const qtdD6 = soltarBicho ? Math.max(0, quantidade - 1) : quantidade;
-    
-    // Rola os d6
-    for (let i = 0; i < qtdD6; i++) {
-      const resultado = Math.floor(Math.random() * 6) + 1;
-      resultados.push({ valor: resultado, tipo: 'd6' });
-      total += resultado;
-    }
-    
-    // Rola o dado extra (d8 ou d20)
-    const dadoExtra = soltarBicho ? 
-      { valor: Math.floor(Math.random() * 20) + 1, tipo: 'd20' } :
-      { valor: Math.floor(Math.random() * 8) + 1, tipo: 'd8' };
-    
-    resultados.push(dadoExtra);
-    total += dadoExtra.valor;
-
-    // Prepara o HTML para exibição
-    toasterBody.innerHTML = `
-      <h4>${estilo} (${qtdD6}d6 + 1${dadoExtra.tipo})</h4>
-      <div class="dados">
-        ${resultados.map(r => `
-          <span class="dado ${r.tipo === 'd6' ? 'dado-d6' : 
-            (r.tipo === 'd8' ? 'dado-d8' : 'dado-d20')}">${r.valor}</span>
-        `).join('')}
-      </div>
-      <div class="resultado-total">
-        Total: ${total}
-      </div>
+    // Criar a mensagem
+    const mensagem = `
+      <p><strong>Estilo:</strong> ${estilo}</p>
+      <p><strong>Dados:</strong> ${resultado.join(', ')}</p>
+      <p><strong>Sucessos:</strong> ${sucesso}</p>
+      ${soltarBicho ? '<p><strong>Soltar o Bicho:</strong> Ativado (Dados 6 contam como 2 sucessos)</p>' : ''}
     `;
     
-    // Mostra o toaster
+    // Exibir o toaster
+    const toaster = document.getElementById('dados-toaster');
+    const toasterBody = toaster.querySelector('.dados-toaster-body');
+    toasterBody.innerHTML = mensagem;
     toaster.classList.add('show');
-    
   };
 });

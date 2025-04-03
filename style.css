@@ -188,6 +188,8 @@ form textarea:focus {
   height: 200px;
   object-fit: cover;
   display: block;
+  border: 2px solid #404040;
+  box-sizing: border-box;
 }
 
 .entity-list {
@@ -198,16 +200,6 @@ form textarea:focus {
 }
 
 /* Imagens dos personagens */
-.character-image {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
-  border-radius: 4px;
-  object-fit: cover;
-  aspect-ratio: 1/1;
-  border: 2px solid #404040;
-}
-
 .character-image-large {
   width: 300px;
   height: auto;

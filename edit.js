@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("tecnicas-modal").style.display = "none";
   }
   
-  // Função para exibir o modal de técnicas
+  // Função para exibir o modal de técnicas - Definida como propriedade global para acessibilidade
   function showTecnicasModal() {
     console.log("Iniciando a função showTecnicasModal");
     
@@ -311,6 +311,9 @@ document.addEventListener("DOMContentLoaded", function() {
         alert('Erro ao carregar técnicas: ' + error.message);
       });
   }
+  
+  // Torna a função disponível globalmente para poder ser chamada em qualquer parte do código
+  window.showTecnicasModal = showTecnicasModal;
   
   // Função para processar e adicionar técnicas ao grid
   function processTecnicas(categoria, tecnicas, container) {
@@ -1135,6 +1138,20 @@ function carregarDadosPersonagem() {
 function inicializarBotaoTecnica() {
   console.log("Inicializando botão de técnicas...");
   
+  // Definição local da função showTecnicasModal para evitar problemas de escopo
+  function criarEventoClick(btn) {
+    btn.addEventListener("click", function() {
+      console.log("Botão 'Adicionar Técnica' clicado (inicialização)");
+      // Usa a função window.showTecnicasModal para garantir que estamos acessando a função global
+      if (typeof window.showTecnicasModal === 'function') {
+        window.showTecnicasModal();
+      } else {
+        console.error("Função showTecnicasModal não encontrada no escopo global!");
+        alert("Erro ao mostrar o modal de técnicas. Por favor, tente novamente.");
+      }
+    });
+  }
+  
   // Verifica se o utensílio já está selecionado
   const utensilioNomeDisplay = document.getElementById("utensilio-nome-display");
   
@@ -1188,11 +1205,8 @@ function inicializarBotaoTecnica() {
     addTecnicaBtn.style.display = "block";
     addTecnicaBtn.textContent = "+ Adicionar Técnica";
     
-    // Adiciona o evento de clique
-    addTecnicaBtn.addEventListener("click", function() {
-      console.log("Botão 'Adicionar Técnica' clicado (inicialização)");
-      showTecnicasModal();
-    });
+    // Adiciona o evento usando a função auxiliar
+    criarEventoClick(addTecnicaBtn);
     
     // Adiciona o botão ao container
     tecnicasContainer.appendChild(addTecnicaBtn);
