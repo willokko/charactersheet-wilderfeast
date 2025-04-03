@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
       const tipoSelecionado = e.target.value;
       const utensilioSection = document.getElementById("utensilio-section");
       const partesSection = document.getElementById("partes-section");
-      
-      // Mostra/oculta seções
-      utensilioSection.style.display = tipoSelecionado === "personagem" ? "block" : "none";
-      partesSection.style.display = tipoSelecionado === "monstro" ? "block" : "none";
 
       // Atualiza atributos 'required' dos campos
       const utensilioCampos = utensilioSection.querySelectorAll("[required]");
@@ -90,14 +86,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("tiro").value = character.habilidades.tiro;
     document.getElementById("travessia").value = character.habilidades.travessia;
 
-    // Verifica e aplica o tipo de personagem (personagem ou monstro)
+    // Verifica e aplica o tipo de personagem (personagem)
     const tipoSelecionado = character.tipo;
     const utensilioSection = document.getElementById("utensilio-section");
     const partesSection = document.getElementById("partes-section");
-    
-    // Mostra/oculta seções com base no tipo
-    utensilioSection.style.display = tipoSelecionado === "personagem" ? "block" : "none";
-    partesSection.style.display = tipoSelecionado === "monstro" ? "block" : "none";
 
     // Preenche os traços existentes
     const tracosList = document.getElementById("tracos-list");
@@ -676,40 +668,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Adiciona evento para remover o traço
     tracoItem.querySelector(".remove-traco-btn").addEventListener("click", () => {
       tracoItem.remove();
-    });
-  }
-
-  // Função para adicionar uma parte ao monstro
-  function addParte() {
-    const partesList = document.getElementById("partes-list");
-    
-    // Cria o elemento para a parte
-    const parteItem = document.createElement("div");
-    parteItem.className = "parte-item";
-    
-    parteItem.innerHTML = `
-      <div class="form-group">
-        <label>Nome da Parte</label>
-        <input type="text" class="parte-nome" value="" required>
-      </div>
-      <div class="form-group">
-        <label>Resistência</label>
-        <input type="number" class="parte-resistencia" value="0" required>
-      </div>
-      <div class="form-group">
-        <label>Descrição</label>
-        <textarea class="parte-descricao" required></textarea>
-      </div>
-      <div class="parte-controls">
-        <button type="button" class="remove-parte-btn">Remover Parte</button>
-      </div>
-    `;
-    
-    partesList.appendChild(parteItem);
-    
-    // Adiciona evento para remover a parte
-    parteItem.querySelector(".remove-parte-btn").addEventListener("click", () => {
-      parteItem.remove();
     });
   }
 

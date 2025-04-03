@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Seleciona a seção onde os cards serão exibidos
   const charactersSection = document.getElementById("character-list");
 
-  // Recupera a lista de fichas (personagens e monstros) do localStorage
+  // Recupera a lista de fichas (personagens) do localStorage
   const characters = JSON.parse(localStorage.getItem("characters") || "[]");
 
   /* ====================
@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", function() {
   // Caso não haja nenhuma ficha cadastrada, exibe uma mensagem informativa
   if (characters.length === 0) {
     if (charactersSection) {
-      charactersSection.innerHTML = "<p>Nenhum personagem ou monstro criado.</p>";
+      charactersSection.innerHTML = "<p>Nenhum personagem criado.</p>";
     }
   } else {
-    // Percorre cada ficha (personagem ou monstro)
+    // Percorre cada ficha (personagem)
     characters.forEach((character, index) => {
       // Cria o container do card
       const card = document.createElement("div");
