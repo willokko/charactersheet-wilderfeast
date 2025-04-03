@@ -131,14 +131,28 @@
       <!-- Seção de Utensílio/Partes (condicional baseado no tipo) -->
       <fieldset id="utensilio-section">
         <legend>Utensílio</legend>
-        <label for="nomeUtensilio">Nome do Utensílio:</label>
-        <input type="text" id="nomeUtensilio" name="nomeUtensilio" required>
-
-        <label for="resistencia">Resistência do Utensílio:</label>
-        <input type="number" id="resistencia" name="resistencia" value="0">
-
-        <label for="descricaoUtensilio">Descrição do Utensílio:</label>
-        <textarea id="descricaoUtensilio" name="descricaoUtensilio" rows="2" placeholder="Descreva o utensílio"></textarea>
+        <div class="utensilio-container">
+          <div id="utensilio-info">
+            <label for="selectUtensilio">Selecionar Utensílio:</label>
+            <button type="button" id="select-utensilio" class="btn">Escolher Utensílio</button>
+            
+            <div id="utensilio-details" style="display: none;">
+              <h3 id="utensilio-nome-display"></h3>
+              <input type="hidden" id="nomeUtensilio" name="nomeUtensilio">
+              
+              <label for="resistencia">Resistência do Utensílio:</label>
+              <input type="number" id="resistencia" name="resistencia" value="0">
+            </div>
+          </div>
+          
+          <div id="tecnicas-container" style="display: none;">
+            <h3>Técnicas do Utensílio</h3>
+            <div id="tecnicas-list">
+              <!-- As técnicas selecionadas serão adicionadas aqui dinamicamente -->
+            </div>
+            <button type="button" id="add-tecnica" class="add-tecnica-btn">+ Adicionar Técnica</button>
+          </div>
+        </div>
       </fieldset>
 
       <fieldset id="partes-section" style="display: none;">
@@ -163,6 +177,32 @@
       </div>
       <div class="modal-body">
         <div id="tracos-lista"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de Seleção de Utensílios -->
+  <div id="utensilios-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Selecionar Utensílio</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="utensilios-lista"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de Seleção de Técnicas -->
+  <div id="tecnicas-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Selecionar Técnica</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="tecnicas-lista"></div>
       </div>
     </div>
   </div>

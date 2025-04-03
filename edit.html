@@ -8,9 +8,8 @@
 </head>
 <body>
   <header>
-    <h1>Editar Personagem</h1>
     <nav>
-      <a href="index.html" class="btn">Voltar</a>
+      <button onclick="window.location.href='index.html'" class="btn btn-secondary">Voltar</button>
     </nav>
   </header>
   <main>
@@ -18,20 +17,26 @@
       <!-- Dados Básicos -->
       <fieldset>
         <legend>Tipo</legend>
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo" required>
+        <select id="tipo" name="" required>
           <option value="personagem">Personagem</option>
           <option value="monstro">Monstro</option>
         </select>
       </fieldset>
-      
       <fieldset>
         <legend>Dados Básicos</legend>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
         
-        <label for="imagem">URL da Imagem:</label>
-        <input type="text" id="imagem" name="imagem" placeholder="https://exemplo.com/imagem.jpg" required>
+        <div class="form-group">
+          <label for="image-file">Imagem do Personagem (Arquivo):</label>
+          <input type="file" id="image-file" accept="image/*" class="form-control">
+          <small class="form-text text-muted">Selecione uma imagem do seu dispositivo ou cole uma URL abaixo.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="imagem">URL da Imagem (opcional se arquivo foi enviado):</label>
+          <input type="text" id="imagem" name="imagem" class="form-control" placeholder="Cole a URL da imagem aqui">
+        </div>
       </fieldset>
 
       <!-- Estilos (Grade 2x2) -->
@@ -123,29 +128,51 @@
         </div>
       </fieldset>
 
-      <!-- Utensílio -->
-      <fieldset>
+      <!-- Seção de Utensílio/Partes (condicional baseado no tipo) -->
+      <fieldset id="utensilio-section">
         <legend>Utensílio</legend>
-        <label for="nomeUtensilio">Nome do Utensílio:</label>
-        <input type="text" id="nomeUtensilio" name="nomeUtensilio" required>
-
-        <label for="resistencia">Resistência do Utensílio:</label>
-        <input type="number" id="resistencia" name="resistencia" value="0">
-
-        <label for="descricaoUtensilio">Descrição do Utensílio:</label>
-        <textarea id="descricaoUtensilio" name="descricaoUtensilio" rows="2" placeholder="Descreva o utensílio"></textarea>
+        <div class="utensilio-container">
+          <div id="utensilio-info">
+            <label for="selectUtensilio">Selecionar Utensílio:</label>
+            <button type="button" id="select-utensilio" class="btn">Escolher Utensílio</button>
+            
+            <div id="utensilio-details" style="display: none;">
+              <h3 id="utensilio-nome-display"></h3>
+              <input type="hidden" id="nomeUtensilio" name="nomeUtensilio">
+              
+              <label for="resistencia">Resistência do Utensílio:</label>
+              <input type="number" id="resistencia" name="resistencia" value="0">
+            </div>
+          </div>
+          
+          <div id="tecnicas-container" style="display: none;">
+            <h3>Técnicas do Utensílio</h3>
+            <div id="tecnicas-list">
+              <!-- As técnicas selecionadas serão adicionadas aqui dinamicamente -->
+            </div>
+            <button type="button" id="add-tecnica" class="add-tecnica-btn">+ Adicionar Técnica</button>
+          </div>
+        </div>
       </fieldset>
-      
+
+      <fieldset id="partes-section" style="display: none;">
+        <legend>Partes</legend>
+        <div class="partes-container">
+          <div id="partes-list">
+            <!-- As partes serão adicionadas aqui dinamicamente -->
+          </div>
+          <button type="button" id="add-parte" class="add-parte-btn">+ Adicionar Parte</button>
+        </div>
+      </fieldset>
+
       <div class="form-actions">
         <button type="button" id="cancel-edit" class="btn secondary">Cancelar</button>
-        <button type="submit" class="btn">Salvar Alterações</button>
+        <button type="submit" class="btn btn-success btn-lg btn-ripple">Salvar Alterações</button>
         <button type="button" id="delete-character" class="btn danger">Excluir Personagem</button>
       </div>
     </form>
   </main>
-  <script src="common.js"></script>
-  <script src="edit.js"></script>
-
+  
   <!-- Modal de Seleção de Traços -->
   <div id="tracos-modal" class="modal">
     <div class="modal-content">
@@ -158,5 +185,34 @@
       </div>
     </div>
   </div>
+  
+  <!-- Modal de Seleção de Utensílios -->
+  <div id="utensilios-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Selecionar Utensílio</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="utensilios-lista"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de Seleção de Técnicas -->
+  <div id="tecnicas-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Selecionar Técnica</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="tecnicas-lista"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="edit.js"></script>
 </body>
 </html>

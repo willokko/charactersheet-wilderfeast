@@ -60,17 +60,32 @@ document.addEventListener("DOMContentLoaded", function() {
               <div class="tool-info">
                 <p><strong>Nome:</strong> ${character.utensilio.nome}</p>
                 <p><strong>Resistência:</strong> ${character.utensilio.resistencia}</p>
-                <p><strong>Descrição:</strong> ${character.utensilio.descricao}</p>
               </div>
+              
+              ${character.utensilio.tecnicas && character.utensilio.tecnicas.length > 0 ? `
+                <h4 class="tecnicas-title">Técnicas do Utensílio</h4>
+                <div class="traits-content">
+                  ${character.utensilio.tecnicas.map(tecnica => `
+                    <div class="trait-item tecnica-card">
+                      <div class="tecnica-header">
+                        <h4 class="trait-name">${tecnica.nome}</h4>
+                        ${tecnica.detalhes ? `<span class="tecnica-tag">${tecnica.detalhes}</span>` : ''}
+                        ${tecnica.categoria ? `<span class="tecnica-categoria-tag">${tecnica.categoria}</span>` : ''}
+                      </div>
+                      <p class="trait-description">${tecnica.descricao}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : `<p>Este utensílio não possui técnicas.</p>`}
             ` : `
               <h3 class="column-title">🦾 Partes</h3>
               <div class="traits-content">
-                ${character.partes.map(parte => `
+                ${character.partes ? character.partes.map(parte => `
                   <div class="trait-item">
                     <h4 class="trait-name">${parte.nome} (Resistência: ${parte.resistencia})</h4>
-                    <p class="trait-description">${parte.descricao}</p>
+                    <p class="trait-description">${parte.descricao || ""}</p>
                   </div>
-                `).join('')}
+                `).join('') : '<p>Este monstro não possui partes definidas.</p>'}
               </div>
             `}
           </div>

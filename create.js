@@ -107,8 +107,19 @@ document.addEventListener("DOMContentLoaded", function() {
         character.utensilio = {
           nome: document.getElementById("nomeUtensilio").value,
           resistencia: parseInt(document.getElementById("resistencia").value) || 0,
-          descricao: document.getElementById("descricaoUtensilio").value
+          tecnicas: []
         };
+        
+        // Coleta técnicas do utensílio
+        const tecnicasItems = document.getElementsByClassName("tecnica-item");
+        Array.from(tecnicasItems).forEach(tecnicaItem => {
+          character.utensilio.tecnicas.push({
+            nome: tecnicaItem.querySelector(".tecnica-nome").value,
+            categoria: tecnicaItem.querySelector(".tecnica-categoria").value,
+            detalhes: tecnicaItem.querySelector(".tecnica-detalhes").value,
+            descricao: tecnicaItem.querySelector(".tecnica-descricao").value
+          });
+        });
       } else {
         character.partes = [];
         const partesItems = document.getElementsByClassName("parte-item");
@@ -245,27 +256,383 @@ document.addEventListener("DOMContentLoaded", function() {
     tracosList.appendChild(tracoItem);
   }
 
-  // Atualiza o evento do botão de adicionar traço
-  document.getElementById("add-traco")?.addEventListener("click", showTracosModal);
+  // Função para exibir o modal de utensílios
+  function showUtensiliosModal() {
+    const modal = document.getElementById("utensilios-modal");
+    const utensiliosLista = document.getElementById("utensilios-lista");
+    
+    utensiliosLista.innerHTML = "";
+    
+    fetch('utensil.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const utensiliosGrid = document.createElement('div');
+        utensiliosGrid.className = 'grid-container';
 
-  // Adiciona evento para fechar o modal
-  document.querySelector(".close")?.addEventListener("click", closeModal);
-  document.querySelectorAll(".close-modal").forEach(button => {
-    button.addEventListener("click", closeModal);
-  });
+        data.utensilios.forEach(utensilio => {
+          const utensilioCard = document.createElement('div');
+          utensilioCard.className = 'utensilio-card';
 
-  // Função para fechar o modal
-  function closeModal() {
-    document.querySelectorAll(".modal").forEach(modal => {
-      modal.style.display = "none";
+          const utensilioHeader = document.createElement('div');
+          utensilioHeader.className = 'utensilio-card-header';
+
+          const utensilioNome = document.createElement('h3');
+          utensilioNome.className = 'utensilio-card-title';
+          utensilioNome.textContent = utensilio.nome;
+
+          const addButton = document.createElement('button');
+          addButton.className = 'btn btn-success btn-sm';
+          addButton.textContent = 'Selecionar';
+          addButton.addEventListener('click', function() {
+            selectUtensilio(utensilio);
+            modal.style.display = "none";
+          });
+
+          utensilioHeader.appendChild(utensilioNome);
+          utensilioCard.appendChild(utensilioHeader);
+          utensilioCard.appendChild(addButton);
+          utensiliosGrid.appendChild(utensilioCard);
+        });
+
+        utensiliosLista.appendChild(utensiliosGrid);
+        modal.style.display = "block";
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Erro ao carregar utensílios: ' + error.message);
+      });
+  }
+  
+  // Adiciona evento para o botão de selecionar utensílio
+  document.getElementById("select-utensilio")?.addEventListener("click", showUtensiliosModal);
+
+  // Função para selecionar o utensílio
+  function selectUtensilio(utensilio) {
+    // Remove as técnicas existentes
+    const tecnicasList = document.getElementById("tecnicas-list");
+    if (tecnicasList) {
+      tecnicasList.innerHTML = '';
+    }
+
+    // Atualiza o nome do utensílio
+    const utensilioNomeDisplay = document.getElementById("utensilio-nome-display");
+    if (utensilioNomeDisplay) {
+      utensilioNomeDisplay.textContent = utensilio.nome;
+    }
+    
+    // Atualiza o valor oculto para submissão do formulário
+    const nomeUtensilioInput = document.getElementById("nomeUtensilio");
+    if (nomeUtensilioInput) {
+      nomeUtensilioInput.value = utensilio.nome;
+    }
+
+    // Mostra os detalhes do utensílio
+    const utensilioDetails = document.getElementById("utensilio-details");
+    if (utensilioDetails) {
+      utensilioDetails.style.display = "block";
+    }
+    
+    // Mostra o container de técnicas
+    const tecnicasContainer = document.getElementById("tecnicas-container");
+    if (tecnicasContainer) {
+      tecnicasContainer.style.display = "block";
+    }
+
+    // Habilita o botão de adicionar técnica
+    const addTecnicaBtn = document.getElementById("add-tecnica");
+    if (addTecnicaBtn) {
+      addTecnicaBtn.disabled = false;
+    }
+  }
+
+  // Função para exibir o modal de técnicas
+  function showTecnicasModal() {
+    const selectedUtensilio = document.getElementById("utensilio-nome-display")?.textContent;
+    if (!selectedUtensilio) {
+      alert("Por favor, selecione um utensílio primeiro.");
+      return;
+    }
+
+    const modal = document.getElementById("tecnicas-modal");
+    const tecnicasLista = document.getElementById("tecnicas-lista");
+    
+    if (!tecnicasLista) {
+      console.error("Elemento tecnicas-lista não encontrado!");
+      return;
+    }
+    
+    tecnicasLista.innerHTML = "";
+    
+    fetch('utensil.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Dados carregados do utensil.json:", data);
+        const utensilio = data.utensilios.find(u => u.nome === selectedUtensilio);
+        
+        if (!utensilio) {
+          throw new Error('Utensílio não encontrado');
+        }
+        
+        console.log("Utensílio encontrado:", utensilio);
+        
+        const tecnicasGrid = document.createElement('div');
+        tecnicasGrid.className = 'grid-container';
+        
+        // Verifica se existem categorias e processa cada uma
+        if (utensilio.categorias) {
+          Object.entries(utensilio.categorias).forEach(([categoria, tecnicas]) => {
+            processTecnicas(categoria, tecnicas, tecnicasGrid);
+          });
+        }
+        
+        // Também verifica as técnicas ligeiras e sagazes diretamente
+        if (utensilio.tecnicas_ligeiras) {
+          processTecnicas('tecnicas_ligeiras', utensilio.tecnicas_ligeiras, tecnicasGrid);
+        }
+        
+        if (utensilio.tecnicas_sagazes) {
+          processTecnicas('tecnicas_sagazes', utensilio.tecnicas_sagazes, tecnicasGrid);
+        }
+        
+        if (tecnicasGrid.children.length === 0) {
+          tecnicasGrid.innerHTML = '<p>Este utensílio não possui técnicas disponíveis.</p>';
+        }
+
+        tecnicasLista.appendChild(tecnicasGrid);
+        modal.style.display = "block";
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Erro ao carregar técnicas: ' + error.message);
+      });
+  }
+
+  // Função auxiliar para processar e adicionar técnicas ao grid
+  function processTecnicas(categoria, tecnicas, container) {
+    if (!tecnicas || tecnicas.length === 0) return;
+    
+    console.log(`Processando ${tecnicas.length} técnicas da categoria ${categoria}`);
+    
+    tecnicas.forEach(tecnica => {
+      const tecnicaCard = document.createElement('div');
+      tecnicaCard.className = 'tecnica-card';
+
+      const tecnicaHeader = document.createElement('div');
+      tecnicaHeader.className = 'tecnica-card-header';
+
+      const tecnicaNome = document.createElement('h3');
+      tecnicaNome.className = 'tecnica-card-title';
+      tecnicaNome.textContent = tecnica.nome;
+
+      const tecnicaInfo = document.createElement('div');
+      tecnicaInfo.className = 'tecnica-card-info';
+      
+      // Adiciona a categoria como uma tag
+      const categoriaTag = document.createElement('span');
+      categoriaTag.className = 'tag categoria';
+      
+      if (categoria === 'tecnicas_ligeiras') {
+        categoriaTag.textContent = 'Ligeira';
+        categoriaTag.style.backgroundColor = '#4a9';
+      } else if (categoria === 'tecnicas_sagazes') {
+        categoriaTag.textContent = 'Sagaz';
+        categoriaTag.style.backgroundColor = '#47a';
+      } else if (categoria === 'tecnicas_brutas') {
+        categoriaTag.textContent = 'Bruta';
+        categoriaTag.style.backgroundColor = '#a47';
+      } else {
+        categoriaTag.textContent = categoria;
+      }
+      
+      tecnicaInfo.appendChild(categoriaTag);
+      
+      if (tecnica.passiva) {
+        const passivaTag = document.createElement('span');
+        passivaTag.className = 'tag passiva';
+        passivaTag.textContent = 'Passiva';
+        tecnicaInfo.appendChild(passivaTag);
+      }
+
+      if (tecnica.custo) {
+        const custoTag = document.createElement('span');
+        custoTag.className = 'tag custo';
+        custoTag.textContent = `Custo: ${tecnica.custo}`;
+        tecnicaInfo.appendChild(custoTag);
+      }
+
+      const tecnicaDescricao = document.createElement('p');
+      tecnicaDescricao.className = 'tecnica-card-desc';
+      tecnicaDescricao.textContent = tecnica.descricao;
+
+      const addButton = document.createElement('button');
+      addButton.className = 'btn btn-success btn-sm';
+      addButton.textContent = 'Adicionar';
+      addButton.addEventListener('click', function() {
+        addTecnicaToUtensilio({
+          nome: tecnica.nome,
+          custo: tecnica.custo,
+          descricao: tecnica.descricao,
+          categoria: categoria,
+          passiva: tecnica.passiva
+        }, categoria);
+        document.getElementById("tecnicas-modal").style.display = "none";
+      });
+
+      tecnicaHeader.appendChild(tecnicaNome);
+      tecnicaHeader.appendChild(tecnicaInfo);
+      tecnicaCard.appendChild(tecnicaHeader);
+      tecnicaCard.appendChild(tecnicaDescricao);
+      tecnicaCard.appendChild(addButton);
+      container.appendChild(tecnicaCard);
     });
   }
+
+  function addTecnicaToUtensilio(tecnica, categoria) {
+    const tecnicasList = document.getElementById("tecnicas-list");
+    
+    // Verifica se a técnica já foi adicionada
+    const tecnicasExistentes = tecnicasList.querySelectorAll(".tecnica-nome");
+    for (let i = 0; i < tecnicasExistentes.length; i++) {
+      if (tecnicasExistentes[i].value === tecnica.nome) {
+        alert("Esta técnica já foi adicionada.");
+        return;
+      }
+    }
+    
+    // Cria o elemento para a técnica
+    const tecnicaItem = document.createElement("div");
+    tecnicaItem.className = "tecnica-item";
+    
+    // Adiciona nome, categoria e descrição da técnica
+    let tecnicaDetalhes = "";
+    
+    if (tecnica.passiva) {
+      tecnicaDetalhes = "Passiva";
+    } else if (tecnica.custo) {
+      tecnicaDetalhes = "Custo: " + tecnica.custo;
+    }
+    
+    tecnicaItem.innerHTML = `
+      <div class="form-group">
+        <label>Nome da Técnica</label>
+        <input type="text" class="tecnica-nome" value="${tecnica.nome}" required readonly>
+        <input type="hidden" class="tecnica-categoria" value="${categoria}">
+      </div>
+      <div class="form-group">
+        <label>Detalhes</label>
+        <input type="text" class="tecnica-detalhes" value="${tecnicaDetalhes}" required readonly>
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea class="tecnica-descricao" required readonly>${tecnica.descricao}</textarea>
+      </div>
+      <div class="tecnica-controls">
+        <button type="button" class="remove-tecnica-btn">Remover Técnica</button>
+      </div>
+    `;
+    
+    tecnicasList.appendChild(tecnicaItem);
+    
+    // Adiciona evento para remover a técnica
+    tecnicaItem.querySelector(".remove-tecnica-btn").addEventListener("click", () => {
+      tecnicaItem.remove();
+    });
+  }
+
+  // Função para fechar o modal de utensílios
+  function closeUtensiliosModal() {
+    document.getElementById("utensilios-modal").style.display = "none";
+  }
+
+  // Função para fechar o modal de técnicas
+  function closeModal() {
+    document.getElementById("tecnicas-modal").style.display = "none";
+  }
+
+  // Adiciona eventos aos botões
+  document.getElementById("add-traco")?.addEventListener("click", showTracosModal);
+  document.getElementById("select-utensilio")?.addEventListener("click", showUtensiliosModal);
+  document.getElementById("add-tecnica")?.addEventListener("click", showTecnicasModal);
+  document.getElementById("add-parte")?.addEventListener("click", addParte);
+
+  // Adiciona eventos para fechar modais
+  document.querySelectorAll(".modal .close").forEach(closeBtn => {
+    closeBtn.addEventListener("click", function() {
+      this.closest(".modal").style.display = "none";
+    });
+  });
 
   // Clique fora do modal também fecha
   window.addEventListener("click", function(event) {
     if (event.target.classList.contains("modal")) {
-      closeModal();
+      event.target.style.display = "none";
     }
+  });
+
+  // Variável para armazenar o utensílio selecionado
+  let selectedUtensilio = null;
+
+  // Adiciona eventos aos botões de adicionar
+  document.getElementById("add-traco")?.addEventListener("click", showTracosModal);
+  document.getElementById("add-parte")?.addEventListener("click", addParte);
+
+  // Quando o DOM estiver carregado, adicionar todos os event listeners necessários
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM carregado, configurando event listeners");
+    
+    // Adiciona evento para o botão de selecionar utensílio
+    const selectUtensilioBtn = document.getElementById("select-utensilio");
+    if (selectUtensilioBtn) {
+      selectUtensilioBtn.addEventListener("click", function() {
+        console.log("Botão 'Escolher Utensílio' clicado");
+        showUtensiliosModal();
+      });
+      console.log("Event listener adicionado ao botão 'Escolher Utensílio'");
+    } else {
+      console.error("Botão 'select-utensilio' não encontrado!");
+    }
+    
+    // Event listeners para os botões de fechar os modais
+    document.querySelectorAll(".modal .close").forEach(button => {
+      button.addEventListener("click", function() {
+        this.closest(".modal").style.display = "none";
+      });
+    });
+    
+    // Event listener para o botão de adicionar técnica
+    const addTecnicaBtn = document.getElementById("add-tecnica");
+    if (addTecnicaBtn) {
+      addTecnicaBtn.addEventListener("click", function() {
+        console.log("Botão 'Adicionar Técnica' clicado");
+        showTecnicasModal();
+      });
+      console.log("Event listener adicionado ao botão 'Adicionar Técnica'");
+    } else {
+      console.error("Botão 'add-tecnica' não encontrado!");
+    }
+    
+    // Event listener para o botão de adicionar traço
+    const addTracoBtn = document.getElementById("add-traco");
+    if (addTracoBtn) {
+      addTracoBtn.addEventListener("click", showTracosModal);
+    }
+
+    // Clique fora do modal também fecha
+    window.addEventListener("click", function(event) {
+      if (event.target.classList.contains("modal")) {
+        event.target.style.display = "none";
+      }
+    });
   });
 
   // Função para adicionar parte

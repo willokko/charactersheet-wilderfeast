@@ -411,6 +411,139 @@ form textarea:focus {
   color: #007BFF;
 }
 
+/* Utensílio e Técnicas Styling */
+.utensilio-container {
+  margin-bottom: 20px;
+}
+
+.utensilio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.utensilio-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  padding: 15px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.utensilio-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.utensilio-card-header {
+  border-bottom: 1px solid #404040;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.utensilio-card-title {
+  margin: 0;
+  color: #e0e0e0;
+  font-size: 1.2em;
+}
+
+.tecnica-item, .tecnica-card {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.tecnica-card-header {
+  border-bottom: 1px solid #404040;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.tecnica-card-title {
+  margin: 0;
+  color: #e0e0e0;
+  font-size: 1.2em;
+}
+
+.tecnica-card-desc {
+  margin: 10px 0;
+  color: #e0e0e0;
+}
+
+.tecnica-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+#tecnicas-list {
+  margin-bottom: 15px;
+}
+
+.add-tecnica-btn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-tecnica-btn:hover {
+  background-color: #0056b3;
+}
+
+#utensilio-nome-display {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.search-utensilios {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #333333;
+  color: #e0e0e0;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #404040;
+  padding-bottom: 10px;
+}
+
+.tab-button {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-button.active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.tab-content-container {
+  margin-top: 15px;
+}
+
 /* Estilo para a seção de personagens */
 #characters-section {
   background-color: #2d2d2d;
