@@ -1268,83 +1268,63 @@ input[type="file"]::file-selector-button:hover {
 /* Estilo para o toaster de dados */
 .dados-toaster {
   position: fixed;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
+  background-color: #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  max-width: 90%;
+  width: 300px;
   z-index: 1000;
-  max-width: 350px;
-  transform: translateY(150%);
-  transition: transform 0.3s ease-in-out;
-  visibility: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  overflow: hidden;
+  display: none;
+  border: 2px solid #34495e;
 }
 
 .dados-toaster.show {
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.dados-toaster-content {
-  background-color: #2d2d2d;
-  border: 1px solid #404040;
-  border-radius: 8px;
-  overflow: hidden;
+  display: block;
+  animation: slideInRight 0.3s ease;
 }
 
 .dados-toaster-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1a1a;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #404040;
+  margin-bottom: 10px;
 }
 
 .dados-toaster-title {
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #ecf0f1;
 }
 
 .dados-toaster-close {
   background: none;
   border: none;
-  color: #e0e0e0;
   font-size: 1.5rem;
+  color: #bdc3c7;
   cursor: pointer;
-  line-height: 1;
-  padding: 0 0.5rem;
+  padding: 0 5px;
 }
 
 .dados-toaster-close:hover {
-  color: #ffffff;
+  color: #ecf0f1;
 }
 
 .dados-toaster-body {
-  padding: 1rem;
+  color: #ecf0f1;
 }
 
-.dados-toaster h4 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
-.dados-toaster .dados {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  justify-content: center;
-}
-
-.dados-toaster .resultado-total {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-top: 0.5rem;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Estilo para a checkbox "Soltar o Bicho" */
@@ -1615,4 +1595,166 @@ input[type="file"]::file-selector-button:hover {
   min-width: 40px;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+/* Estilos para animação de dados */
+.dados-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+  justify-content: center;
+}
+
+.dado {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.dado-d6 {
+  background-color: #e74c3c;
+  transform: rotate(var(--rotate, 0deg));
+}
+
+.dado-d8 {
+  background-color: #3498db;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: rotate(var(--rotate, 45deg));
+}
+
+.dado-d20 {
+  background-color: #9b59b6;
+  clip-path: polygon(50% 0%, 80% 30%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 30%);
+}
+
+.resultado-animacao {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  color: #f39c12;
+}
+
+.resultado-total {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+/* Estilos para o toaster de dados */
+.dados-toaster {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  max-width: 90%;
+  width: 400px;
+  z-index: 1000;
+  display: none;
+  border: 2px solid #34495e;
+}
+
+.dados-toaster.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.dados-toaster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #34495e;
+  padding-bottom: 10px;
+}
+
+.dados-toaster-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ecf0f1;
+}
+
+.dados-toaster-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #bdc3c7;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.dados-toaster-close:hover {
+  color: #ecf0f1;
+}
+
+.dados-toaster-body {
+  color: #ecf0f1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Estilo para a checkbox Soltar o Bicho */
+.soltar-bicho-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  user-select: none;
+  background-color: #2d2d2d;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #404040;
+  transition: all 0.3s ease;
+}
+
+.soltar-bicho-checkbox.active {
+  background-color: #563d7c;
+  border-color: #7952b3;
+  box-shadow: 0 0 8px rgba(121, 82, 179, 0.6);
+}
+
+.soltar-bicho-checkbox input {
+  margin-right: 8px;
+}
+
+/* Estilo para o toaster de dados com grande sucesso */
+.dados-toaster.grande-sucesso {
+  background-color: #27ae60;
+  border-color: #2ecc71;
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+  animation: pulseSuccess 1.5s infinite alternate;
+}
+
+@keyframes pulseSuccess {
+  from {
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(46, 204, 113, 0.8);
+  }
 }

@@ -37,6 +37,18 @@
       <!-- Os traços selecionados serão exibidos aqui -->
     </div>
   </main>
+
+  <!-- Toaster para rolagem de dados -->
+  <div id="dados-toaster" class="dados-toaster">
+    <div class="dados-toaster-header">
+      <div class="dados-toaster-title">Rolagem de Dados</div>
+      <button class="dados-toaster-close" onclick="document.getElementById('dados-toaster').classList.remove('show')">&times;</button>
+    </div>
+    <div class="dados-toaster-body">
+      <!-- Conteúdo dos dados será inserido aqui -->
+    </div>
+  </div>
+
   <script src="common.js"></script>
   <script src="view.js"></script>
 </body>

@@ -101,6 +101,26 @@ document.addEventListener("DOMContentLoaded", function() {
       
       // Configurar o contador de resistência logo após carregar os detalhes
       configureResistanceCounter(character);
+
+      // Configuração do checkbox "Soltar o Bicho"
+      const soltarBichoCheckbox = document.getElementById('soltarBicho');
+      if (soltarBichoCheckbox) {
+        const checkboxLabel = document.querySelector('.soltar-bicho-checkbox');
+        
+        // Atualiza o estado visual inicial
+        if (soltarBichoCheckbox.checked) {
+          checkboxLabel.classList.add('active');
+        }
+        
+        // Adiciona evento de mudança para atualizar a classe visual
+        soltarBichoCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+            checkboxLabel.classList.add('active');
+          } else {
+            checkboxLabel.classList.remove('active');
+          }
+        });
+      }
     }
   }
 
@@ -208,41 +228,107 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Função para rolar dados
   window.rolarDados = function(estilo, valor) {
-    const numDados = valor;
-    const resultado = [];
-    let sucesso = 0;
-    
     // Verificar se "Soltar o Bicho" está ativado
     const soltarBicho = document.getElementById('soltarBicho').checked;
     
-    for (let i = 0; i < numDados; i++) {
-      // Lançar o dado
-      const dado = Math.floor(Math.random() * 6) + 1;
-      resultado.push(dado);
-      
-      // Contar sucessos
-      if (dado > 3) {
-        sucesso++;
-      }
-      
-      // Contar sucessos adicionais para "Soltar o Bicho"
-      if (soltarBicho && dado === 6) {
-        sucesso++;
-      }
+    // Determinar quantidade de dados
+    const qtdD6 = soltarBicho ? Math.max(0, valor - 1) : valor;
+    const tipoDadoExtra = soltarBicho ? 'd20' : 'd8';
+    
+    // Configuração da animação
+    const framesPorDado = 8; // Número de "frames" de animação para cada dado
+    const duracaoFrameMs = 50; // Duração de cada frame em milissegundos
+    let frameAtual = 0;
+    const dadosAnimados = [];
+    
+    // Preparar estrutura para animação
+    for (let i = 0; i < qtdD6; i++) {
+      dadosAnimados.push({
+        tipo: 'd6',
+        valor: Math.floor(Math.random() * 6) + 1, // Valor inicial aleatório
+        final: Math.floor(Math.random() * 6) + 1  // Valor final (resultado real)
+      });
     }
     
-    // Criar a mensagem
-    const mensagem = `
-      <p><strong>Estilo:</strong> ${estilo}</p>
-      <p><strong>Dados:</strong> ${resultado.join(', ')}</p>
-      <p><strong>Sucessos:</strong> ${sucesso}</p>
-      ${soltarBicho ? '<p><strong>Soltar o Bicho:</strong> Ativado (Dados 6 contam como 2 sucessos)</p>' : ''}
-    `;
+    // Adicionar dado extra (d8 ou d20)
+    const valorMaxDadoExtra = soltarBicho ? 20 : 8;
+    dadosAnimados.push({
+      tipo: tipoDadoExtra,
+      valor: Math.floor(Math.random() * valorMaxDadoExtra) + 1, // Valor inicial
+      final: Math.floor(Math.random() * valorMaxDadoExtra) + 1  // Valor final
+    });
     
     // Exibir o toaster
     const toaster = document.getElementById('dados-toaster');
     const toasterBody = toaster.querySelector('.dados-toaster-body');
-    toasterBody.innerHTML = mensagem;
+    const toasterTitle = toaster.querySelector('.dados-toaster-title');
+    
+    // Atualizar o título do toaster
+    toasterTitle.textContent = `${estilo} (${qtdD6}d6 + 1${tipoDadoExtra})`;
+    
+    // Mostrar o toaster
     toaster.classList.add('show');
+    
+    // Função para atualizar a UI durante a animação
+    function atualizarAnimacao() {
+      // Criar HTML para a exibição dos dados
+      let dadosHTML = `<div class="dados-container">`;
+      
+      // Adicionar cada dado à visualização
+      dadosAnimados.forEach((dado) => {
+        dadosHTML += `
+          <div class="dado ${dado.tipo === 'd6' ? 'dado-d6' : (dado.tipo === 'd8' ? 'dado-d8' : 'dado-d20')}">
+            ${dado.valor}
+          </div>
+        `;
+      });
+      
+      dadosHTML += `</div>`;
+      
+      toasterBody.innerHTML = dadosHTML;
+    }
+    
+    // Função para atualizar valores dos dados a cada frame
+    function animarFrame() {
+      frameAtual++;
+      
+      // Atualizar valor de cada dado
+      dadosAnimados.forEach((dado) => {
+        if (frameAtual < framesPorDado) {
+          // Durante a animação, mostrar valores aleatórios
+          dado.valor = dado.tipo === 'd6' ? 
+            Math.floor(Math.random() * 6) + 1 : 
+            Math.floor(Math.random() * (dado.tipo === 'd8' ? 8 : 20)) + 1;
+        } else {
+          // No último frame, mostrar o valor final
+          dado.valor = dado.final;
+        }
+      });
+      
+      // Atualizar a UI
+      atualizarAnimacao();
+      
+      // Continuar a animação ou finalizar
+      if (frameAtual < framesPorDado) {
+        setTimeout(animarFrame, duracaoFrameMs);
+      } else {
+        // Animação completa, verificar se temos um "grande sucesso"
+        const ultimoDado = dadosAnimados[dadosAnimados.length - 1];
+        const grandeSuccesso = (ultimoDado.tipo === 'd8' && ultimoDado.final === 8) || 
+                              (ultimoDado.tipo === 'd20' && ultimoDado.final === 20);
+        
+        // Aplicar classe de grande sucesso se necessário
+        if (grandeSuccesso) {
+          toaster.classList.add('grande-sucesso');
+        } else {
+          toaster.classList.remove('grande-sucesso');
+        }
+      }
+    }
+    
+    // Iniciar a animação
+    atualizarAnimacao();
+    setTimeout(animarFrame, duracaoFrameMs);
+    
   };
 });
