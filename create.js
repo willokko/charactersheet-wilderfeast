@@ -4,29 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
      ==================== */
   const createForm = document.getElementById("create-character-form");
   if (createForm) {
-    // Mantém o evento de alternar tipo que já existe
-    document.getElementById("tipo").addEventListener("change", function(e) {
-      const tipoSelecionado = e.target.value;
-      const utensilioSection = document.getElementById("utensilio-section");
-      const partesSection = document.getElementById("partes-section");
-      
-      // Mostra/oculta seções
-      utensilioSection.style.display = tipoSelecionado === "personagem" ? "block" : "none";
-      partesSection.style.display = tipoSelecionado === "monstro" ? "block" : "none";
-
-      // Atualiza atributos 'required' dos campos
-      const utensilioCampos = utensilioSection.querySelectorAll("[required]");
-      const partesCampos = partesSection.querySelectorAll("[required]");
-      
-      if (tipoSelecionado === "personagem") {
-        utensilioCampos.forEach(campo => campo.setAttribute("required", ""));
-        partesCampos.forEach(campo => campo.removeAttribute("required"));
-      } else {
-        utensilioCampos.forEach(campo => campo.removeAttribute("required"));
-        partesCampos.forEach(campo => campo.setAttribute("required", ""));
-      }
-    });
-
     // Função para converter arquivo de imagem para Base64
     function convertImageToBase64(file) {
       return new Promise((resolve, reject) => {
@@ -67,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       const character = {
-        tipo: document.getElementById("tipo").value,
+        tipo: "personagem", // Tipo fixo agora
         nome: document.getElementById("nome").value,
         imagem: document.getElementById("imagem").value,
         estilos: {
@@ -102,35 +79,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
-      // Adiciona utensílio ou partes baseado no tipo
-      if (character.tipo === "personagem") {
-        character.utensilio = {
-          nome: document.getElementById("nomeUtensilio").value,
-          resistencia: parseInt(document.getElementById("resistencia").value) || 0,
-          tecnicas: []
-        };
-        
-        // Coleta técnicas do utensílio
-        const tecnicasItems = document.getElementsByClassName("tecnica-item");
-        Array.from(tecnicasItems).forEach(tecnicaItem => {
-          character.utensilio.tecnicas.push({
-            nome: tecnicaItem.querySelector(".tecnica-nome").value,
-            categoria: tecnicaItem.querySelector(".tecnica-categoria").value,
-            detalhes: tecnicaItem.querySelector(".tecnica-detalhes").value,
-            descricao: tecnicaItem.querySelector(".tecnica-descricao").value
-          });
+      // Adiciona utensílio
+      character.utensilio = {
+        nome: document.getElementById("nomeUtensilio").value,
+        resistencia: parseInt(document.getElementById("resistencia").value) || 0,
+        tecnicas: []
+      };
+      
+      // Coleta técnicas do utensílio
+      const tecnicasItems = document.getElementsByClassName("tecnica-item");
+      Array.from(tecnicasItems).forEach(tecnicaItem => {
+        character.utensilio.tecnicas.push({
+          nome: tecnicaItem.querySelector(".tecnica-nome").value,
+          categoria: tecnicaItem.querySelector(".tecnica-categoria").value,
+          detalhes: tecnicaItem.querySelector(".tecnica-detalhes").value,
+          descricao: tecnicaItem.querySelector(".tecnica-descricao").value
         });
-      } else {
-        character.partes = [];
-        const partesItems = document.getElementsByClassName("parte-item");
-        Array.from(partesItems).forEach(parteItem => {
-          character.partes.push({
-            nome: parteItem.querySelector(".parte-nome").value,
-            resistencia: parseInt(parteItem.querySelector(".parte-resistencia").value) || 0,
-            descricao: parteItem.querySelector(".parte-descricao").value
-          });
-        });
-      }
+      });
 
       // Salva no localStorage
       const characters = JSON.parse(localStorage.getItem("characters") || "[]");

@@ -16,13 +16,6 @@
     <form id="create-character-form">
       <!-- Dados Básicos -->
       <fieldset>
-        <legend>Tipo</legend>
-        <select id="tipo" name="" required>
-          <option value="personagem">Personagem</option>
-          <option value="monstro">Monstro</option>
-        </select>
-      </fieldset>
-      <fieldset>
         <legend>Dados Básicos</legend>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
@@ -128,7 +121,7 @@
         </div>
       </fieldset>
 
-      <!-- Seção de Utensílio/Partes (condicional baseado no tipo) -->
+      <!-- Seção de Utensílio -->
       <fieldset id="utensilio-section">
         <legend>Utensílio</legend>
         <div class="utensilio-container">
@@ -152,16 +145,6 @@
             </div>
             <button type="button" id="add-tecnica" class="add-tecnica-btn">+ Adicionar Técnica</button>
           </div>
-        </div>
-      </fieldset>
-
-      <fieldset id="partes-section" style="display: none;">
-        <legend>Partes</legend>
-        <div class="partes-container">
-          <div id="partes-list">
-            <!-- As partes serão adicionadas aqui dinamicamente -->
-          </div>
-          <button type="button" id="add-parte" class="add-parte-btn">+ Adicionar Parte</button>
         </div>
       </fieldset>
 

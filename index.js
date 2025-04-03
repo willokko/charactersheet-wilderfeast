@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Seleciona as seções onde os cards serão exibidos
+  // Seleciona a seção onde os cards serão exibidos
   const charactersSection = document.getElementById("character-list");
-  const monstersSection = document.getElementById("monster-list");
 
   // Recupera a lista de fichas (personagens e monstros) do localStorage
   const characters = JSON.parse(localStorage.getItem("characters") || "[]");
@@ -10,9 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
       Página Inicial (index.html)
       ==================== */
 
-  // Limpa as seções para evitar duplicações
+  // Limpa a seção para evitar duplicações
   if (charactersSection) charactersSection.innerHTML = "";
-  if (monstersSection) monstersSection.innerHTML = "";
 
   // Caso não haja nenhuma ficha cadastrada, exibe uma mensagem informativa
   if (characters.length === 0) {
@@ -40,17 +38,70 @@ document.addEventListener("DOMContentLoaded", function() {
       // Cria e configura o elemento com o nome da ficha
       const nameEl = document.createElement("h3");
       nameEl.textContent = character.nome;
+      nameEl.title = character.nome; // Adiciona tooltip para nomes longos
 
       // Adiciona o link e o nome ao card
       card.appendChild(link);
       card.appendChild(nameEl);
 
-      // Verifica o tipo da ficha e adiciona o card na seção correspondente
-      if (character.tipo === "personagem") {
-        if (charactersSection) charactersSection.appendChild(card);
-      } else if (character.tipo === "monstro") {
-        if (monstersSection) monstersSection.appendChild(card);
+      // Adiciona o card na seção de personagens
+      if (charactersSection) charactersSection.appendChild(card);
+    });
+  }
+
+  // Configurar o botão de exportação
+  const exportButton = document.getElementById("export-characters");
+  if (exportButton) {
+    exportButton.addEventListener("click", function() {
+      if (characters.length === 0) {
+        alert("Não há personagens para exportar.");
+        return;
       }
+
+      const dataStr = JSON.stringify(characters, null, 2);
+      const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+      
+      const exportFileName = "personagens_wilderfeast_" + new Date().toISOString().split("T")[0] + ".json";
+      
+      const linkElement = document.createElement("a");
+      linkElement.setAttribute("href", dataUri);
+      linkElement.setAttribute("download", exportFileName);
+      linkElement.click();
+    });
+  }
+
+  // Configurar o botão de importação
+  const importButton = document.getElementById("import-characters");
+  const fileInput = document.getElementById("file-input");
+  
+  if (importButton && fileInput) {
+    importButton.addEventListener("click", function() {
+      fileInput.click();
+    });
+    
+    fileInput.addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const importedData = JSON.parse(e.target.result);
+          
+          if (!Array.isArray(importedData)) {
+            throw new Error("Formato inválido. Esperava um array.");
+          }
+          
+          if (confirm(`Deseja importar ${importedData.length} personagem(ns)? Isso substituirá todos os personagens existentes.`)) {
+            localStorage.setItem("characters", JSON.stringify(importedData));
+            alert("Personagens importados com sucesso!");
+            window.location.reload();
+          }
+        } catch (error) {
+          alert("Erro ao importar dados: " + error.message);
+        }
+      };
+      reader.readAsText(file);
     });
   }
 });
