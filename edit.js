@@ -1,6 +1,52 @@
+// Aplicando limites aos campos de atributos (0-5)
+function aplicarLimitesAtributos() {
+  // Lista de todos os atributos (estilos e habilidades)
+  const atributos = [
+    // Estilos
+    "poderoso", "ligeiro", "preciso", "capcioso",
+    // Habilidades
+    "agarrao", "armazenamento", "assegurar", "busca", "chamado",
+    "cura", "exibicao", "golpe", "manufatura", "estudo", "tiro", "travessia"
+  ];
+  
+  // Para cada atributo, adiciona evento de validação
+  atributos.forEach(atributo => {
+    const campo = document.getElementById(atributo);
+    if (campo) {
+      // Adiciona evento para validar durante a digitação
+      campo.addEventListener("input", function() {
+        let valor = parseInt(this.value) || 0;
+        
+        // Aplica os limites (0-5)
+        if (valor < 0) valor = 0;
+        if (valor > 5) valor = 5;
+        
+        // Atualiza o valor no campo
+        this.value = valor;
+      });
+      
+      // Também valida quando o campo perde o foco
+      campo.addEventListener("blur", function() {
+        let valor = parseInt(this.value) || 0;
+        
+        // Aplica os limites (0-5)
+        if (valor < 0) valor = 0;
+        if (valor > 5) valor = 5;
+        
+        // Atualiza o valor no campo
+        this.value = valor;
+      });
+    }
+  });
+  
+  console.log("Limites de atributos (0-5) aplicados a todos os campos");
+}
+
 // Aguarda o DOM estar completamente carregado
 document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM completamente carregado - iniciando configuração");
+  
+  aplicarLimitesAtributos();
   
   /* ====================
    Página de Edição (edit.html)
@@ -395,6 +441,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
   
+  // Torna a função disponível globalmente para poder ser chamada em qualquer parte do código
+  window.processTecnicas = processTecnicas;
+  
   // Função auxiliar para formatar o nome da categoria
   function formatarNomeCategoria(categoria) {
     // Converte snake_case para Título Formatado
@@ -780,24 +829,24 @@ document.addEventListener("DOMContentLoaded", function() {
         nome: document.getElementById("nome").value,
         imagem: document.getElementById("imagem").value,
         estilos: {
-          poderoso: parseInt(document.getElementById("poderoso").value) || 0,
-          ligeiro: parseInt(document.getElementById("ligeiro").value) || 0,
-          preciso: parseInt(document.getElementById("preciso").value) || 0,
-          capcioso: parseInt(document.getElementById("capcioso").value) || 0
+          poderoso: limitarValor(document.getElementById("poderoso").value),
+          ligeiro: limitarValor(document.getElementById("ligeiro").value),
+          preciso: limitarValor(document.getElementById("preciso").value),
+          capcioso: limitarValor(document.getElementById("capcioso").value)
         },
         habilidades: {
-          agarrao: parseInt(document.getElementById("agarrao").value) || 0,
-          armazenamento: parseInt(document.getElementById("armazenamento").value) || 0,
-          assegurar: parseInt(document.getElementById("assegurar").value) || 0,
-          busca: parseInt(document.getElementById("busca").value) || 0,
-          chamado: parseInt(document.getElementById("chamado").value) || 0,
-          cura: parseInt(document.getElementById("cura").value) || 0,
-          exibicao: parseInt(document.getElementById("exibicao").value) || 0,
-          golpe: parseInt(document.getElementById("golpe").value) || 0,
-          manufatura: parseInt(document.getElementById("manufatura").value) || 0,
-          estudo: parseInt(document.getElementById("estudo").value) || 0,
-          tiro: parseInt(document.getElementById("tiro").value) || 0,
-          travessia: parseInt(document.getElementById("travessia").value) || 0
+          agarrao: limitarValor(document.getElementById("agarrao").value),
+          armazenamento: limitarValor(document.getElementById("armazenamento").value),
+          assegurar: limitarValor(document.getElementById("assegurar").value),
+          busca: limitarValor(document.getElementById("busca").value),
+          chamado: limitarValor(document.getElementById("chamado").value),
+          cura: limitarValor(document.getElementById("cura").value),
+          exibicao: limitarValor(document.getElementById("exibicao").value),
+          golpe: limitarValor(document.getElementById("golpe").value),
+          manufatura: limitarValor(document.getElementById("manufatura").value),
+          estudo: limitarValor(document.getElementById("estudo").value),
+          tiro: limitarValor(document.getElementById("tiro").value),
+          travessia: limitarValor(document.getElementById("travessia").value)
         },
         tracos: []
       };
@@ -1227,3 +1276,11 @@ setTimeout(function() {
   console.log("Executando inicialização do botão de técnicas com delay...");
   inicializarBotaoTecnica();
 }, 1000); // Um segundo de delay para garantir que tudo está carregado
+
+// Função para limitar o valor de um atributo entre 0 e 5
+function limitarValor(valor) {
+  valor = parseInt(valor) || 0;
+  if (valor < 0) valor = 0;
+  if (valor > 5) valor = 5;
+  return valor;
+}
