@@ -346,14 +346,14 @@
     "descricao": "(Passiva) Se você Agrupar com uma criatura ela tem Vantagem na próxima vez que Atacar."
   },
   {
-    "id": "",
-    "nome": "",
-    "descricao": ""
+    "id": "professor",
+    "nome": "Professor",
+    "descricao": "(Custo: 1 Sucesso PRECISO) Até o final da rodada, seus parças têm Vantagem se fizerem um Teste usando a mesma HABILIDADE que você usou ao ativar esse TRAÇO."
   },
   {
-    "id": "",
-    "nome": "",
-    "descricao": ""
+    "id": "recuo",
+    "nome": "Recuo",
+    "descricao": "(Custo: 1 Sucesso PODEROSO ou PRECISO) Você Levanta a guarda sem gastar Ações, mas não pode se Mover até o início do seu próximo turno."
   },
   {
     "id": "reflexos-naturais",
