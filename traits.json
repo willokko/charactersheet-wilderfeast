@@ -5,74 +5,220 @@
       "descricao": "Custo: 1 sucesso numa rolagem PODEROSA. Faz com que uma criatura que esteja a distância de 1 Pernada fique Amedrontada."
     },
     {
+      "id": "ameacar-2",
+      "nome": "Ameaçar 2",
+      "descricao": "(Custo: 1 Sucesso PODEROSO) Criaturas à sua escolha ficam Amedrontadas."
+    },
+    {
+      "id": "aposematico",
+      "nome": "Aposemático",
+      "descricao": "(Custo: 2 Ações) Faça um EXIBIR usando qualquer ESTILO. Você fica Exposto e uma criatura à sua escolha ficaAmedrontada [A]."
+    },
+    {
       "id": "armadura-natural",
       "nome": "Armadura Natural",
-      "descricao": "Passivo. Você sofre apenas metade do dano de ataques PODEROSOS (GOLPES e TIROS)."
+      "descricao": "(Passiva) Você reduz à metade o Dano causado por GOLPEAR PODEROSO e ATIRAR PODEROSO."
+    },
+    {
+      "id": "banha",
+      "nome": "Banha",
+      "descricao": "(Passiva) Seu Vigor máximo aumenta em 10, mas somente durante A Trilha."
+    },
+    {
+      "id": "banha-2",
+      "nome": "Banha 2",
+      "descricao": "(Passiva) Seu Vigor máximo aumenta em 10."
+    },
+    {
+      "id": "biolumnescencia",
+      "nome": "Bioluminescência",
+      "descricao": "(Custo: 1 Sucesso SAGAZ) Uma criatura à sua escolha fica Confusa"
+    },
+    {
+      "id": "bioluminescencia-2",
+      "nome": "Bioluminescência 2",
+      "descricao": "(Custo: 1 Sucesso SAGAZ) Uma criatura à sua escolha fica Confusa 2."
+    },
+    {
+      "id": "bioluminescencia-3",
+      "nome": "Bioluminescência 3",
+      "descricao": "(Custo: 1 Sucesso SAGAZ) Uma criatura à sua escolha fica Confusa 3."
+    },
+    {
+      "id": "brincalhao",
+      "nome": "Brincalhão",
+      "descricao": "(Custo: 1 Sucesso) Harmonia aumenta em 1. Você pode aumentar Harmonia além do máximo, mas só pode usar esse TRAÇO durante o Recesso."
     },
     {
       "id": "cabecada",
       "nome": "Cabeçada",
       "descricao": "Custo: 1 Sucesso. Após atacar uma criatura, empurre-a 1 Pernada para longe de você. Se ela estiver escalando ou voando, ela cai."
     },
+
     {
       "id": "camuflagem",
       "nome": "Camuflagem",
       "descricao": "Custo: 1 Sucesso CAPCIOSO. Você fica Escondido."
     },
     {
+      "id": "carniceiro",
+      "nome": "Carniceiro",
+      "descricao": "(Passiva) Você não pode ficar Envenenado por comida. Se Forragear (com sucesso ou não) você também recebe <H> porções do seguinte Ingrediente: Detritos. Receba (1) Envenenado."
+    },
+    {
+      "id": "catar-piolho",
+      "nome": "Catar Piolho",
+      "descricao": "(Passiva) Se você ajudar um parça a ASSEGURAR, CHAMAR ou EXIBIR e passarem, a Harmonia aumenta em 1."
+    },
+    {
+      "id": "chafurdar",
+      "nome": "Chafurdar",
+      "descricao": " (Passiva) Quando você Acampa, pode restaurar uma PARTE para sua Durabilidade máxima."
+    },
+    {
       "id": "cheiro-de-sangue",
       "nome": "Cheiro de Sangue",
-      "descricao": "Passivo. Você ganha Vantagem em todos os Testes durante o primeiro turno da caçada se o outro lado tiver uma criatura Ferida."
+      "descricao": "(Passiva) Você tem Vantagem em todos os Testes durante a primeira rodada da Caçada se do outro lado houver uma criatura Ferida."
     },
     {
-      "id": "colmeia-errante",
-      "nome": "Colmeia Errante",
-      "descricao": "Você abriga colônias inteiras de fungos e insetos dentro de seu corpo, o que lhe permite se recuperar rapidamente de ferimentos leves. No início de cada turno, restaure 1 de Resistência."
+      "id": "choque-eletrico",
+      "nome": "Choque Elétrico",
+      "descricao": "(Custo: 2 Ações) Faça um CHAMAR LIGEIRO. Se passar, cada criatura a até 1 Pernada sofre [A] de Dano e fica Atordoada."
     },
     {
-      "id": "corpo-incandescente",
-      "nome": "Corpo Incandescente",
-      "descricao": "Passivo. No início de cada rodada, toda criatura de sua escolha a até 1 Pernada de você sofre 2 de dano. Além disso, se você estiver capturado por uma Parte, essa Parte se torna Queimada. Suas Partes não podem ficar Queimadas."
+      "id": "clarao",
+      "nome": "Clarão",
+      "descricao": "(Custo: 2 Ações) Faça um EXIBIR LIGEIRO. Se passar, uma criatura à sua escolha fica Atordoada e Confusa [A]."
+    },
+    {
+      "id": "construtor-de-ninho",
+      "nome": "Construtor de Ninho",
+      "descricao": "(Passiva) Quando a matilha Acampa, você e seus parças podem manter todos os níveis de umaCondição ao invés de removê-los."
+    },
+    {
+      "id": "corpo-quente",
+      "nome": "Corpo Quente",
+      "descricao": "(Passiva) No começo de cada rodada, todas as criaturas à sua escolha em até 0 Pernada de você sofrem 2 de Dano. Além disso, se você estiver Preso por uma PARTE, essa PARTE fica Queimada. Por fim, suas PARTES não podem ficar Queimadas."
+    },
+    {
+      "id": "cultivador",
+      "nome": "Cultivador",
+      "descricao": "(Passiva) Dobre os efeitos recebidos por ceder sua porção do Banquete"
+    },
+    {
+      "id": "defensor-do-rebanho",
+      "nome": "Defensor do Rebanho",
+      "descricao": "(Passiva) Se você Agrupar com uma criatura, vocês dois podem Levantar a Guarda sem gastar Ações."
+    },
+    {
+      "id": "desorientar",
+      "nome": "Desorientar",
+      "descricao": "Passiva) Criaturas que ataquem você (acertando ou não) ficam Confusas."
+    },
+    {
+      "id": "devorador-de-energia",
+      "nome": "",
+      "descricao": "(Passiva) Se estiver Convalescente e passar o Recesso próximo a uma leylinha, você recupera 10 de Vigor. Se estiver Ferido e passar o Recesso próximo a uma leylinha, você remove um nível adicional de Ferido."
     },
     {
       "id": "dieta-generalista",
       "nome": "Dieta Generalista",
-      "descricao": "Passiva. Ao comer uma refeição, você pode ignorar todos os efeitos bônus que ela causa. Alguns Ingredientes são acompanhados de efeitos negativos, como ficar Fadigado. Comer esse tipo de ingrediente ainda restaura sua Resistência; com esse Traço você pode fazer receitas com a maioria dos ingredientes, mesmo que causem efeitos colaterais desagradáveis."
+      "descricao": " (Passiva) Quando comer uma refeição com um efeito adicional, você pode ignorá-lo e recuperar Vigor como se tivesse preparado a refeição com Tempero (se a refeição já foi preparada com Tempero, não dobre o Vigor recuperado novamente)."
+    },
+    {
+      "id": "dieta-seletiva",
+      "nome": "Dieta Seletiva",
+      "descricao": "(Passiva) Quando receber esse TRAÇO, nomeie um Ingrediente. Você recebe <H> porções desse Ingrediente no começo de cada Recesso e quando Reabastecer."
+    },
+    {
+      "id": "digestão-lenta",
+      "nome": "Digestão Lenta",
+      "descricao": "(Passiva) Refeições com efeitos que durem até a sua próxima refeição duram até o fim da Jornada"
+    },
+    {
+      "id": "ecolocalização",
+      "nome": "Ecolocalização",
+      "descricao": " (Custo: 1 Sucesso em um CHAMAR) Uma criatura à sua escolha fica Exposta."
     },
     {
       "id": "eletroreceptividade",
       "nome": "Eletroreceptividade",
-      "descricao": "Passiva. Criaturas Escondidas não recebem vantagem ao tentar atacar você. Todas as criaturas vivas emitem correntes elétricas e você consegue detectá-las. Quando sua visão e audição falharem, esse sentido extra evita que monstros mais sorrateiros te deem o bote."
+      "descricao": "(Passiva) Criaturas Escondidas não têm Vantagem se Atacarem você."
     },
     {
-      "id": "escalador",
-      "nome": "Escalador",
-      "descricao": "Você pode escalar sem sofrer Desvantagem. PODEROSO: Atravessar uma área de lama funda. CAPCIOSO: Esgueirar-se pelos jardins do Magistrado."
+      "id": "engolir-inteiro",
+      "nome": "Engolir Inteiro",
+      "descricao": "(Custo: 1 Ação) Coma qualquer quantidade de Ingredientes para recuperar uma quantidade igual de Vigor. Você não recebe nenhum efeito bônus."
     },
     {
-      "id": "escavacao",
-      "nome": "Escavação",
-      "descricao": "Você pode cavar. Além disso, se se mover cavando, pode percorrer até 2 Pernadas em vez de 1."
+      "id": "enxame",
+      "nome": "Enxame",
+      "descricao": "(Passiva) Se você ajudar uma criatura que também tem esse TRAÇO, ambos recuperam <H> de Vigor."
     },
     {
-      "id": "esporos-ilusorios",
-      "nome": "Esporos Ilusórios",
-      "descricao": "Custo: 1 Sucesso CAPCIOSO. Você libera uma névoa de esporos que confunde inimigos próximos. Escolha uma criatura a até 1 Pernada; ela sofre a condição Confusa."
+      "id": "escalar",
+      "nome": "Escalar",
+      "descricao": "(Passiva) Você pode ESCALAR sem Desvantagem."
     },
     {
-      "id": "explosao",
-      "nome": "Explosão",
-      "descricao": "Custo: 2 Ações. Faça um teste de EXIBIÇÃO LIGEIRA. Se for bem-sucedido, escolha uma criatura. Ela se torna Atordoada e Confusa por [A]."
+      "id": "escalar-2",
+      "nome": "Escalar 2",
+      "descricao": "(Passiva) Você pode ESCALAR sem Desvantagem. Além disso, ao Mover-se enquanto escala, você pode se Mover 2 Pernadas em vez de 1"
     },
     {
-      "id": "foco-implacavel",
-      "nome": "Foco Implacável",
-      "descricao": "Aumente sua próxima rolagem de GOLPE ou PRECISO tem vantagem. Com concentração total, esse Traço é perfeito para garantir um golpe devastador ou um ataque certeiro no momento crítico."
+      "id": "escalar-3",
+      "nome": "Escalar 3",
+      "descricao": "(Passiva) Você pode ESCALAR sem Desvantagem. Além disso, Ao Mover-se enquanto escala, você pode se Mover até 2 Pernadas em vez de 1. Por fim, você tem Vantagem para ATRAVESSAR enquanto escala."
     },
     {
-      "id": "folego-de-fogo",
-      "nome": "Folego de Fogo",
-      "descricao": "Custo: 2 Ações. Faça um teste de TIRO PODEROSO contra uma criatura a até 2 Pernadas. Se for bem-sucedido, cause [A] de dano na Parte alvo e deixe-a Queimada."
+      "id": "escavar",
+      "nome": "Escavar",
+      "descricao": "(Passiva) Você pode cavar."
+    },
+    {
+      "id": "escavar-2",
+      "nome": "Escavar 2",
+      "descricao": " (Passiva) Você pode cavar. Além disso, ao Mover-se enquanto cava, você pode se Mover até 2 Pernadas em vez de 1."
+    },
+    {
+      "id": "escavar-3",
+      "nome": "Escavar 3",
+      "descricao": "(Passiva) Você pode cavar. Além disso, ao Mover-se enquanto cava, você pode se Mover até 2 Pernadas em vez de 1. Por fim, você tem Vantagem em ATRAVESSAR enquanto cava."
+    },
+    {
+      "id": "escorregadio",
+      "nome": "Escorregadio",
+      "descricao": " (Passiva) Você não pode ficar Preso."
+    },
+    {
+      "id": "estase",
+      "nome": "Estase",
+      "descricao": " (Passiva) Quando estiver prestes a morrer, você entra em estase. Sua matilha deve Trabalhar em um Projeto durante o Recesso para revivê-lo, completando um Desafio VA 10. O VA aumenta em 10 para cada vez que você usa esse TRAÇO subsequentemente."
+    },
+    {
+      "id": "expandir",
+      "nome": "Expandir",
+      "descricao": "(Custo: 1 Ação) Você fica Expandido."
+    },
+    {
+      "id": "explosão-sônica",
+      "nome": "Explosão Sônica",
+      "descricao": "(Passiva) Quando Atacar, você pode CHAMAR em vez de ATIRAR ou GOLPEAR."
+    },
+    {
+      "id": "faminto",
+      "nome": "Faminto",
+      "descricao": "(Custo: 1 de Harmonia) Role novamente seu Dado de Ação"
+    },
+    {
+      "id": "fermentador",
+      "nome": "Fermentador",
+      "descricao": "(Passiva) Quando comer uma refeição, em vez de recuperar Vigor, você pode receber um número de níveis deRevigorado igual à metade da Vigor que teria recuperado."
+    },
+    {
+      "id": "flutuante",
+      "nome": "Flutuante",
+      "descricao": "(Passiva) Desde que você possa voar, pode ignorar os Traços desta Área."
     },
     {
       "id": "fotossintese",
@@ -80,59 +226,84 @@
       "descricao": "Custo: 3 Ações. Se você estiver sob o céu aberto, restaure sua Resistência ao máximo."
     },
     {
-      "id": "frenetico",
-      "nome": "Frenético",
-      "descricao": "Custo: 1 Sucesso Poderoso. Recupere 2 de Resistência. Você pode usar esse Traço flexível depois de qualquer teste e a qualquer momento em que obtenha um sucesso extra. Esse pequeno aumento em sua Resistência lhe concede tempo para dar cobertura aos seus parças que estejam cansados ou feridos."
-    },
-    {
       "id": "gigantesco",
       "nome": "Gigantesco",
       "descricao": "Passivo. Considere todas as criaturas como estando 3 Pernadas mais próximas de você do que realmente estão."
     },
     {
-      "id": "guardiao-do-rebanho",
-      "nome": "Guardião do Rebanho",
-      "descricao": "Passivo. Você ganha Vantagem ao usar GOLPE contra criaturas que tenham atacado aliados no último turno."
+      "id": "hibernador",
+      "nome": "Hibernador",
+      "descricao": "(Passiva) Cada nível de Descansado aumenta seu Vigor máximo em 2 em vez de 1"
+    },
+    {
+      "id": "inabalavel",
+      "nome": "Inabalável",
+      "descricao": "(Passiva) Você não pode ficar Confuso."
     },
     {
       "id": "incansavel",
       "nome": "Incansável",
-      "descricao": "Custo: 1 Sucesso PODEROSO. Encerre [A] níveis da condição Fadigado e recupere [A] de Resistência."
+      "descricao": "(Custo: 1 Sucesso PODEROSO) Remove <H> Fadigado e recupera <H> Vigor."
     },
     {
-      "id": "instinto-de-cacador",
-      "nome": "Instinto de Caçador",
-      "descricao": "Se estiver fora de combate, você pode detectar criaturas próximas automaticamente, mesmo que estejam escondidas ou camufladas. Esse Traço garante que nenhum monstro possa emboscar você enquanto explora ou prepara uma armadilha."
-    },
-    {
-      "id": "intocavel",
-      "nome": "Intocável",
-      "descricao": "Passivo. Se uma criatura fizer um AGARRÃO ou GOLPE contra você, ela sofre 2 de dano."
-    },
-    {
-      "id": "investida-territorial",
-      "nome": "Investida Territorial",
-      "descricao": "Custo: 2 Ação. Escolha uma criatura a até 3 Pernadas. Você se move até 0 Pernadas dela, causando dano igual ao número de Pernadas percorridas a você e à criatura."
-    },
-    {
-      "id": "joao-de-barro",
-      "nome": "João-De-Barro",
-      "descricao": "Passiva. Você e seus parças podem sustentar a condição Descansado de um acampamento para outro. Normalmente você perde todas as condições quando acampa, exceto Dissonante e Ferida. Com esse Traço você consegue reter o benefício da condição Descansado no caminho de um acampamento para o outro."
+      "id": "investida",
+      "nome": "Investida",
+      "descricao": " (Custo: 1 Ação) Escolha uma criatura a até 3 Pernadas. Você se Move a 0 Pernada da criatura e então causa Dano a ela e a si mesmo ao número de Pernadas que você se Moveu (Isso não conta como gastar Vigor.)"
     },
     {
       "id": "ladrao",
       "nome": "Ladrão",
-      "descricao": "Custo: 1 Sucesso CAPCIOSO. Pegue um Ingrediente, Lanche ou uma criatura capturada de outra criatura a até 1 Pernada de distância. Você escolhe se a criatura capturada permanece presa ou é libertada."
+      "descricao": "(Custo: 1 Sucesso SAGAZ) Roube um Ingrediente, um Lanche ou uma criatura Presa de um alvo que esteja a até 1 Pernada de você. (Você escolhe se a criatura Presa roubada por você agora está Presa por você ou livre."
     },
     {
-      "id": "numa-bocada-so",
-      "nome": "Numa Bocada Só",
-      "descricao": "Custo: 1 Ação. Coma qualquer número de Ingredientes e restaure um valor igual de Resistência. Você não recebe nenhum dos efeitos por comê-los além do ganho de Resistência. Se você precisa de comida agora e não há tempo para cozinhar, esse Traço transforma comida crua em Resistência, sem rodeios."
+      "id": "mergulhar",
+      "nome": "Mergulhar",
+      "descricao": "(Custo: 1 Ação) Mova para até 0 Pernada de uma criatura em um Terreno abaixo de você ( Céu está acima da maioria dos Terrenos, e o Subterrâneo está abaixo da maioria dos Terrenos. Nos demais casos, avalie conforme seu julgamento)."
     },
     {
-      "id": "olhos-taticos",
-      "nome": "Olhos Táticos",
-      "descricao": "Custo: 1 Sucesso PRECISO. Ao atacar uma criatura, ignore qualquer efeito de redução de dano ou resistência dela. Se precisar perfurar uma carapaça espessa ou superar defesas naturais, esse Traço é sua melhor ferramenta para causar dano direto."
+      "id": "metamorfose",
+      "nome": "Metamorfose",
+      "descricao": "(Passiva) Durante O Banquete, você pode perder este TRAÇO permanentemente. Se fizer isso, escolha dois ESTILOS, HABILIDADES ou TRAÇOS para ganhar um nível no lugar deste traço."
+    },
+    {
+      "id": "migrador",
+      "nome": "Migrador",
+      "descricao": "(Passiva) Você tem Vantagem para ATRAVESSAR em áreas onde já esteve."
+    },
+    {
+      "id": "mimetismo-vocal",
+      "nome": "Mimetismo Vocal",
+      "descricao": " (Custo: 2 Ações) Faça um CHAMAR SAGAZ. Se passar, escolha um desses efeitos: uma criatura a sua escolha fica Confusa [A], uma criatura a sua escolha fica Amedrontada [A], ou todas as criaturas a até 1 Pernada de você sofrem cada uma [A] de Dano e ficam Atordoadas."
+    },
+    {
+      "id": "mira-instintiva",
+      "nome": "Mira Instintiva",
+      "descricao": "(Custo: 1 Sucesso em ATIRAR) A criatura atingida por ATIRAR fica Atordoada"
+    },
+    {
+      "id": "nadar",
+      "nome": "Nadar",
+      "descricao": "Você pode nadar sem Desvantagem."
+    },
+    {
+      "id": "nadar-2",
+      "nome": "Nadar 2",
+      "descricao": " (Passiva) Você pode nadar sem Desvantagem. Além disso, caso se Mova enquanto nada, você pode se Mover até 2 Pernadas em vez de 1."
+    },
+    {
+      "id": "nadar-3",
+      "nome": "Nadar 3",
+      "descricao": " (Passiva) Você pode nadar sem Desvantagem. Além disso, caso se Mova enquanto nada, você pode se Mover até 2 Pernadas em vez de 1. Por fim, você tem Vantagem para ATRAVESSAR enquanto nada."
+    },
+    {
+      "id": "nao-me-toque",
+      "nome": "Não-Me-Toque",
+      "descricao": "(Passiva) Se uma criatura fizer um AGARRAR ou GOLPEAR contra você, cause 1 de Dano a ela."
+    },
+    {
+      "id": "nao-me-toque-2-a-5",
+      "nome": "Não-Me-Toque 2 a 5",
+      "descricao": "(Passiva) Se uma criatura fizer um AGARRAR ou GOLPEAR contra você, cause 1 de Dano a ela para cada nível desse TRAÇO."
     },
     {
       "id": "ostentar",
@@ -140,34 +311,49 @@
       "descricao": "Custo: 2 Ações. Faça uma EXIBIÇÃO PODEROSA. Se tiver sucesso, você e seus aliados curam [A] de Resistência. Cores brilhantes ou grandes ornamentações transmitem sua confiança."
     },
     {
-      "id": "paciente",
-      "nome": "Paciente",
+      "id": "paciencia",
+      "nome": "Paciência",
       "descricao": "Passivo. Você pode Preparar-se até 3 vezes por turno."
+    },
+    {
+      "id": "parasita-de-ninhada",
+      "nome": "Parasita de Ninhada",
+      "descricao": "(Passiva) Quando trabalhar em um Projeto, escolha um NPC: o personagem escolhido também faz um Teste para contribuir para o seu projeto. (Trabalhe com a Guia para determinar os detalhes, como a maneira como o NPC ajuda e como você o convenceu a fazê-lo."
     },
     {
       "id": "perseguicao-do-predador",
       "nome": "Perseguição do Predador",
-      "descricao": "Passiva. Caso se aproxime de uma criatura, você tem vantagem em seus testes para atacá-la até o final do seu turno. Esse Traço o recompensa por perseguir monstros. Durante o combate, considere recuar no final do turno para investir novamente no próximo e ganhar vantagem. Preste atenção ao comportamento do monstro para prever o quão longe você pode chegar."
+      "descricao": "(Passiva) Se você se Mover em direção a uma criatura, ganhe Vantagem ao Ataca-la até o final do seu turno."
     },
     {
       "id": "polonizador",
       "nome": "Polonizador",
-      "descricao": "Custo: 1 Sucesso. Harmonia é aumentada em 1. Você pode usar esse traço enquanto busca sustento e provisões (FORRAGEAR). Se obtiver sucessos extras ao testar a busca por provisões, pode gastá-los para retribuir/devolver ao meio ambiente ao seu redor, permitindo que o grupo tenha mais oportunidades para se ajudar e virar o bicho."
+      "descricao": "(Custo: 1 Sucesso em um PROCURAR) Harmonia aumenta em 1."
     },
     {
-      "id": "predador-de-resistencia",
-      "nome": "Predador de Resistência",
-      "descricao": "Custo: 1 Sucesso PODEROSO ou LIGEIRO. Escolha uma criatura. Ela se torna Fadigada."
+      "id": "predador-de-emboscada",
+      "nome": "Predador de Emboscada",
+      "descricao": "(Passiva) Se você Atacar enquanto estiver Escondido, você causa o dobro do Dano."
     },
     {
-      "id": "predador-emboscador",
-      "nome": "Predador Emboscador",
-      "descricao": "Passivo. Se você atacar enquanto está Escondido, causa dano dobrado."
+      "id": "predador-resistente",
+      "nome": "Predador Resistente",
+      "descricao": "(Custo: 1 Sucesso PODEROSO ou LIGEIRO) Uma criatura à sua escolha fica Fadigada."
     },
     {
-      "id": "pressao-intimidante",
-      "nome": "Pressão Intimidante",
-      "descricao": "Escolha uma criatura a até 1 Pernada de distância. Ela sofre a condição 'Amedrontada', mesmo sem um ataque direto. Use esse Traço para criar oportunidades táticas, afastando inimigos ou enfraquecendo monstros antes de uma investida."
+      "id": "predador-sociavel",
+      "nome": "Predador Sociável",
+      "descricao": "(Passiva) Se você Agrupar com uma criatura ela tem Vantagem na próxima vez que Atacar."
+    },
+    {
+      "id": "",
+      "nome": "",
+      "descricao": ""
+    },
+    {
+      "id": "",
+      "nome": "",
+      "descricao": ""
     },
     {
       "id": "reflexos-naturais",
@@ -180,14 +366,34 @@
       "descricao": "Custo: 1 Sucesso. Recupere 1 de Durabilidade. Se seu Utensílio atingir Durabilidade 0, ele quebra e você perde a capacidade de usá-lo. Use esse Traço para recuperar a Durabilidade do Utensílio. Se sua Durabilidade for maior que 0, você já pode usá-lo normalmente novamente."
     },
     {
-      "id": "resistente",
-      "nome": "Resistente",
-      "descricao": "Passivo. Nada pode empurrar ou puxar você, a menos que você permita ou esteja sob a condição Capturado."
+      "id": "regeneracao-2-a-5",
+      "nome": "Regeneração 2 a 5",
+      "descricao": " (Custo: 1 Sucesso) Recupere 1 de Durabilidade de uma de suas PARTES para cada nível que tiver nesse TRAÇO."
     },
     {
-      "id": "retirada",
-      "nome": "Retirada",
-      "descricao": "Custo: 1 Sucesso PODEROSO ou PRECISO. Você pode levantar a Guarda sem gastar Ações, mas não pode se mover até o início do próximo turno."
+      "id": "resistente-a-impacto",
+      "nome": "Resistente a Impacto",
+      "descricao": "(Passiva) Nada pode empurrar ou puxar você, a menos que você permita ou esteja sob a condição Capturado."
+    },
+    {
+      "id": "robusto",
+      "nome": "Robusto",
+      "descricao": "(Passiva) Nada pode empurrá-lo ou puxá-lo, a menos que você permita ou esteja Preso"
+    },
+    {
+      "id": "sacrificio-parental",
+      "nome": "Sacrifício Parental",
+      "descricao": "(Passiva) No início do Recesso, em vez de remover Ferido 1, você pode Trabalhar num Projeto sem gastar Ações"
+    },
+    {
+      "id": "sanguessuga",
+      "nome": "Sanguessuga",
+      "descricao": "(Custo: 3 Ações) Faça um GOLPEAR PRECISO contra uma criatura a 1 Pernada de distância. Se passar, você ganha um nível em um dos ESTILOS, HABILIDADES ou TRAÇOS da criatura até o final da Jornada (a criatura NÃO precisa ter mais níveis na característica escolhida do que você). Se você usar esse TRAÇO de novo, troque o nível que ganhou anteriormente pelo novo."
+    },
+    {
+      "id": "sedativo",
+      "nome": "Sedativo",
+      "descricao": "(Custo: 1 Ação) Até o começo de seu próximo turno, todas as criaturas precisam gastar 1 Ação adicional para Atacar."
     },
     {
       "id": "sentidos-agucados",
@@ -195,14 +401,59 @@
       "descricao": "Passiva. Se for o guia, você tem vantagem na sua primeira rolagem durante um Evento. Seus Sentidos Aguçados se manifestam como a visão de uma águia, permitindo localizar o perigo ao longe."
     },
     {
-      "id": "tecelao-de-teias",
-      "nome": "Tecelão de Teias",
-      "descricao": "Custo: 2 Ações. Faça um teste de MANUFATURA CAPCIOSA. Se for bem-sucedido, a próxima vez que uma criatura hostil se mover em sua direção, ela sofre [A] de dano na Parte e não pode se mover até o início do próximo turno."
+      "id": "sopro-de-fogo",
+      "nome": "Sopro de Fogo",
+      "descricao": "(Custo: 2 Ações) Faça um ATIRAR PODEROSO contra uma criatura a até 2 Pernadas de distância. Se acertar, você causa [A] Dano à Parte e a PARTE que você alvejou fica Queimada"
+    },
+    {
+      "id": "tanatose",
+      "nome": "Tanatose",
+      "descricao": " (Passiva) Se você estiver Ferido 3 e permanecendo caído, no final de cada turno, você pode forçar a barra em vez disso. Se estiver Ferido 3 e forçando a barra, no início do seu turno, você pode escolher permanecer caído em vez disso"
+    },    
+    {
+      "id": "territorial",
+      "nome": "Territorial",
+      "descricao": "(Passiva) Você tem Vantagem em todos os Testes contra intrusos em sua Toca."
     },
     {
       "id": "velocidade",
       "nome": "Velocidade",
       "descricao": "Custo: 1 Sucesso LIGEIRO. Você pode se mover sem gastar Ações."
+    },
+    {
+      "id": "veneno",
+      "nome": "Veneno",
+      "descricao": " (Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada."
+    },
+    {
+      "id": "veneno-2",
+      "nome": "Veneno 2",
+      "descricao": " (Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada 2."
+    },
+    {
+      "id": "veneno-3",
+      "nome": "Veneno 3",
+      "descricao": " (Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada 3."
+    },
+    {
+      "id": "voar",
+      "nome": "Voar",
+      "descricao": "(Passiva) Você pode voar."
+    },
+    {
+      "id": "voar-2",
+      "nome": "Voar 2",
+      "descricao": "(Passiva) Você pode voar. Além disso, caso se Mova enquanto voa, você pode se Mover 2 Pernadas em vez de 1."
+    },
+    {
+      "id": "voar-3",
+      "nome": "Voar 3",
+      "descricao": "(Passiva) Você pode voar. Além disso, caso se Mova enquanto voa, você pode se Mover 2 Pernadas em vez de 1. Por fim, você tem Vantagem em todos seus ATRAVESSAR enquanto voa."
+    },
+    {
+      "id": "tece-teias",
+      "nome": "Tece Teias",
+      "descricao": "Custo: 2 Ações. Faça um teste de MANUFATURA CAPCIOSA. Se for bem-sucedido, a próxima vez que uma criatura hostil se mover em sua direção, ela sofre [A] de dano na Parte e não pode se mover até o início do próximo turno."
     }
   ]
   
