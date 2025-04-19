@@ -326,8 +326,8 @@
     "descricao": "(Passiva) Se você se Mover em direção a uma criatura, ganhe Vantagem ao Ataca-la até o final do seu turno."
   },
   {
-    "id": "polonizador",
-    "nome": "Polonizador",
+    "id": "polinizador",
+    "nome": "Polinizador",
     "descricao": "(Custo: 1 Sucesso em um PROCURAR) Harmonia aumenta em 1."
   },
   {
