@@ -2,7 +2,17 @@
     {
       "id": "ameacar",
       "nome": "Ameaçar",
-      "descricao": "Custo: 1 sucesso numa rolagem PODEROSA. Faz com que uma criatura que esteja a distância de 1 Pernada fique Amedrontada."
+      "descricao": "(Custo: 1 Sucesso PODEROSO) Uma criatura à sua escolha fica Amedrontada."
+    },
+    {
+      "id": "ameacar-2",
+      "nome": "Ameaçar 2",
+      "descricao": "(Custo: 1 Sucesso PODEROSO) Criaturas à sua escolha ficam Amedrontadas."
+    },
+    {
+      "id": "aposematico",
+      "nome": "Aposemático",
+      "descricao": "(Custo: 2 Ações) Faça um EXIBIR usando qualquer ESTILO. Você fica Exposto e uma criatura à sua escolha fica Amedrontada [A]."
     },
     {
       "id": "ameacar-2",
@@ -52,13 +62,28 @@
     {
       "id": "cabecada",
       "nome": "Cabeçada",
-      "descricao": "Custo: 1 Sucesso. Após atacar uma criatura, empurre-a 1 Pernada para longe de você. Se ela estiver escalando ou voando, ela cai."
+      "descricao": "(Custo: 1 Sucesso) Depois de atacar uma criatura, empurre-a para 1 Pernada de você. Se a criatura estiver escalando ou voando, ela cai no Chão."
     },
 
     {
       "id": "camuflagem",
       "nome": "Camuflagem",
-      "descricao": "Custo: 1 Sucesso CAPCIOSO. Você fica Escondido."
+      "descricao": "(Custo: 1 Sucesso SAGAZ) Você fica Escondido."
+    },
+    {
+      "id": "carniceiro",
+      "nome": "Carniceiro",
+      "descricao": "(Passiva) Você não pode ficar Envenenado por comida. Se Forragear (com sucesso ou não), você também recebe <H> porções do seguinte Ingrediente: Detritos. Receba (1) Envenenado."
+    },
+    {
+      "id": "catar-piolho",
+      "nome": "Catar Piolho",
+      "descricao": "(Passiva) Se você ajudar um parça a ASSEGURAR, CHAMAR ou EXIBIR e passarem, a Harmonia aumenta em 1."
+    },
+    {
+      "id": "chafurdar",
+      "nome": "Chafurdar",
+      "descricao": "(Passiva) Quando você Acampa, pode restaurar uma PARTE para sua Durabilidade máxima."
     },
     {
       "id": "carniceiro",
@@ -93,7 +118,7 @@
     {
       "id": "construtor-de-ninho",
       "nome": "Construtor de Ninho",
-      "descricao": "(Passiva) Quando a matilha Acampa, você e seus parças podem manter todos os níveis de umaCondição ao invés de removê-los."
+      "descricao": "(Passiva) Quando a matilha Acampa, você e seus parças podem manter todos os níveis de uma Condição ao invés de removê-los. 301 Criaturas ELETRORRECEPTIVAS podem sentir correntes elétricas, principalmente as geradas por outros animais. Este TRAÇO poderia representar outros sentidos pouco convencionais, como a habilidade para detectar radiação infravermelha ou leylinhas, sem mudar a mecânica."
     },
     {
       "id": "corpo-quente",
@@ -103,7 +128,7 @@
     {
       "id": "cultivador",
       "nome": "Cultivador",
-      "descricao": "(Passiva) Dobre os efeitos recebidos por ceder sua porção do Banquete"
+      "descricao": "(Passiva) Dobre os efeitos recebidos por ceder sua porção do Banquete."
     },
     {
       "id": "defensor-do-rebanho",
@@ -113,17 +138,17 @@
     {
       "id": "desorientar",
       "nome": "Desorientar",
-      "descricao": "Passiva) Criaturas que ataquem você (acertando ou não) ficam Confusas."
+      "descricao": "(Passiva) Criaturas que ataquem você (acertando ou não) ficam Confusas."
     },
     {
       "id": "devorador-de-energia",
-      "nome": "",
+      "nome": "Devorador de Energia",
       "descricao": "(Passiva) Se estiver Convalescente e passar o Recesso próximo a uma leylinha, você recupera 10 de Vigor. Se estiver Ferido e passar o Recesso próximo a uma leylinha, você remove um nível adicional de Ferido."
     },
     {
       "id": "dieta-generalista",
       "nome": "Dieta Generalista",
-      "descricao": " (Passiva) Quando comer uma refeição com um efeito adicional, você pode ignorá-lo e recuperar Vigor como se tivesse preparado a refeição com Tempero (se a refeição já foi preparada com Tempero, não dobre o Vigor recuperado novamente)."
+      "descricao": "(Passiva) Quando comer uma refeição com um efeito adicional, você pode ignorá-lo e recuperar Vigor como se tivesse preparado a refeição com Tempero (se a refeição já foi preparada com Tempero, não dobre o Vigor recuperado novamente)."
     },
     {
       "id": "dieta-seletiva",
@@ -131,18 +156,18 @@
       "descricao": "(Passiva) Quando receber esse TRAÇO, nomeie um Ingrediente. Você recebe <H> porções desse Ingrediente no começo de cada Recesso e quando Reabastecer."
     },
     {
-      "id": "digestão-lenta",
+      "id": "digestao-lenta",
       "nome": "Digestão Lenta",
-      "descricao": "(Passiva) Refeições com efeitos que durem até a sua próxima refeição duram até o fim da Jornada"
+      "descricao": "(Passiva) Refeições com efeitos que durem até a sua próxima refeição duram até o fim da Jornada."
     },
     {
-      "id": "ecolocalização",
+      "id": "ecolocalizacao",
       "nome": "Ecolocalização",
-      "descricao": " (Custo: 1 Sucesso em um CHAMAR) Uma criatura à sua escolha fica Exposta."
+      "descricao": "(Custo: 1 Sucesso em um CHAMAR) Uma criatura à sua escolha fica Exposta."
     },
     {
-      "id": "eletroreceptividade",
-      "nome": "Eletroreceptividade",
+      "id": "eletrorreceptividade",
+      "nome": "Eletrorreceptividade",
       "descricao": "(Passiva) Criaturas Escondidas não têm Vantagem se Atacarem você."
     },
     {
@@ -163,7 +188,7 @@
     {
       "id": "escalar-2",
       "nome": "Escalar 2",
-      "descricao": "(Passiva) Você pode ESCALAR sem Desvantagem. Além disso, ao Mover-se enquanto escala, você pode se Mover 2 Pernadas em vez de 1"
+      "descricao": "(Passiva) Você pode ESCALAR sem Desvantagem. Além disso, ao Mover-se enquanto escala, você pode se Mover 2 Pernadas em vez de 1."
     },
     {
       "id": "escalar-3",
@@ -178,7 +203,7 @@
     {
       "id": "escavar-2",
       "nome": "Escavar 2",
-      "descricao": " (Passiva) Você pode cavar. Além disso, ao Mover-se enquanto cava, você pode se Mover até 2 Pernadas em vez de 1."
+      "descricao": "(Passiva) Você pode cavar. Além disso, ao Mover-se enquanto cava, você pode se Mover até 2 Pernadas em vez de 1."
     },
     {
       "id": "escavar-3",
@@ -188,12 +213,12 @@
     {
       "id": "escorregadio",
       "nome": "Escorregadio",
-      "descricao": " (Passiva) Você não pode ficar Preso."
+      "descricao": "(Passiva) Você não pode ficar Preso."
     },
     {
       "id": "estase",
       "nome": "Estase",
-      "descricao": " (Passiva) Quando estiver prestes a morrer, você entra em estase. Sua matilha deve Trabalhar em um Projeto durante o Recesso para revivê-lo, completando um Desafio VA 10. O VA aumenta em 10 para cada vez que você usa esse TRAÇO subsequentemente."
+      "descricao": "(Passiva) Quando estiver prestes a morrer, você entra em estase. Sua matilha deve Trabalhar em um Projeto durante o Recesso para revivê-lo, completando um Desafio VA 10. O VA aumenta em 10 para cada vez que você usa esse TRAÇO subsequentemente."
     },
     {
       "id": "expandir",
@@ -201,19 +226,19 @@
       "descricao": "(Custo: 1 Ação) Você fica Expandido."
     },
     {
-      "id": "explosão-sônica",
+      "id": "explosao-sonica",
       "nome": "Explosão Sônica",
       "descricao": "(Passiva) Quando Atacar, você pode CHAMAR em vez de ATIRAR ou GOLPEAR."
     },
     {
       "id": "faminto",
       "nome": "Faminto",
-      "descricao": "(Custo: 1 de Harmonia) Role novamente seu Dado de Ação"
+      "descricao": "(Custo: 1 de Harmonia) Role novamente seu Dado de Ação. FAMINTO representa o desejo de viver, se alimentar e crescer, amplificado por uma força sobrenatural. Toda vida tem fome, mas esse TRAÇO misterioso representa uma fome primordial e sobrenatural acima de tudo. Quando os ferais abraçam essa fome extrema, criam aberturas para que o frenesi se espalhe, tanto por dentro quanto por fora."
     },
     {
       "id": "fermentador",
       "nome": "Fermentador",
-      "descricao": "(Passiva) Quando comer uma refeição, em vez de recuperar Vigor, você pode receber um número de níveis deRevigorado igual à metade da Vigor que teria recuperado."
+      "descricao": "(Passiva) Quando comer uma refeição, em vez de recuperar Vigor, você pode receber um número de níveis de Revigorado igual à metade da Vigor que teria recuperado."
     },
     {
       "id": "flutuante",
@@ -223,17 +248,17 @@
     {
       "id": "fotossintese",
       "nome": "Fotossíntese",
-      "descricao": "Custo: 3 Ações. Se você estiver sob o céu aberto, restaure sua Resistência ao máximo."
+      "descricao": "(Custo: 3 Ações) Se você tiver acesso ao Céu, recupere seu Vigor para o máximo."
     },
     {
       "id": "gigantesco",
       "nome": "Gigantesco",
-      "descricao": "Passivo. Considere todas as criaturas como estando 3 Pernadas mais próximas de você do que realmente estão."
+      "descricao": "(Passiva) Trate todas as criaturas como se estivessem 3 Pernadas mais próximas de você do que realmente estão."
     },
     {
       "id": "hibernador",
       "nome": "Hibernador",
-      "descricao": "(Passiva) Cada nível de Descansado aumenta seu Vigor máximo em 2 em vez de 1"
+      "descricao": "(Passiva) Cada nível de Descansado aumenta seu Vigor máximo em 2 em vez de 1."
     },
     {
       "id": "inabalavel",
@@ -248,17 +273,17 @@
     {
       "id": "investida",
       "nome": "Investida",
-      "descricao": " (Custo: 1 Ação) Escolha uma criatura a até 3 Pernadas. Você se Move a 0 Pernada da criatura e então causa Dano a ela e a si mesmo ao número de Pernadas que você se Moveu (Isso não conta como gastar Vigor.)"
+      "descricao": "(Custo: 1 Ação) Escolha uma criatura a até 3 Pernadas. Você se Move a 0 Pernada da criatura e então causa Dano a ela e a si mesmo ao número de Pernadas que você se Moveu (Isso não conta como gastar Vigor.)"
     },
     {
       "id": "ladrao",
       "nome": "Ladrão",
-      "descricao": "(Custo: 1 Sucesso SAGAZ) Roube um Ingrediente, um Lanche ou uma criatura Presa de um alvo que esteja a até 1 Pernada de você. (Você escolhe se a criatura Presa roubada por você agora está Presa por você ou livre."
+      "descricao": "(Custo: 1 Sucesso SAGAZ) Roube um Ingrediente, um Lanche ou uma criatura Presa de um alvo que esteja a até 1 Pernada de você. (Você escolhe se a criatura Presa roubada por você agora está Presa por você ou livre.)"
     },
     {
       "id": "mergulhar",
       "nome": "Mergulhar",
-      "descricao": "(Custo: 1 Ação) Mova para até 0 Pernada de uma criatura em um Terreno abaixo de você ( Céu está acima da maioria dos Terrenos, e o Subterrâneo está abaixo da maioria dos Terrenos. Nos demais casos, avalie conforme seu julgamento)."
+      "descricao": "(Custo: 1 Ação) Mova para até 0 Pernada de uma criatura em um Terreno abaixo de você (Céu está acima da maioria dos Terrenos, e o Subterrâneo está abaixo da maioria dos Terrenos. Nos demais casos, avalie conforme seu julgamento)."
     },
     {
       "id": "metamorfose",
@@ -273,27 +298,27 @@
     {
       "id": "mimetismo-vocal",
       "nome": "Mimetismo Vocal",
-      "descricao": " (Custo: 2 Ações) Faça um CHAMAR SAGAZ. Se passar, escolha um desses efeitos: uma criatura a sua escolha fica Confusa [A], uma criatura a sua escolha fica Amedrontada [A], ou todas as criaturas a até 1 Pernada de você sofrem cada uma [A] de Dano e ficam Atordoadas."
+      "descricao": "(Custo: 2 Ações) Faça um CHAMAR SAGAZ. Se passar, escolha um desses efeitos: uma criatura à sua escolha fica Confusa [A], uma criatura à sua escolha fica Amedrontada [A], ou todas as criaturas a até 1 Pernada de você sofrem cada uma [A] de Dano e ficam Atordoadas."
     },
     {
       "id": "mira-instintiva",
       "nome": "Mira Instintiva",
-      "descricao": "(Custo: 1 Sucesso em ATIRAR) A criatura atingida por ATIRAR fica Atordoada"
+      "descricao": "(Custo: 1 Sucesso em ATIRAR) A criatura atingida por ATIRAR fica Atordoada."
     },
     {
       "id": "nadar",
       "nome": "Nadar",
-      "descricao": "Você pode nadar sem Desvantagem."
+      "descricao": "(Passiva) Você pode nadar sem Desvantagem."
     },
     {
       "id": "nadar-2",
       "nome": "Nadar 2",
-      "descricao": " (Passiva) Você pode nadar sem Desvantagem. Além disso, caso se Mova enquanto nada, você pode se Mover até 2 Pernadas em vez de 1."
+      "descricao": "(Passiva) Você pode nadar sem Desvantagem. Além disso, caso se Mova enquanto nada, você pode se Mover até 2 Pernadas em vez de 1."
     },
     {
       "id": "nadar-3",
       "nome": "Nadar 3",
-      "descricao": " (Passiva) Você pode nadar sem Desvantagem. Além disso, caso se Mova enquanto nada, você pode se Mover até 2 Pernadas em vez de 1. Por fim, você tem Vantagem para ATRAVESSAR enquanto nada."
+      "descricao": "(Passiva) Você pode nadar sem Desvantagem. Além disso, caso se Mova enquanto nada, você pode se Mover até 2 Pernadas em vez de 1. Por fim, você tem Vantagem para ATRAVESSAR enquanto nada."
     },
     {
       "id": "nao-me-toque",
@@ -302,18 +327,23 @@
     },
     {
       "id": "nao-me-toque-2-a-5",
-      "nome": "Não-Me-Toque 2 a 5",
+      "nome": "Não-Me-Toque 2 A 5",
       "descricao": "(Passiva) Se uma criatura fizer um AGARRAR ou GOLPEAR contra você, cause 1 de Dano a ela para cada nível desse TRAÇO."
     },
     {
       "id": "ostentar",
       "nome": "Ostentar",
-      "descricao": "Custo: 2 Ações. Faça uma EXIBIÇÃO PODEROSA. Se tiver sucesso, você e seus aliados curam [A] de Resistência. Cores brilhantes ou grandes ornamentações transmitem sua confiança."
+      "descricao": "(Custo: 2 Ações) Faça um EXIBIR PODEROSO. Se passar, todas as criaturas à sua escolha recuperam [A] de Vigor."
     },
     {
       "id": "paciencia",
       "nome": "Paciência",
-      "descricao": "Passivo. Você pode Preparar-se até 3 vezes por turno."
+      "descricao": "(Passiva) Você pode Preparar até 3 vezes por turno."
+    },
+    {
+      "id": "parasita-de-ninhada",
+      "nome": "Parasita de Ninhada",
+      "descricao": "(Passiva) Quando trabalhar em um Projeto, escolha um NPC: o personagem escolhido também faz um Teste para contribuir para o seu projeto. (Trabalhe com a Guia para determinar os detalhes, como a maneira como o NPC ajuda e como você o convenceu a fazê-lo.)"
     },
     {
       "id": "parasita-de-ninhada",
@@ -326,8 +356,8 @@
       "descricao": "(Passiva) Se você se Mover em direção a uma criatura, ganhe Vantagem ao Ataca-la até o final do seu turno."
     },
     {
-      "id": "polonizador",
-      "nome": "Polonizador",
+      "id": "polinizador",
+      "nome": "Polinizador",
       "descricao": "(Custo: 1 Sucesso em um PROCURAR) Harmonia aumenta em 1."
     },
     {
@@ -346,44 +376,49 @@
       "descricao": "(Passiva) Se você Agrupar com uma criatura ela tem Vantagem na próxima vez que Atacar."
     },
     {
-      "id": "",
-      "nome": "",
-      "descricao": ""
+      "id": "sentidos-aguçados",
+      "nome": "Sentidos Aguçados",
+      "descricao": "(Custo: 1 Sucesso PRECISO) Uma criatura à sua escolha fica Exposta. (Personalize este TRAÇO conforme sua Guia, se desejar alterar o custo para 1 Sucesso da HABILIDADE.)"
     },
     {
-      "id": "",
-      "nome": "",
-      "descricao": ""
+      "id": "professor",
+      "nome": "Professor",
+      "descricao": "(Custo: 1 Sucesso PRECISO) Até o final da rodada, seus parças têm Vantagem se fizerem um Teste usando a mesma HABILIDADE que você usou ao ativar esse TRAÇO."
+    },
+    {
+      "id": "recuo",
+      "nome": "Recuo",
+      "descricao": "(Custo: 1 Sucesso PODEROSO ou PRECISO) Você Levanta a guarda sem gastar Ações, mas não pode se Mover até o início do seu próximo turno."
     },
     {
       "id": "reflexos-naturais",
       "nome": "Reflexos Naturais",
-      "descricao": "Passivo. Você sofre apenas metade do dano de ataques LIGEIROS (GOLPES e TIROS)."
+      "descricao": "(Passiva) Você reduz o Dano causado por GOLPEAR LIGEIRO e ATIRAR LIGEIRO."
     },
     {
       "id": "regeneracao",
       "nome": "Regeneração",
-      "descricao": "Custo: 1 Sucesso. Recupere 1 de Durabilidade. Se seu Utensílio atingir Durabilidade 0, ele quebra e você perde a capacidade de usá-lo. Use esse Traço para recuperar a Durabilidade do Utensílio. Se sua Durabilidade for maior que 0, você já pode usá-lo normalmente novamente."
+      "descricao": "(Custo: 1 Sucesso) Recupere 1 de Durabilidade de uma de suas PARTES."
     },
     {
       "id": "regeneracao-2-a-5",
-      "nome": "Regeneração 2 a 5",
-      "descricao": " (Custo: 1 Sucesso) Recupere 1 de Durabilidade de uma de suas PARTES para cada nível que tiver nesse TRAÇO."
+      "nome": "Regeneração 2 A 5",
+      "descricao": "(Custo: 1 Sucesso) Recupere 1 de Durabilidade de uma de suas PARTES para cada nível que tiver nesse TRAÇO."
     },
     {
       "id": "resistente-a-impacto",
       "nome": "Resistente a Impacto",
-      "descricao": "(Passiva) Nada pode empurrar ou puxar você, a menos que você permita ou esteja sob a condição Capturado."
+      "descricao": "(Passiva) Você não pode ficar Atordoado."
     },
     {
       "id": "robusto",
       "nome": "Robusto",
-      "descricao": "(Passiva) Nada pode empurrá-lo ou puxá-lo, a menos que você permita ou esteja Preso"
+      "descricao": "(Passiva) Nada pode empurrá-lo ou puxá-lo, a menos que você permita ou esteja Preso."
     },
     {
       "id": "sacrificio-parental",
       "nome": "Sacrifício Parental",
-      "descricao": "(Passiva) No início do Recesso, em vez de remover Ferido 1, você pode Trabalhar num Projeto sem gastar Ações"
+      "descricao": "(Passiva) No início do Recesso, em vez de remover Ferido 1, você pode Trabalhar num Projeto sem gastar Ações."
     },
     {
       "id": "sanguessuga",
@@ -396,20 +431,15 @@
       "descricao": "(Custo: 1 Ação) Até o começo de seu próximo turno, todas as criaturas precisam gastar 1 Ação adicional para Atacar."
     },
     {
-      "id": "sentidos-agucados",
-      "nome": "Sentidos Aguçados",
-      "descricao": "Passiva. Se for o guia, você tem vantagem na sua primeira rolagem durante um Evento. Seus Sentidos Aguçados se manifestam como a visão de uma águia, permitindo localizar o perigo ao longe."
-    },
-    {
       "id": "sopro-de-fogo",
       "nome": "Sopro de Fogo",
-      "descricao": "(Custo: 2 Ações) Faça um ATIRAR PODEROSO contra uma criatura a até 2 Pernadas de distância. Se acertar, você causa [A] Dano à Parte e a PARTE que você alvejou fica Queimada"
+      "descricao": "(Custo: 2 Ações) Faça um ATIRAR PODEROSO contra uma criatura a até 2 Pernadas de distância. Se acertar, você causa [A] Dano à Parte e a PARTE que você alvejou fica Queimada."
     },
     {
       "id": "tanatose",
       "nome": "Tanatose",
-      "descricao": " (Passiva) Se você estiver Ferido 3 e permanecendo caído, no final de cada turno, você pode forçar a barra em vez disso. Se estiver Ferido 3 e forçando a barra, no início do seu turno, você pode escolher permanecer caído em vez disso"
-    },    
+      "descricao": "(Passiva) Se você estiver Ferido 3 e permanecendo caído, no final de cada turno, você pode forçar a barra em vez disso. Se estiver Ferido 3 e forçando a barra, no início do seu turno, você pode escolher permanecer caído em vez disso."
+    },
     {
       "id": "territorial",
       "nome": "Territorial",
@@ -418,22 +448,22 @@
     {
       "id": "velocidade",
       "nome": "Velocidade",
-      "descricao": "Custo: 1 Sucesso LIGEIRO. Você pode se mover sem gastar Ações."
+      "descricao": "(Custo: 1 Sucesso LIGEIRO) Você pode se Mover sem gastar uma Ação."
     },
     {
       "id": "veneno",
       "nome": "Veneno",
-      "descricao": " (Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada."
+      "descricao": "(Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada."
     },
     {
       "id": "veneno-2",
       "nome": "Veneno 2",
-      "descricao": " (Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada 2."
+      "descricao": "(Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada 2."
     },
     {
       "id": "veneno-3",
       "nome": "Veneno 3",
-      "descricao": " (Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada 3."
+      "descricao": "(Custo: 1 Sucesso em ATIRAR ou GOLPEAR) A criatura atingida por ATIRAR ou GOLPEAR fica Envenenada 3."
     },
     {
       "id": "voar",
@@ -452,8 +482,7 @@
     },
     {
       "id": "tece-teias",
-      "nome": "Tece Teias",
-      "descricao": "Custo: 2 Ações. Faça um teste de MANUFATURA CAPCIOSA. Se for bem-sucedido, a próxima vez que uma criatura hostil se mover em sua direção, ela sofre [A] de dano na Parte e não pode se mover até o início do próximo turno."
+      "nome": "Tece-Teias",
+      "descricao": "(Custo: 2 Ações) Faça um MANUFATURAR SAGAZ. Se passar, na próxima vez em que uma criatura hostil se Mover em sua direção, ela sofre [A] Dano à Parte e não pode se Mover até o início do próximo turno."
     }
-  ]
-  
+]

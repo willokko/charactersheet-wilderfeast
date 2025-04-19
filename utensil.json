@@ -1,0 +1,561 @@
+{
+    "utensilios": [
+      {
+        "nome": "Barbante",
+        "categorias": {
+          "iniciante": [
+            {
+              "nome": "ARMADILHA",
+              "custo": "2 Ações",
+              "descricao": "Realiza um MANUFATURAR SAGAZ para preparar uma armadilha contra criaturas que se aproximem."
+            },
+            {
+              "nome": "CHICOTADA",
+              "passiva": true,
+              "descricao": "O barbante recebe 'Alcance: 2 (GOLPEAR)'."
+            },
+            {
+              "nome": "RÉDEA CURTA",
+              "custo": "3 de Vigor",
+              "descricao": "Permite puxar a si mesmo ou um aliado 1 Pernada."
+            },
+            {
+              "nome": "REPAROS EM CAMPO",
+              "custo": "2 Ações",
+              "descricao": "Ajuda na recuperação de Durabilidade do utensílio de um aliado mediante um MANUFATURAR LIGEIRO."
+            }
+          ],
+          "intermediario": [
+            {
+              "nome": "ARREIOS DE SEGURANÇA",
+              "passiva": true,
+              "descricao": "Garante que seu Vigor não caia abaixo de 1 quando sofrer Dano durante a Trilha."
+            },
+            {
+              "nome": "CESTA ABUNDANTE",
+              "custo": "1 Vigor",
+              "descricao": "Ao Forragear com sucesso, possibilita escolher um ESTILO diferente e colher ingredientes correspondentes."
+            },
+            {
+              "nome": "FIO EMARANHADO",
+              "custo": "3 Vigor",
+              "descricao": "Ao atacar e acertar, impõe Desvantagem no próximo Ataque do alvo."
+            }
+          ],
+          "avancado": [
+            {
+              "nome": "CORRENTES DE PRATA PRENDEM O MUNDO",
+              "custo": "5 Vigor",
+              "descricao": "Ao atacar, prende a criatura; enquanto ela estiver presa, há restrições no seu próprio ataque, além de custo de Vigor no início de cada rodada."
+            },
+            {
+              "nome": "PRINCÍPIO DA FORMA INCONSTANTE",
+              "variavel": true,
+              "descricao": "Permite aprender uma Técnica de qualquer outro utensílio."
+            }
+          ],
+          "tecnicas_ligeiras": [
+            {
+              "nome": "COMBO RÁPIDO",
+              "passiva": true,
+              "descricao": "Permite realizar múltiplos ataques com o Estilo LIGEIRO no mesmo turno."
+            },
+            {
+              "nome": "INVESTIDA VIOLENTA",
+              "variavel": true,
+              "descricao": "Permite mover-se em direção ao alvo antes de atacar e se afastar após o ataque, com custo de Vigor por Pernada."
+            },
+            {
+              "nome": "ISSO É PRA HOJE",
+              "passiva": true,
+              "descricao": "Permite trabalhar em um Projeto sem gastar Ações, uma vez por Recesso."
+            }
+          ],
+          "tecnicas_sagazes": [
+            {
+              "nome": "APAVORAR",
+              "custo": "3 Vigor",
+              "descricao": "Na próxima vez que atacar com Estilo SAGAZ, troca o Dano à Parte por causar Amedrontamento."
+            },
+            {
+              "nome": "LARGAR A ISCA",
+              "custo": "2 Ações",
+              "descricao": "O utensílio perde 1d6 de Durabilidade e o usuário fica Escondido (não pode ser usado se o utensílio estiver quebrado)."
+            },
+            {
+              "nome": "MUTAÇÕES DISFARÇADAS",
+              "custo": "3 Vigor",
+              "descricao": "Permite se passar por não feral até que ocorra outra ação significativa."
+            }
+          ]
+        }
+      },
+      {
+        "nome": "Cutelo",
+        "categorias": {
+          "iniciante": [
+            {
+              "nome": "CORTE LIMPO",
+              "custo": "4 Ações",
+              "descricao": "Utiliza um GOLPEAR PODEROSO ou GOLPEAR PRECISO a até 1 Pernada, causando Dano dobrado à Parte ou ficando Exposto em caso de falha."
+            },
+            {
+              "nome": "ESPADA GRANDE PRA CARA*",
+              "custo": "3 de Vigor",
+              "descricao": "Faz com que um humano escolhido fique Amedrontado."
+            },
+            {
+              "nome": "SEM DESPERDÍCIO",
+              "passiva": true,
+              "descricao": "Concede uma porção do ingrediente 'O Melhor Pedaço' após O Banquete, beneficiando qualquer ESTILO."
+            },
+            {
+              "nome": "TREINAMENTO MÉDICO",
+              "passiva": true,
+              "descricao": "Permite, uma vez por Recesso, remover 1 nível de Ferido de um aliado."
+            }
+          ],
+          "intermediario": [
+            {
+              "nome": "ESTUDANTE DE OSSOS",
+              "passiva": true,
+              "descricao": "Oferece Vantagem ao atacar monstros previamente abatidos pela matilha (sujeito a discussão com a Guia)."
+            },
+            {
+              "nome": "MARCA DO CIRURGIÃO",
+              "custo": "5 de Vigor",
+              "descricao": "Escolha uma PARTE da criatura, que passa a perder o dobro de Durabilidade ao sofrer Dano até a técnica ser usada novamente ou a parte quebrar."
+            },
+            {
+              "nome": "SEM MEDO DA MORTE",
+              "passiva": true,
+              "descricao": "Permite gastar Vigor mesmo estando com Ferido 2."
+            }
+          ],
+          "avancado": [
+            {
+              "nome": "BESTA ENSANGUENTADA",
+              "passiva": true,
+              "descricao": "Permite ficar com Ferido 4, com efeitos cumulativos caso já esteja em níveis anteriores."
+            },
+            {
+              "nome": "LÂMINA INEVITÁVEL",
+              "custo": "10 Vigor",
+              "descricao": "Ao GOLPEAR, gera 1 Sucesso; não pode ser usado se o usuário virar o bicho."
+            }
+          ],
+          "tecnicas_poderosas": [
+            {
+              "nome": "BASE SÓLIDA",
+              "custo": "1 Ação",
+              "descricao": "Encerra o turno e concede Vantagem no próximo Teste, com restrição se houver movimentação antes do teste."
+            },
+            {
+              "nome": "EU AGUENTO",
+              "passiva": true,
+              "descricao": "Recupera <H> de Vigor quando se torna alvo de um Monstro."
+            },
+            {
+              "nome": "UTENSÍLIO REFORÇADO",
+              "passiva": true,
+              "descricao": "Aumenta a Durabilidade máxima dos utensílios em 10."
+            }
+          ],
+          "tecnicas_precisas": [
+            {
+              "nome": "PONTO FRACO",
+              "custo": "2 Vigor",
+              "descricao": "Na próxima vez que causar Dano a uma PARTE quebrada, o alvo fica Exposto."
+            },
+            {
+              "nome": "PORÇÕES EXATAS",
+              "passiva": true,
+              "descricao": "Durante o acampamento, ao preparar a refeição, possibilita um Lanche que recupera Vigor igual ao excedente recebido por um aliado."
+            },
+            {
+              "nome": "TRAÇOS TÊNUES",
+              "passiva": true,
+              "descricao": "Permite perguntar à Guia sobre o Monstro no início de cada rodada de viagem, simulando Rastros Frescos na Área."
+            }
+          ]
+        }
+      },
+      {
+        "nome": "Espeto",
+        "categorias": {
+          "iniciante": [
+            {
+              "nome": "AGULHA E LINHA",
+              "passiva": true,
+              "descricao": "O espeto recebe 'Alcance: 2 (ATIRAR)' e, ao acertar um ATIRAR, possibilita puxar 1 Pernada em direção ao alvo."
+            },
+            {
+              "nome": "DESATOLAR",
+              "custo": "3 de Vigor",
+              "descricao": "Permite refazer um ATRAVESSAR."
+            },
+            {
+              "nome": "ETIQUETA GASTRONÔMICA",
+              "custo": "3 de Vigor",
+              "descricao": "Escolhe uma Comunidade humana para definir ações de aprovação ou rejeição pela Guia."
+            },
+            {
+              "nome": "SEQUÊNCIA DE MOVIMENTOS",
+              "custo": "5 de Vigor",
+              "descricao": "Concede uma Ação extra durante a Caçada."
+            }
+          ],
+          "intermediario": [
+            {
+              "nome": "ESPETINHO MISTO",
+              "passiva": true,
+              "descricao": "Em acampamentos, a refeição pode receber um efeito adicional."
+            },
+            {
+              "nome": "PONTO DE PRESSÃO",
+              "custo": "5 Vigor",
+              "descricao": "Ao causar Dano à Parte, a parte alvo fica temporariamente quebrada."
+            },
+            {
+              "nome": "SALTO COM VARA",
+              "custo": "1 de Vigor",
+              "descricao": "Garante 1 nível extra de VOAR até o início do próximo turno."
+            }
+          ],
+          "avancado": [
+            {
+              "nome": "LANÇA SEM SOMBRA",
+              "passiva": true,
+              "descricao": "Na primeira rodada da Caçada, permite um turno extra mesmo com a iniciativa do Monstro, com 3 Ações em vez de 1."
+            },
+            {
+              "nome": "NESSA LONGA ESTRADA DA VIDA",
+              "custo": "4 Vigor",
+              "descricao": "Permite escolher, antes de um Evento, uma opção de caminho adicional, conforme previsto pela narração da Guia."
+            }
+          ],
+          "tecnicas_ligeiras": [
+            {
+              "nome": "COMBO RÁPIDO",
+              "passiva": true,
+              "descricao": "Permite realizar múltiplos ataques com o Estilo LIGEIRO no mesmo turno."
+            },
+            {
+              "nome": "INVESTIDA VIOLENTA",
+              "variavel": true,
+              "descricao": "Permite mover-se em direção ao alvo antes de atacar e se afastar após o ataque, com custo de Vigor por Pernada."
+            },
+            {
+              "nome": "ISSO É PRA HOJE",
+              "passiva": true,
+              "descricao": "Permite trabalhar em um Projeto sem gastar Ações, uma vez por Recesso."
+            }
+          ],
+          "tecnicas_precisas": [
+            {
+              "nome": "PONTO FRACO",
+              "custo": "2 Vigor",
+              "descricao": "Na próxima vez que causar Dano a uma PARTE quebrada, o alvo fica Exposto."
+            },
+            {
+              "nome": "PORÇÕES EXATAS",
+              "passiva": true,
+              "descricao": "Durante o acampamento, ao preparar a refeição, possibilita um Lanche que recupera Vigor igual ao excedente recebido por um aliado."
+            },
+            {
+              "nome": "TRAÇOS TÊNUES",
+              "passiva": true,
+              "descricao": "Permite perguntar à Guia sobre o Monstro no início de cada rodada de viagem, simulando Rastros Frescos na Área."
+            }
+          ]
+        }
+      },
+      {
+        "nome": "Luvas",
+        "categorias": {
+          "iniciante": [
+            {
+              "nome": "ALCANCE ENCOURAÇADO",
+              "passiva": true,
+              "descricao": "Evita Dano de TRAÇOS Passivos como CORPO QUENTE ou NÃO-ME-TOQUE."
+            },
+            {
+              "nome": "DE PERTINHO",
+              "passiva": true,
+              "descricao": "Concede Vantagem em GOLPEAR contra criaturas a 0 Pernada."
+            },
+            {
+              "nome": "MÃOS LARGAS, PEGADA FORTE",
+              "custo": "2 de Vigor",
+              "descricao": "Ganha 1 nível em um dos Traços: ESCALAR, ESCAVAR ou NADAR até o início do próximo turno."
+            },
+            {
+              "nome": "TÔ CONTIGO",
+              "custo": "2 de Vigor",
+              "descricao": "Permite carregar uma criatura próxima (com restrições e custo adicional se for um monstro)."
+            }
+          ],
+          "intermediario": [
+            {
+              "nome": "INVESTIDA HILÁRIA",
+              "passiva": true,
+              "descricao": "A cada Pernada movida em direção ao Monstro, o usuário fica Revigorado."
+            },
+            {
+              "nome": "O VELHO JAB E DIRETO",
+              "passiva": true,
+              "descricao": "Após um GOLPEAR LIGEIRO seguido de GOLPEAR PODEROSO no mesmo turno, o alvo fica Atordoado."
+            },
+            {
+              "nome": "PEGADA FIRME",
+              "passiva": true,
+              "descricao": "Impede que um monstro se distancie; se ele se mover, puxa o usuário junto, salvo se este soltar."
+            }
+          ],
+          "avancado": [
+            {
+              "nome": "500 SOCOS DERRUBAM OS CÉUS",
+              "custo": "1 Sucesso em GOLPEAR LIGEIRO",
+              "descricao": "Aplica penalidade de −1 em LIGEIRO e permite um ataque imediato com o Estilo LIGEIRO sem gastar Ações."
+            },
+            {
+              "nome": "ME DÊ SUA FORÇA, PARÇA",
+              "custo": "5 Vigor",
+              "descricao": "Ao usar GOLPEAR PODEROSO, aumenta [A] em <H> e permite que aliados contribuam para um aumento adicional de [A]."
+            }
+          ],
+          "tecnicas_ligeiras": [
+            {
+              "nome": "COMBO RÁPIDO",
+              "passiva": true,
+              "descricao": "Permite realizar múltiplos ataques com o Estilo LIGEIRO no mesmo turno."
+            },
+            {
+              "nome": "INVESTIDA VIOLENTA",
+              "variavel": true,
+              "descricao": "Permite mover-se em direção ao alvo antes de atacar e se afastar após o ataque, com custo de Vigor por Pernada."
+            },
+            {
+              "nome": "ISSO É PRA HOJE",
+              "passiva": true,
+              "descricao": "Permite trabalhar em um Projeto sem gastar Ações, uma vez por Recesso."
+            }
+          ],
+          "tecnicas_poderosas": [
+            {
+              "nome": "BASE SÓLIDA",
+              "custo": "1 Ação",
+              "descricao": "Encerra o turno e concede Vantagem no próximo Teste, com restrição se houver movimentação antes do teste."
+            },
+            {
+              "nome": "EU AGUENTO",
+              "passiva": true,
+              "descricao": "Recupera <H> de Vigor quando se torna alvo de um Monstro."
+            },
+            {
+              "nome": "UTENSÍLIO REFORÇADO",
+              "passiva": true,
+              "descricao": "Aumenta a Durabilidade máxima dos utensílios em 10."
+            }
+          ],
+          "tecnicas_sagazes": [
+            {
+              "nome": "APAVORAR",
+              "custo": "3 Vigor",
+              "descricao": "Na próxima vez que atacar com Estilo SAGAZ, troca o Dano à Parte por causar Amedrontamento."
+            },
+            {
+              "nome": "LARGAR A ISCA",
+              "custo": "2 Ações",
+              "descricao": "O utensílio perde 1d6 de Durabilidade e o usuário fica Escondido (não pode ser usado se o utensílio estiver quebrado)."
+            },
+            {
+              "nome": "MUTAÇÕES DISFARÇADAS",
+              "custo": "3 Vigor",
+              "descricao": "Permite se passar por não feral até que ocorra outra ação significativa."
+            }
+          ]
+        }
+      },
+      {
+        "nome": "Maçarico",
+        "categorias": {
+          "iniciante": [
+            {
+              "nome": "IGNIÇÃO RÁPIDA",
+              "passiva": true,
+              "descricao": "Permite cozinhar uma refeição adicional durante o acampamento."
+            },
+            {
+              "nome": "LINHA DE FOGO",
+              "passiva": true,
+              "descricao": "O maçarico recebe 'Alcance: 3 (ATIRAR)'."
+            },
+            {
+              "nome": "LUZ GUIA",
+              "passiva": true,
+              "descricao": "Concede Vantagem para o próximo aliado que fizer ATRAVESSAR após um sucesso."
+            },
+            {
+              "nome": "PREAQUECIMENTO",
+              "custo": "3 de Vigor",
+              "descricao": "Ao escolher um aliado próximo, se este causar Dano à Parte, a parte alvo também fica Queimada."
+            }
+          ],
+          "intermediario": [
+            {
+              "nome": "FLAMBAR",
+              "custo": "3 Ações",
+              "descricao": "Escolhe uma criatura a até 3 Pernadas; o próximo Dano à Parte nessa criatura afeta sua Durabilidade e queima partes."
+            },
+            {
+              "nome": "MECANISMO COMPATÍVEL",
+              "passiva": true,
+              "descricao": "Concede Vantagem em testes de estudo ou operação de artefatos arkaicaços e permite que um aliado treine sem gastar Ações (limitado por Recesso)."
+            },
+            {
+              "nome": "VIGILÂNCIA",
+              "custo": "2 Vigor",
+              "descricao": "Na primeira vez que uma criatura se mover em direção ao usuário até o próximo turno, permite um ATIRAR SAGAZ com possível Dano à Parte, se bem-sucedido. (Não pode ser usado se estiver Exposto)"
+            }
+          ],
+          "avancado": [
+            {
+              "nome": "DAS CINZAS, CRESCEM SEMENTES",
+              "passiva": true,
+              "descricao": "Quando a Saúde de qualquer Comunidade chega a 0, inicia um Desafio de VA 20 exclusivo para o usuário, com a possibilidade de restaurar Saúde da Comunidade mediante Projeto e orientação da Guia."
+            },
+            {
+              "nome": "EXPLOSÃO TERMONUCLEAR ARKAFOGO",
+              "custo": "3 Ações",
+              "descricao": "Uma vez por Jornada, ao escolher uma criatura, no próximo turno ela e criaturas próximas sofrem 20 de Dano, com suas PARTES ficando Queimadas."
+            }
+          ],
+          "tecnicas_precisas": [
+            {
+              "nome": "PONTO FRACO",
+              "custo": "2 Vigor",
+              "descricao": "Na próxima vez que causar Dano a uma PARTE quebrada, o alvo fica Exposto."
+            },
+            {
+              "nome": "PORÇÕES EXATAS",
+              "passiva": true,
+              "descricao": "Durante o acampamento, ao preparar a refeição, possibilita um Lanche que recupera Vigor igual ao excedente recebido por um aliado."
+            },
+            {
+              "nome": "TRAÇOS TÊNUES",
+              "passiva": true,
+              "descricao": "Permite perguntar à Guia sobre o Monstro no início de cada rodada de viagem, simulando Rastros Frescos na Área."
+            }
+          ],
+          "tecnicas_sagazes": [
+            {
+              "nome": "APAVORAR",
+              "custo": "3 Vigor",
+              "descricao": "Na próxima vez que atacar com Estilo SAGAZ, troca o Dano à Parte por causar Amedrontamento."
+            },
+            {
+              "nome": "LARGAR A ISCA",
+              "custo": "2 Ações",
+              "descricao": "O utensílio perde 1d6 de Durabilidade e o usuário fica Escondido (não pode ser usado se o utensílio estiver quebrado)."
+            },
+            {
+              "nome": "MUTAÇÕES DISFARÇADAS",
+              "custo": "3 Vigor",
+              "descricao": "Permite se passar por não feral até que ocorra outra ação significativa."
+            }
+          ]
+        }
+      },
+      {
+        "nome": "Panela",
+        "categorias": {
+          "iniciante": [
+            {
+              "nome": "ESCUDO DE AÇO",
+              "passiva": true,
+              "descricao": "Aumenta a Durabilidade máxima da Panela em 30."
+            },
+            {
+              "nome": "LANÇAMENTO RICOCHETE",
+              "passiva": true,
+              "descricao": "A Panela recebe 'Alcance: 2 (ATIRAR)' e, se causar 10 ou mais de Dano com ATIRAR, o alvo fica Atordoado."
+            },
+            {
+              "nome": "POSTURA APRUMADA",
+              "passiva": true,
+              "descricao": "Ao recuperar Vigor, também é possível remover um nível de certas Condições (exceto Ferido ou Dissonante)."
+            },
+            {
+              "nome": "SUPERFÍCIE ESPELHADA",
+              "passiva": true,
+              "descricao": "Permite Provocar de qualquer distância."
+            }
+          ],
+          "intermediario": [
+            {
+              "nome": "PORÇÃO GENEROSA",
+              "passiva": true,
+              "descricao": "Durante o acampamento, ao servir uma refeição fresca, possibilita um Lanche que recupera Vigor (sem efeitos adicionais)."
+            },
+            {
+              "nome": "VEM PRA CIMA!",
+              "custo": "2 Vigor",
+              "descricao": "Ao atacar e acertar, permite Provocar sem gastar Ações."
+            },
+            {
+              "nome": "SE ORIENTA!",
+              "custo": "2 Ações",
+              "descricao": "Permite causar 1 de Dano a um aliado a 0 Pernada para remover diversos níveis de condições (Confuso, Fadigado, Amedrontado, Atordoado)."
+            }
+          ],
+          "avancado": [
+            {
+              "nome": "UNIDOS VENCEREMOS",
+              "passiva": true,
+              "descricao": "Quando um aliado recupera Vigor, o usuário também recupera uma quantidade igual de Vigor."
+            },
+            {
+              "nome": "O DOLORIDO É VER VOCÊ SOFRER",
+              "passiva": true,
+              "descricao": "Ao Provocar, permite Levantar a Guarda sem gastar Ações."
+            }
+          ],
+          "tecnicas_poderosas": [
+            {
+              "nome": "BASE SÓLIDA",
+              "custo": "1 Ação",
+              "descricao": "Encerra o turno e concede Vantagem no próximo Teste, com restrição se houver movimentação antes do teste."
+            },
+            {
+              "nome": "EU AGUENTO",
+              "passiva": true,
+              "descricao": "Recupera <H> de Vigor quando se torna alvo de um Monstro."
+            },
+            {
+              "nome": "UTENSÍLIO REFORÇADO",
+              "passiva": true,
+              "descricao": "Aumenta a Durabilidade máxima dos utensílios em 10."
+            }
+          ],
+          "tecnicas_sagazes": [
+            {
+              "nome": "APAVORAR",
+              "custo": "3 Vigor",
+              "descricao": "Na próxima vez que atacar com Estilo SAGAZ, troca o Dano à Parte por causar Amedrontamento."
+            },
+            {
+              "nome": "LARGAR A ISCA",
+              "custo": "2 Ações",
+              "descricao": "O utensílio perde 1d6 de Durabilidade e o usuário fica Escondido (não pode ser usado se o utensílio estiver quebrado)."
+            },
+            {
+              "nome": "MUTAÇÕES DISFARÇADAS",
+              "custo": "3 Vigor",
+              "descricao": "Permite se passar por não feral até que ocorra outra ação significativa."
+            }
+          ]
+        }
+      }
+    ]
+  }

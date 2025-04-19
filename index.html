@@ -10,29 +10,18 @@
   <header>
     <nav>
       <button onclick="window.location.href='create.html'" class="btn btn-primary">Criar Personagem</button>
+      <button onclick="window.location.href='traits.html'" class="btn btn-primary">Traços</button>
       <button id="export-characters" class="btn btn-success">Exportar Todos</button>
       <button id="import-characters" class="btn btn-secondary">Importar</button>
       <input type="file" id="file-input" hidden accept=".json">
     </nav>
   </header>
   <main>
-    <!-- Sistema de abas -->
-    <div class="tabs">
-      <button class="tab-button active" data-tab="characters">Personagens</button>
-      <button class="tab-button" data-tab="monsters">Monstros</button>
-    </div>
-
-    <!-- Conteúdo das abas -->
-    <section id="characters-section" class="tab-content active">
-      <h2>Personagens</h2>
+    <section id="characters-section">
       <div id="character-list" class="entity-list"></div>
     </section>
-  
-    <section id="monsters-section" class="tab-content">
-      <h2>Monstros</h2>
-      <div id="monster-list" class="entity-list"></div>
-    </section>
   </main>
-  <script src="script.js"></script>
+  <script src="common.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>

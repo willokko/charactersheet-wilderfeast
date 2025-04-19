@@ -16,13 +16,6 @@
     <form id="create-character-form">
       <!-- Dados Básicos -->
       <fieldset>
-        <legend>Tipo</legend>
-        <select id="tipo" name="" required>
-          <option value="personagem">Personagem</option>
-          <option value="monstro">Monstro</option>
-        </select>
-      </fieldset>
-      <fieldset>
         <legend>Dados Básicos</legend>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
@@ -128,26 +121,30 @@
         </div>
       </fieldset>
 
-      <!-- Seção de Utensílio/Partes (condicional baseado no tipo) -->
+      <!-- Seção de Utensílio -->
       <fieldset id="utensilio-section">
         <legend>Utensílio</legend>
-        <label for="nomeUtensilio">Nome do Utensílio:</label>
-        <input type="text" id="nomeUtensilio" name="nomeUtensilio" required>
-
-        <label for="resistencia">Resistência do Utensílio:</label>
-        <input type="number" id="resistencia" name="resistencia" value="0">
-
-        <label for="descricaoUtensilio">Descrição do Utensílio:</label>
-        <textarea id="descricaoUtensilio" name="descricaoUtensilio" rows="2" placeholder="Descreva o utensílio"></textarea>
-      </fieldset>
-
-      <fieldset id="partes-section" style="display: none;">
-        <legend>Partes</legend>
-        <div class="partes-container">
-          <div id="partes-list">
-            <!-- As partes serão adicionadas aqui dinamicamente -->
+        <div class="utensilio-container">
+          <div id="utensilio-info">
+            <label for="selectUtensilio">Selecionar Utensílio:</label>
+            <button type="button" id="select-utensilio" class="btn">Escolher Utensílio</button>
+            
+            <div id="utensilio-details" style="display: none;">
+              <h3 id="utensilio-nome-display"></h3>
+              <input type="hidden" id="nomeUtensilio" name="nomeUtensilio">
+              
+              <label for="resistencia">Resistência do Utensílio:</label>
+              <input type="number" id="resistencia" name="resistencia" value="0">
+            </div>
           </div>
-          <button type="button" id="add-parte" class="add-parte-btn">+ Adicionar Parte</button>
+          
+          <div id="tecnicas-container" style="display: none;">
+            <h3>Técnicas do Utensílio</h3>
+            <div id="tecnicas-list">
+              <!-- As técnicas selecionadas serão adicionadas aqui dinamicamente -->
+            </div>
+            <button type="button" id="add-tecnica" class="add-tecnica-btn">+ Adicionar Técnica</button>
+          </div>
         </div>
       </fieldset>
 
@@ -166,6 +163,33 @@
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+  
+  <!-- Modal de Seleção de Utensílios -->
+  <div id="utensilios-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Selecionar Utensílio</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="utensilios-lista"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de Seleção de Técnicas -->
+  <div id="tecnicas-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Selecionar Técnica</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div id="tecnicas-lista"></div>
+      </div>
+    </div>
+  </div>
+  <script src="common.js"></script>
+  <script src="create.js"></script>
 </body>
 </html>
