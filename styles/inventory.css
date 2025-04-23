@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+}
+
+.personalizado {
+    border-left: 3px solid #ff9800;
+    padding-left: 10px;
+    background-color: rgba(255, 152, 0, 0.1);
+  }
+  
+  .personalizada {
+    border-left: 3px solid #2196F3;
+    padding-left: 10px;
+    background-color: rgba(33, 150, 243, 0.1);
+  }
+  
+  .create-custom-btn {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .custom-traco-form,
+  .custom-tecnica-form,
+  .custom-utensilio-form {
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .custom-traco-form label,
+  .custom-tecnica-form label,
+  .custom-utensilio-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .custom-traco-form input,
+  .custom-traco-form textarea,
+  .custom-tecnica-form input,
+  .custom-tecnica-form textarea,
+  .custom-tecnica-form select,
+  .custom-utensilio-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .button-container button {
+    flex: 1;
+  }
+  
+  /* Estilos para o inventário */
+  .inventario-container {
+    margin-top: 20px;
+  }
+  
+  .inventario-item {
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .inventario-item input:not(.inventario-quantidade-input),
+  .inventario-item textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  .inventario-item .item-quantidade {
+    width: 80px;
+  }
+  
+  .inventario-item .btn-danger {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  
+  .add-item-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .add-item-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .inventario-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+  }
+  
+  .inventario-nome {
+    flex: 1;
+    margin: 0;
+  }
+  
+  .inventario-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .inventario-quantidade-input {
+    aspect-ratio: 1 !important;
+    box-sizing: border-box !important;
+    height: 32px !important;
+    width: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center;
+    font-size: 14px;
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 4px;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+  }
+  
+  /* Remove os spinners do input number em todos os navegadores */
+  .inventario-quantidade-input::-webkit-outer-spin-button,
+  .inventario-quantidade-input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    margin: 0 !important;
+  }
+  
+  /* Firefox */
+  .inventario-quantidade-input[type=number] {
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+  }
+  
+  .inventario-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+    font-size: 16px;
+  }
+  
+  .inventario-toggle.aberto {
+    transform: rotate(180deg);
+  }
+  
+  .inventario-detalhes {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #404040;
+  }
+  
+  .inventario-detalhes.aberto {
+    display: block;
+  }  

@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Cria um link que direciona para a página de visualização (passando o index como parâmetro)
       const link = document.createElement("a");
-      link.href = `view.html?index=${index}`;
+      link.href = `pages/view.html?index=${index}`;
 
       // Cria e configura a imagem do card
       const img = document.createElement("img");

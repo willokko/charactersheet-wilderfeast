@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WilderFeast: Personagens</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
   <header>
     <nav>
-      <button onclick="window.location.href='create.html'" class="btn btn-primary">Criar Personagem</button>
-      <button onclick="window.location.href='traits.html'" class="btn btn-primary">Traços</button>
-      <button id="export-characters" class="btn btn-success">Exportar Todos</button>
-      <button id="import-characters" class="btn btn-secondary">Importar</button>
+      <button onclick="window.location.href='pages/create.html'" class="btn btn-primary">Criar Personagem</button>
+      <button onclick="window.location.href='pages/traits.html'" class="btn btn-primary">Traços</button>
       <input type="file" id="file-input" hidden accept=".json">
     </nav>
   </header>
@@ -21,7 +19,7 @@
       <div id="character-list" class="entity-list"></div>
     </section>
   </main>
-  <script src="common.js"></script>
-  <script src="index.js"></script>
+  <script src="scripts/common.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
