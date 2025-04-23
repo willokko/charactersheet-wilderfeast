@@ -1,3 +1,9 @@
+// Função para obter parâmetros da URL
+function getQueryParam(param) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(param);
+}
+
 // Funções utilitárias comuns a todas as páginas
 document.addEventListener("DOMContentLoaded", function() {
   // Sistema de abas
@@ -84,9 +90,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
-
-// Função para obter parâmetros da URL
-function getQueryParam(param) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(param);
-}

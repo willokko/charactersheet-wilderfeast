@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function() {
      Página de Visualização (view.html)
      ==================== */
   const characterDetailsContainer = document.getElementById("character-details");
+  const inventarioContainer = document.getElementById("inventario-view");
+  const inventarioItemsContainer = document.getElementById("inventario-items");
+  let currentCharacterIndex = null;
+  let currentCharacter = null;
+  
   if (characterDetailsContainer) {
     const index = getQueryParam("index");
     const characters = JSON.parse(localStorage.getItem("characters") || "[]");
@@ -10,14 +15,16 @@ document.addEventListener("DOMContentLoaded", function() {
     if (index === null || isNaN(index) || index < 0 || index >= characters.length) {
       characterDetailsContainer.innerHTML = "<p>Personagem não encontrado.</p>";
     } else {
-      const character = characters[index];
+      currentCharacterIndex = parseInt(index);
+      currentCharacter = characters[currentCharacterIndex];
       
       // Template HTML para a página de visualização
       const detailsHTML = `
         <!-- Cabeçalho Compacto -->
         <div class="compact-header">
-          <img src="${character.imagem}" alt="${character.nome}" class="compact-image">
-          <h2 class="compact-name">${character.nome}</h2>
+          <img src="${currentCharacter.imagem}" alt="${currentCharacter.nome}" class="compact-image">
+          <h2 class="compact-name">${currentCharacter.nome}</h2>
+          <button id="toggle-view" class="toggle-view-btn">Ver Inventário</button>
         </div>
 
         <!-- Grid principal -->
@@ -31,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
               </label>
             </div>
             <div class="styles-grid">
-              ${Object.entries(character.estilos).map(([key, value]) => 
+              ${Object.entries(currentCharacter.estilos).map(([key, value]) => 
                 `<div class="style-item">
                   <span class="style-label">${key}</span>
                   <span class="style-value" onclick="rolarDados('${key}', ${value})">${value}</span>
@@ -44,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="column small-column">
             <h3 class="column-title">⚡ Habilidades</h3>
             <div class="skills-grid">
-              ${Object.entries(character.habilidades).map(([key, value]) => 
+              ${Object.entries(currentCharacter.habilidades).map(([key, value]) => 
                 `<div class="skill-item">
                   <span class="skill-label">${key}</span>
                   <span class="skill-value">${value}</span>
@@ -56,19 +63,19 @@ document.addEventListener("DOMContentLoaded", function() {
           <!-- Utensílio (2/6) -->
           <div class="column large-column">
             <h3 class="column-title">🔧 Utensílio</h3>
-            ${character.utensilio ? `
+            ${currentCharacter.utensilio ? `
               <div class="tool-info">
-                <p><strong>Nome:</strong> ${character.utensilio.nome}</p>
-                <p><strong>Resistência:</strong> ${character.utensilio.resistencia}</p>
+                <p><strong>Nome:</strong> ${currentCharacter.utensilio.nome}</p>
+                <p><strong>Resistência:</strong> ${currentCharacter.utensilio.resistencia}</p>
               </div>
               
-              ${character.utensilio.tecnicas && character.utensilio.tecnicas.length > 0 ? `
+              ${currentCharacter.utensilio.tecnicas && currentCharacter.utensilio.tecnicas.length > 0 ? `
                 <h4 class="tecnicas-title">Técnicas do Utensílio</h4>
                 <div class="traits-content">
-                  ${character.utensilio.tecnicas.map(tecnica => `
-                    <div class="trait-item tecnica-card">
+                  ${currentCharacter.utensilio.tecnicas.map(tecnica => `
+                    <div class="trait-item tecnica-card ${tecnica.personalizada ? 'personalizado' : ''}">
                       <div class="tecnica-header">
-                        <h4 class="trait-name">${tecnica.nome}</h4>
+                        <h4 class="trait-name">${tecnica.nome} ${tecnica.personalizada ? '<span class="tag-personalizado">Personalizado</span>' : ''}</h4>
                         ${tecnica.detalhes ? `<span class="tecnica-tag">${tecnica.detalhes}</span>` : ''}
                         ${tecnica.categoria ? `<span class="tecnica-categoria-tag">${tecnica.categoria}</span>` : ''}
                       </div>
@@ -84,10 +91,10 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="column large-column">
             <h3 class="column-title">🎭 Traços</h3>
             <div class="traits-content">
-              ${character.tracos && character.tracos.length > 0 ? 
-                character.tracos.map(traco => `
-                  <div class="trait-item">
-                    <h4 class="trait-name">${traco.nome}</h4>
+              ${currentCharacter.tracos && currentCharacter.tracos.length > 0 ? 
+                currentCharacter.tracos.map(traco => `
+                  <div class="trait-item ${traco.personalizado ? 'personalizado' : ''}">
+                    <h4 class="trait-name">${traco.nome} ${traco.personalizado ? '<span class="tag-personalizado">Personalizado</span>' : ''}</h4>
                     <p class="trait-description">${traco.descricao}</p>
                   </div>
                 `).join('') : '<p>Este personagem não possui traços.</p>'
@@ -99,8 +106,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
       characterDetailsContainer.innerHTML = detailsHTML;
       
+      // Renderizar os itens do inventário
+      renderInventarioItems(currentCharacter.inventario || []);
+      
+      // Adicionar evento ao botão de alternar visualização
+      const toggleViewButton = document.getElementById("toggle-view");
+      if (toggleViewButton) {
+        toggleViewButton.addEventListener("click", function() {
+          const mainColumns = document.querySelector(".main-columns");
+          
+          if (mainColumns.style.display === "none") {
+            // Mudar para visualização principal
+            mainColumns.style.display = "grid";
+            inventarioContainer.style.display = "none";
+            this.textContent = "Ver Inventário";
+          } else {
+            // Mudar para visualização do inventário
+            mainColumns.style.display = "none";
+            inventarioContainer.style.display = "block";
+            this.textContent = "Ver Principal";
+          }
+        });
+      }
+      
       // Configurar o contador de resistência logo após carregar os detalhes
-      configureResistanceCounter(character);
+      configureResistanceCounter(currentCharacter);
 
       // Configuração do checkbox "Soltar o Bicho"
       const soltarBichoCheckbox = document.getElementById('soltarBicho');
@@ -331,4 +361,88 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(animarFrame, duracaoFrameMs);
     
   };
+
+  function saveCharacterData() {
+    if (currentCharacterIndex === null || !currentCharacter) return;
+    
+    const characters = JSON.parse(localStorage.getItem("characters") || "[]");
+    if (currentCharacterIndex >= 0 && currentCharacterIndex < characters.length) {
+      characters[currentCharacterIndex] = currentCharacter;
+      localStorage.setItem("characters", JSON.stringify(characters));
+    }
+  }
+
+  // Função para renderizar os itens do inventário
+  function renderInventarioItems(items) {
+    if (!inventarioItemsContainer) return;
+    
+    if (!items || items.length === 0) {
+      inventarioItemsContainer.innerHTML = `<p class="no-items">Nenhum item no inventário.</p>`;
+      return;
+    }
+    
+    let itemsHTML = '';
+    
+    items.forEach(item => {
+      itemsHTML += `
+        <div class="inventario-item">
+          <div class="inventario-cabecalho">
+            <h4 class="inventario-nome">${item.nome}</h4>
+            <div class="inventario-quantidade">
+              <input type="number" class="inventario-quantidade-input" value="${item.quantidade}" min="1">
+            </div>
+            <button class="inventario-toggle">▼</button>
+          </div>
+          <div class="inventario-detalhes">
+            <p class="inventario-descricao">${item.descricao || "Sem descrição."}</p>
+          </div>
+        </div>
+      `;
+    });
+    
+    inventarioItemsContainer.innerHTML = itemsHTML;
+    
+    // Adicionar eventos para abrir/fechar detalhes dos itens
+    const toggleButtons = document.querySelectorAll(".inventario-toggle");
+    toggleButtons.forEach(toggle => {
+      toggle.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const detalhes = this.closest('.inventario-cabecalho').nextElementSibling;
+        
+        if (detalhes.classList.contains("aberto")) {
+          detalhes.classList.remove("aberto");
+          this.classList.remove("aberto");
+        } else {
+          detalhes.classList.add("aberto");
+          this.classList.add("aberto");
+        }
+      });
+    });
+
+    // Adicionar eventos para os inputs de quantidade
+    const quantidadeInputs = document.querySelectorAll(".inventario-quantidade-input");
+    quantidadeInputs.forEach((input, index) => {
+      input.addEventListener("change", function(e) {
+        e.stopPropagation();
+        const novaQuantidade = parseInt(this.value) || 1;
+        this.value = novaQuantidade;
+        
+        // Atualizar o item no personagem atual
+        if (currentCharacter && currentCharacter.inventario && currentCharacter.inventario[index]) {
+          currentCharacter.inventario[index].quantidade = novaQuantidade;
+          saveCharacterData();
+        }
+      });
+
+      input.addEventListener("click", function(e) {
+        e.stopPropagation();
+      });
+    });
+  }
 });
+
+// Adicione esta função utilitária se ainda não existir
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}

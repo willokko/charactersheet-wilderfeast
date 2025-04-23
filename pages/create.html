@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Editar Personagem</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Criar Personagem</title>
+  <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
   <header>
     <nav>
-      <button onclick="window.location.href='index.html'" class="btn btn-secondary">Voltar</button>
+      <button onclick="window.location.href='../index.html'" class="btn btn-secondary">Voltar</button>
     </nav>
   </header>
   <main>
-    <form id="edit-character-form">
+    <form id="create-character-form">
       <!-- Dados Básicos -->
       <fieldset>
         <legend>Dados Básicos</legend>
@@ -117,11 +117,14 @@
           <div id="tracos-list">
             <!-- Os traços serão adicionados aqui dinamicamente -->
           </div>
-          <button type="button" id="add-traco" class="add-traco-btn">+ Adicionar Traço</button>
+          <div class="botoes-container">
+            <button type="button" id="add-traco" class="add-traco-btn">+ Adicionar Traço</button>
+            <button type="button" id="add-traco-personalizado" class="add-traco-btn btn-personalizado">+ Personalizado</button>
+          </div>
         </div>
       </fieldset>
 
-      <!-- Seção de Utensílio/Partes (condicional baseado no tipo) -->
+      <!-- Seção de Utensílio -->
       <fieldset id="utensilio-section">
         <legend>Utensílio</legend>
         <div class="utensilio-container">
@@ -138,31 +141,31 @@
             </div>
           </div>
           
-          <div id="tecnicas-container">
+          <div id="tecnicas-container" style="display: none;">
             <h3>Técnicas do Utensílio</h3>
             <div id="tecnicas-list">
               <!-- As técnicas selecionadas serão adicionadas aqui dinamicamente -->
             </div>
-            <button type="button" id="add-tecnica" class="add-tecnica-btn btn btn-success">+ Adicionar Técnica</button>
+            <div class="botoes-container">
+              <button type="button" id="add-tecnica" class="add-tecnica-btn">+ Adicionar Técnica</button>
+              <button type="button" id="add-tecnica-personalizada" class="add-tecnica-btn btn-personalizado">+ Personalizado</button>
+            </div>
           </div>
         </div>
       </fieldset>
 
-      <fieldset id="partes-section" style="display: none;">
-        <legend>Partes</legend>
-        <div class="partes-container">
-          <div id="partes-list">
-            <!-- As partes serão adicionadas aqui dinamicamente -->
+      <!-- Seção de Inventário -->
+      <fieldset>
+        <legend>Inventário</legend>
+        <div class="inventario-container">
+          <div id="inventario-list">
+            <!-- Os itens serão adicionados aqui dinamicamente -->
           </div>
-          <button type="button" id="add-parte" class="add-parte-btn">+ Adicionar Parte</button>
+          <button type="button" id="add-item" class="add-traco-btn">+ Novo Item</button>
         </div>
       </fieldset>
 
-      <div class="form-actions">
-        <button type="button" id="cancel-edit" class="btn secondary">Cancelar</button>
-        <button type="submit" class="btn btn-success btn-lg btn-ripple">Salvar Alterações</button>
-        <button type="button" id="delete-character" class="btn danger">Excluir Personagem</button>
-      </div>
+      <button type="submit" class="btn btn-success btn-lg btn-ripple">Salvar Personagem</button>
     </form>
   </main>
   
@@ -205,7 +208,111 @@
     </div>
   </div>
 
-  <script src="common.js"></script>
-  <script src="edit.js"></script>
+  <!-- Modal para Adicionar Item ao Inventário -->
+  <div id="inventario-modal" class="modal modal-inventario">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Adicionar Item ao Inventário</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="item-form">
+          <div class="form-group">
+            <label for="item-nome">Nome do Item:</label>
+            <input type="text" id="item-nome" name="item-nome" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="item-quantidade">Quantidade:</label>
+            <input type="number" id="item-quantidade" name="item-quantidade" value="1" min="1">
+          </div>
+          
+          <div class="form-group">
+            <label for="item-descricao">Descrição (opcional):</label>
+            <textarea id="item-descricao" name="item-descricao" rows="4"></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" id="cancel-item" class="btn secondary">Cancelar</button>
+            <button type="submit" class="btn btn-success">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Criar Traço Personalizado -->
+  <div id="traco-personalizado-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Criar Traço Personalizado</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="traco-personalizado-form">
+          <div class="form-group">
+            <label for="traco-personalizado-nome">Nome do Traço:</label>
+            <input type="text" id="traco-personalizado-nome" name="traco-personalizado-nome" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="traco-personalizado-descricao">Descrição:</label>
+            <textarea id="traco-personalizado-descricao" name="traco-personalizado-descricao" rows="4"></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" id="cancel-traco-personalizado" class="btn secondary">Cancelar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Criar Técnica Personalizada -->
+  <div id="tecnica-personalizada-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Criar Técnica Personalizada</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="tecnica-personalizada-form">
+          <div class="form-group">
+            <label for="tecnica-personalizada-nome">Nome da Técnica:</label>
+            <input type="text" id="tecnica-personalizada-nome" name="tecnica-personalizada-nome" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tecnica-personalizada-categoria">Categoria:</label>
+            <select id="tecnica-personalizada-categoria" name="tecnica-personalizada-categoria">
+              <option value="ofensiva">Ofensiva</option>
+              <option value="defensiva">Defensiva</option>
+              <option value="utilidade">Utilidade</option>
+              <option value="movimento">Movimento</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="tecnica-personalizada-detalhes">Detalhes:</label>
+            <input type="text" id="tecnica-personalizada-detalhes" name="tecnica-personalizada-detalhes">
+          </div>
+          
+          <div class="form-group">
+            <label for="tecnica-personalizada-descricao">Descrição:</label>
+            <textarea id="tecnica-personalizada-descricao" name="tecnica-personalizada-descricao" rows="4"></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" id="cancel-tecnica-personalizada" class="btn secondary">Cancelar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/common.js"></script>
+  <script src="../scripts/create.js"></script>
 </body>
 </html>

@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Visualizar Personagem</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/inventory.css">
 </head>
 <body>
   <header>
     <nav>
-      <button onclick="window.location.href='index.html'" class="btn btn-secondary">Voltar</button>
+      <button onclick="window.location.href='../index.html'" class="btn btn-secondary">Voltar</button>
       <button onclick="window.location.href='edit.html?index=' + new URLSearchParams(window.location.search).get('index')" class="btn btn-primary">Editar</button>
       <button id="export-button" class="btn btn-success">Exportar Personagem</button>
     </nav>
@@ -17,7 +18,7 @@
   <main>
     <!-- Contador de Resistência -->
     <div id="resistance-container" class="resistance-container">
-      <h3 class="resistance-title">Resistência</h3>
+      <h3 class="resistance-title">Vigor</h3>
       <div class="resistance-value-container">
         <span id="resistance-value">20</span>/<span id="resistance-max">20</span>
       </div>
@@ -32,6 +33,14 @@
     </div>
     
     <div id="character-details"></div>
+    
+    <!-- Inventário do Personagem (inicialmente oculto) -->
+    <div id="inventario-view" class="inventario-container" style="display: none;">
+      <h3 class="inventario-titulo">🎒 Inventário</h3>
+      <div id="inventario-items" class="inventario-lista">
+        <!-- Os itens do inventário serão carregados aqui dinamicamente -->
+      </div>
+    </div>
     
     <div id="tracos-selecionados">
       <!-- Os traços selecionados serão exibidos aqui -->
@@ -49,7 +58,7 @@
     </div>
   </div>
 
-  <script src="common.js"></script>
-  <script src="view.js"></script>
+  <script src="../scripts/common.js"></script>
+  <script src="../scripts/view.js"></script>
 </body>
 </html>

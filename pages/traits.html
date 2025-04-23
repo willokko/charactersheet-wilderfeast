@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WilderFeast: Traços</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../styles/style.css">
   <style>
     #traits-container {
       display: grid;
@@ -67,7 +67,7 @@
 <body>
   <header>
     <nav>
-      <button onclick="window.location.href='index.html'" class="btn btn-primary">Voltar</button>
+      <button onclick="window.location.href='../index.html'" class="btn btn-primary">Voltar</button>
     </nav>
   </header>
   <main>
@@ -86,7 +86,7 @@
       const searchInput = document.getElementById('search-traits');
       
       // Carregar o arquivo traits.json
-      fetch('traits.json')
+      fetch('../data/traits.json')
         .then(response => response.json())
         .then(traits => {
           // Armazenar todos os traços para filtragem posterior
