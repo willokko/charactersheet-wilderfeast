@@ -356,6 +356,25 @@ form textarea:focus {
   background-color: #007BFF;
   padding: 0.2rem 0.5rem;
   border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.style-value:hover {
+  transform: scale(1.1);
+  background-color: #0056b3;
+}
+
+.dice-icon {
+  opacity: 0.8;
+  font-size: 0.8em;
+}
+
+.style-value:hover .dice-icon {
+  opacity: 1;
 }
 
 /* Seção de Traços */
@@ -640,12 +659,47 @@ form textarea:focus {
 
 /* Estilos para os valores clicáveis e resultados dos dados */
 .style-value {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #007BFF;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .style-value:hover {
   transform: scale(1.1);
+  background-color: #0056b3;
+}
+
+.dice-icon {
+  opacity: 0.8;
+  font-size: 0.8em;
+}
+
+.style-value:hover .dice-icon {
+  opacity: 1;
+}
+
+/* Ajuste para o dado d8 */
+.dado-d8 {
+  color: #ff8c00;
+  transform: none !important;
+}
+
+.dado-d8::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: none !important;
+  border: 2px solid #ff8c00;
+  box-sizing: border-box;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .dados-resultado {
@@ -750,14 +804,6 @@ form textarea:focus {
   transform: rotate(45deg);
   border: 2px solid;
   box-sizing: border-box;
-}
-
-.dado-d8 {
-  color: #ff8c00;
-}
-
-.dado-d8::before {
-  border-color: #ff8c00;
 }
 
 .dado-d20 {
@@ -1411,13 +1457,19 @@ input[type="file"]::file-selector-button:hover {
 .resistance-container {
   background-color: rgba(26, 34, 19, 0.85);
   border: 2px solid #5c7e38;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
+  padding: 0.8rem;
+  margin: 0.8rem 0;
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .resistance-container::before {
@@ -1431,64 +1483,75 @@ input[type="file"]::file-selector-button:hover {
   pointer-events: none;
 }
 
-.resistance-title {
-  font-family: 'Philosopher', serif;
-  color: #c9b67a;
-  font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-}
-
 .resistance-value-container {
-  font-size: 2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   color: #e9573f;
-  margin-bottom: 1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  min-width: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
-/* Animação para resistência crítica */
-.critical-health {
-  animation: pulse 1.5s infinite;
+.resistance-value-editable {
+  background: transparent;
+  border: none;
+  color: #e9573f;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 2.5rem;
+  text-align: center;
+  padding: 0.1rem;
+  text-shadow: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -moz-appearance: textfield;
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 1;
-    text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
-  }
-  50% {
-    opacity: 0.5;
-    text-shadow: 0 0 20px rgba(231, 76, 60, 1);
-  }
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 10px rgba(231, 76, 60, 0.7);
-  }
+/* Remove spinners do input number para todos os navegadores */
+.resistance-value-editable::-webkit-outer-spin-button,
+.resistance-value-editable::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.resistance-value-editable:hover {
+  background-color: rgba(233, 87, 63, 0.1);
+  border-radius: 4px;
+}
+
+.resistance-value-editable:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  outline: none;
+}
+
+.resistance-separator {
+  color: #e9573f;
+  opacity: 0.8;
 }
 
 .resistance-slider-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 1.5rem;
-  padding: 0 1rem;
-  position: relative;
-  height: 30px;
+  flex: 1;
+  height: 20px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   border: 1px solid #441111;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  position: relative;
+  margin: 0 0.5rem;
 }
 
-/* Estilizando o slidebar para parecer uma barra de saúde retangular */
 .resistance-slider {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  height: 30px;
+  height: 20px;
   background: transparent;
   outline: none;
   margin: 0;
@@ -1497,6 +1560,19 @@ input[type="file"]::file-selector-button:hover {
   top: 0;
   left: 0;
   z-index: 10;
+}
+
+.resistance-buttons {
+  display: flex;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.resistance-buttons .btn {
+  min-width: 26px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.2rem 0.4rem;
 }
 
 /* Barra de progresso que parece sangue */
@@ -1535,7 +1611,7 @@ input[type="file"]::file-selector-button:hover {
   -webkit-appearance: none;
   appearance: none;
   width: 1px;
-  height: 30px;
+  height: 20px;
   background: transparent;
   cursor: pointer;
   border: none;
@@ -1544,7 +1620,7 @@ input[type="file"]::file-selector-button:hover {
 
 .resistance-slider::-moz-range-thumb {
   width: 1px;
-  height: 30px;
+  height: 20px;
   background: transparent;
   cursor: pointer;
   border: none;
@@ -1553,13 +1629,13 @@ input[type="file"]::file-selector-button:hover {
 
 /* Removendo track padrão */
 .resistance-slider::-webkit-slider-runnable-track {
-  height: 30px;
+  height: 20px;
   background: transparent;
   cursor: pointer;
 }
 
 .resistance-slider::-moz-range-track {
-  height: 30px;
+  height: 20px;
   background: transparent;
   cursor: pointer;
 }
@@ -1584,20 +1660,7 @@ input[type="file"]::file-selector-button:hover {
   }
 }
 
-.resistance-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.resistance-buttons .btn {
-  min-width: 40px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-/* Estilos para animação de dados */
+/* Estilos para os dados */
 .dados-container {
   display: flex;
   flex-wrap: wrap;
@@ -1877,6 +1940,8 @@ input[type="file"]::file-selector-button:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
+  margin: 1rem 0;
+  display: block;
 }
 
 .toggle-view-btn:hover {

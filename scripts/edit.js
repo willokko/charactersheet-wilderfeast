@@ -645,72 +645,82 @@ document.addEventListener("DOMContentLoaded", function() {
     
     tecnicasLista.innerHTML = "";
     
-    // Verifica se o utensílio é personalizado
-    const nomeUtensilioInput = document.getElementById("nomeUtensilio");
-    const isPersonalizado = nomeUtensilioInput && nomeUtensilioInput.dataset.personalizado === "true";
-    
-    if (isPersonalizado) {
-      // Para utensílios personalizados, mostra apenas o formulário de criação de técnica
-      showCustomTecnicaForm();
-    } else {
-      // Para utensílios padrão, carrega as técnicas do JSON
-      fetch('../data/utensil.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log("Dados carregados do utensil.json:", data);
+    // Carrega as técnicas do JSON para todos os utensílios (padrão e personalizado)
+    fetch('../data/utensil.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Dados carregados do utensil.json:", data);
+        
+        const tecnicasGrid = document.createElement('div');
+        tecnicasGrid.className = 'grid-container';
+        
+        // Para utensílios personalizados, mostrar todas as técnicas de todos os utensílios
+        const nomeUtensilioInput = document.getElementById("nomeUtensilio");
+        const isPersonalizado = nomeUtensilioInput && nomeUtensilioInput.dataset.personalizado === "true";
+        
+        if (isPersonalizado) {
+          // Cria um conjunto de todas as técnicas disponíveis
+          const todasTecnicas = new Map();
+          
+          data.utensilios.forEach(utensilio => {
+            if (utensilio.categorias) {
+              Object.entries(utensilio.categorias).forEach(([categoria, tecnicas]) => {
+                if (!todasTecnicas.has(categoria)) {
+                  todasTecnicas.set(categoria, new Set());
+                }
+                tecnicas.forEach(tecnica => {
+                  if (!Array.from(todasTecnicas.get(categoria)).some(t => t.nome === tecnica.nome)) {
+                    todasTecnicas.get(categoria).add(tecnica);
+                  }
+                });
+              });
+            }
+          });
+          
+          // Processa todas as técnicas únicas por categoria
+          todasTecnicas.forEach((tecnicas, categoria) => {
+            processTecnicas(categoria, Array.from(tecnicas), tecnicasGrid);
+          });
+        } else {
+          // Para utensílios padrão, mantém o comportamento original
           const utensilio = data.utensilios.find(u => u.nome === selectedUtensilio);
           
           if (!utensilio) {
             throw new Error('Utensílio não encontrado');
           }
           
-          console.log("Utensílio encontrado:", utensilio);
-          
-          const tecnicasGrid = document.createElement('div');
-          tecnicasGrid.className = 'grid-container';
-          
-          // Verifica se existem categorias e processa cada uma
           if (utensilio.categorias) {
             Object.entries(utensilio.categorias).forEach(([categoria, tecnicas]) => {
               processTecnicas(categoria, tecnicas, tecnicasGrid);
             });
           }
-          
-          // Também verifica as técnicas ligeiras e sagazes diretamente
-          if (utensilio.tecnicas_ligeiras) {
-            processTecnicas('tecnicas_ligeiras', utensilio.tecnicas_ligeiras, tecnicasGrid);
-          }
-          
-          if (utensilio.tecnicas_sagazes) {
-            processTecnicas('tecnicas_sagazes', utensilio.tecnicas_sagazes, tecnicasGrid);
-          }
-          
-          if (tecnicasGrid.children.length === 0) {
-            tecnicasGrid.innerHTML = '<p>Este utensílio não possui técnicas disponíveis.</p>';
-          }
+        }
+        
+        if (tecnicasGrid.children.length === 0) {
+          tecnicasGrid.innerHTML = '<p>Nenhuma técnica disponível.</p>';
+        }
 
-          // Adiciona botão para criar técnica personalizada
-          const createCustomTecnicaBtn = document.createElement("button");
-          createCustomTecnicaBtn.textContent = "Criar Técnica Personalizada";
-          createCustomTecnicaBtn.className = "btn btn-primary create-custom-btn";
-          createCustomTecnicaBtn.addEventListener("click", function() {
-            showCustomTecnicaForm();
-          });
-          
-          tecnicasLista.appendChild(createCustomTecnicaBtn);
-          tecnicasLista.appendChild(tecnicasGrid);
-          modal.style.display = "block";
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Erro ao carregar técnicas: ' + error.message);
+        // Adiciona botão para criar técnica personalizada
+        const createCustomTecnicaBtn = document.createElement("button");
+        createCustomTecnicaBtn.textContent = "Criar Técnica Personalizada";
+        createCustomTecnicaBtn.className = "btn btn-primary create-custom-btn";
+        createCustomTecnicaBtn.addEventListener("click", function() {
+          showCustomTecnicaForm();
         });
-    }
+        
+        tecnicasLista.appendChild(createCustomTecnicaBtn);
+        tecnicasLista.appendChild(tecnicasGrid);
+        modal.style.display = "block";
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Erro ao carregar técnicas: ' + error.message);
+      });
   }
 
   // Função para mostrar formulário de criação de técnica personalizada
