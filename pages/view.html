@@ -18,7 +18,9 @@
     <!-- Contador de Resistência -->
     <div id="resistance-container" class="resistance-container">
       <div class="resistance-value-container">
-        <span id="resistance-value">20</span>/<span id="resistance-max">20</span>
+        <input type="number" id="resistance-value" class="resistance-value-editable" value="20" min="0" max="99">
+        <span class="resistance-separator">/</span>
+        <input type="number" id="resistance-max" class="resistance-value-editable" value="20" min="1" max="99">
       </div>
       <div class="resistance-slider-container">
         <div id="health-bar-fill" class="health-bar-fill"></div>

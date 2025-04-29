@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       }
       
-      // Configurar o contador de resistência logo após carregar os detalhes
+      // Configurar o contador de resistência
       configureResistanceCounter(currentCharacter);
 
       // Configuração do checkbox "Soltar o Bicho"
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const characters = JSON.parse(localStorage.getItem("characters") || "[]");
     if (index < 0 || index >= characters.length) return;
     
-    const character = characterData || characters[index];
+    const character = characters[index];
     
     // Elementos do contador de resistência
     const resistanceContainer = document.getElementById("resistance-container");
@@ -199,13 +199,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!resistanceContainer || !resistanceValue || !resistanceMax || !resistanceSlider || !healthBarFill) return;
     
     // Configurar valores iniciais
-    const maxResistance = 20;
-    let currentResistance = character.resistenciaAtual !== undefined ? 
-                           character.resistenciaAtual : maxResistance;
+    let currentResistance = character.resistenciaAtual !== undefined ? character.resistenciaAtual : 20;
+    let maxResistance = character.resistenciaMaxima !== undefined ? character.resistenciaMaxima : 20;
     
     // Atualizar elementos visuais
-    resistanceValue.textContent = currentResistance;
-    resistanceMax.textContent = maxResistance;
+    resistanceValue.value = currentResistance;
+    resistanceMax.value = maxResistance;
     resistanceSlider.max = maxResistance;
     resistanceSlider.value = currentResistance;
     
@@ -213,15 +212,22 @@ document.addEventListener("DOMContentLoaded", function() {
     updateHealthBar(currentResistance, maxResistance);
     
     // Função para atualizar a resistência
-    function updateResistance(newValue) {
+    function updateResistance(newValue, newMax = null) {
+      if (newMax !== null) {
+        maxResistance = Math.max(1, Math.min(99, newMax));
+        resistanceMax.value = maxResistance;
+        resistanceSlider.max = maxResistance;
+        character.resistenciaMaxima = maxResistance;
+      }
+      
       currentResistance = Math.max(0, Math.min(maxResistance, newValue));
-      resistanceValue.textContent = currentResistance;
+      resistanceValue.value = currentResistance;
       resistanceSlider.value = currentResistance;
       
       // Atualizar a barra de saúde
       updateHealthBar(currentResistance, maxResistance);
       
-      // Salvar a resistência atual no personagem
+      // Salvar os valores no personagem
       character.resistenciaAtual = currentResistance;
       characters[index] = character;
       localStorage.setItem("characters", JSON.stringify(characters));
@@ -229,19 +235,26 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Função para atualizar a barra de saúde
     function updateHealthBar(current, max) {
-      // Calcular a porcentagem de saúde restante
       const percentage = (current / max) * 100;
-      
-      // Atualizar o estilo da barra de saúde
       healthBarFill.style.transform = `scaleX(${percentage / 100})`;
       
-      // Adicionar ou remover classe para estado crítico
       if (percentage <= 25) {
         healthBarFill.parentElement.classList.add('health-critical');
       } else {
         healthBarFill.parentElement.classList.remove('health-critical');
       }
     }
+    
+    // Event listeners para os inputs de valor
+    resistanceValue.addEventListener("change", function() {
+      const newValue = parseInt(this.value) || 0;
+      updateResistance(newValue);
+    });
+    
+    resistanceMax.addEventListener("change", function() {
+      const newMax = parseInt(this.value) || 1;
+      updateResistance(Math.min(currentResistance, newMax), newMax);
+    });
     
     // Event listeners para os botões e o slider
     decreaseButton.addEventListener("click", function() {
