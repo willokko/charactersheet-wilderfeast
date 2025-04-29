@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="compact-header">
           <img src="${currentCharacter.imagem}" alt="${currentCharacter.nome}" class="compact-image">
           <h2 class="compact-name">${currentCharacter.nome}</h2>
-          <button id="toggle-view" class="toggle-view-btn">Ver Inventário</button>
         </div>
+
+        <button id="toggle-view" class="toggle-view-btn">Ver Inventário</button>
 
         <!-- Grid principal -->
         <div class="main-columns">

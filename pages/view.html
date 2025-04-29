@@ -12,13 +12,11 @@
     <nav>
       <button onclick="window.location.href='../index.html'" class="btn btn-secondary">Voltar</button>
       <button onclick="window.location.href='edit.html?index=' + new URLSearchParams(window.location.search).get('index')" class="btn btn-primary">Editar</button>
-      <button id="export-button" class="btn btn-success">Exportar Personagem</button>
     </nav>
   </header>
   <main>
     <!-- Contador de Resistência -->
     <div id="resistance-container" class="resistance-container">
-      <h3 class="resistance-title">Vigor</h3>
       <div class="resistance-value-container">
         <span id="resistance-value">20</span>/<span id="resistance-max">20</span>
       </div>
