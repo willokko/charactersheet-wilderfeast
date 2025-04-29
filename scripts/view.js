@@ -42,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
               ${Object.entries(currentCharacter.estilos).map(([key, value]) => 
                 `<div class="style-item">
                   <span class="style-label">${key}</span>
-                  <span class="style-value" onclick="rolarDados('${key}', ${value})">${value}</span>
+                  <span class="style-value" onclick="rolarDados('${key}', ${value})">
+                    ${value}
+                    <span class="dice-icon">🎲</span>
+                  </span>
                 </div>`
               ).join('')}
             </div>
