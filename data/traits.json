@@ -50,6 +50,11 @@
     "descricao": "(Custo: 1 Sucesso) Harmonia aumenta em 1. Você pode aumentar Harmonia além do máximo, mas só pode usar esse TRAÇO durante o Recesso."
   },
   {
+    "id": "brio",
+    "nome": "Brio",
+    "descricao": "(Custo: 1 Sucesso) Aumenta [A] em 1."
+  },
+  {
     "id": "cabecada",
     "nome": "Cabeçada",
     "descricao": "Custo: 1 Sucesso. Após atacar uma criatura, empurre-a 1 Pernada para longe de você. Se ela estiver escalando ou voando, ela cai."
@@ -414,6 +419,11 @@
     "id": "territorial",
     "nome": "Territorial",
     "descricao": "(Passiva) Você tem Vantagem em todos os Testes contra intrusos em sua Toca."
+  },
+  {
+    "id": "tino",
+    "nome": "Tino",
+    "descricao": "(Custo: 1 Sucesso) Estabeleça um detalhe com relação à situação."
   },
   {
     "id": "velocidade",
