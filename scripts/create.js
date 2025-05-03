@@ -7,17 +7,49 @@ document.addEventListener("DOMContentLoaded", function() {
     // Aplicando limites aos campos de atributos (0-5)
     function aplicarLimitesAtributos() {
       // Lista de todos os atributos (estilos e habilidades)
-      const atributos = [
-        // Estilos
-        "poderoso", "ligeiro", "preciso", "capcioso",
-        // Habilidades
-        "agarrao", "armazenamento", "assegurar", "busca", "chamado",
-        "cura", "exibicao", "golpe", "manufatura", "estudo", "tiro", "travessia"
-      ];
+      const atributos = {
+        // Estilos (limite 0-10)
+        estilos: ["poderoso", "ligeiro", "preciso", "capcioso"],
+        // Habilidades (limite 0-5)
+        habilidades: [
+          "agarrao", "armazenamento", "assegurar", "busca", "chamado",
+          "cura", "exibicao", "golpe", "manufatura", "estudo", "tiro", "travessia"
+        ]
+      };
       
-      // Para cada atributo, adiciona evento de validação
-      atributos.forEach(atributo => {
-        const campo = document.getElementById(atributo);
+      // Para cada estilo, adiciona evento de validação (0-10)
+      atributos.estilos.forEach(estilo => {
+        const campo = document.getElementById(estilo);
+        if (campo) {
+          // Adiciona evento para validar durante a digitação
+          campo.addEventListener("input", function() {
+            let valor = parseInt(this.value) || 0;
+            
+            // Aplica os limites (0-10)
+            if (valor < 0) valor = 0;
+            if (valor > 10) valor = 10;
+            
+            // Atualiza o valor no campo
+            this.value = valor;
+          });
+          
+          // Também valida quando o campo perde o foco
+          campo.addEventListener("blur", function() {
+            let valor = parseInt(this.value) || 0;
+            
+            // Aplica os limites (0-10)
+            if (valor < 0) valor = 0;
+            if (valor > 10) valor = 10;
+            
+            // Atualiza o valor no campo
+            this.value = valor;
+          });
+        }
+      });
+
+      // Para cada habilidade, adiciona evento de validação (0-5)
+      atributos.habilidades.forEach(habilidade => {
+        const campo = document.getElementById(habilidade);
         if (campo) {
           // Adiciona evento para validar durante a digitação
           campo.addEventListener("input", function() {
@@ -45,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
       
-      console.log("Limites de atributos (0-5) aplicados a todos os campos");
+      console.log("Limites aplicados: Estilos (0-10) e Habilidades (0-5)");
     }
     
     // Função para converter arquivo de imagem para Base64
