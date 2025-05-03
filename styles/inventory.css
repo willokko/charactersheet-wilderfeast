@@ -161,6 +161,12 @@
     appearance: textfield !important;
   }
   
+  /* Estilo de foco */
+  .inventario-quantidade-input:focus {
+    outline: none;
+    border-color: #007BFF;
+  }
+  
   .inventario-toggle {
     background: none;
     border: none;
