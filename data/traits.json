@@ -2,7 +2,7 @@
   {
     "id": "ameacar",
     "nome": "Ameaçar",
-    "descricao": "Custo: 1 sucesso numa rolagem PODEROSA. Faz com que uma criatura que esteja a distância de 1 Pernada fique Amedrontada."
+    "descricao": "(Custo: 1 Sucesso PODEROSO) Faz com que uma criatura que esteja a distância de 1 Pernada fique Amedrontada."
   },
   {
     "id": "ameacar-2",
@@ -57,18 +57,18 @@
   {
     "id": "cabecada",
     "nome": "Cabeçada",
-    "descricao": "Custo: 1 Sucesso. Após atacar uma criatura, empurre-a 1 Pernada para longe de você. Se ela estiver escalando ou voando, ela cai."
+    "descricao": "(Custo: 1 Sucesso) Após atacar uma criatura, empurre-a 1 Pernada para longe de você. Se ela estiver escalando ou voando, ela cai."
   },
 
   {
     "id": "camuflagem",
     "nome": "Camuflagem",
-    "descricao": "Custo: 1 Sucesso CAPCIOSO. Você fica Escondido."
+    "descricao": "(Custo: 1 Sucesso Sagaz) Você fica Escondido."
   },
   {
     "id": "carniceiro",
     "nome": "Carniceiro",
-    "descricao": "(Passiva) Você não pode ficar Envenenado por comida. Se Forragear (com sucesso ou não) você também recebe <H> porções do seguinte Ingrediente: Detritos. Receba (1) Envenenado."
+    "descricao": "(Passiva) Você não pode ficar Envenenado por comida. Se Forragear (com Sucesso ou não) você também recebe <H> porções do seguinte Ingrediente: Detritos. Receba (1) Envenenado."
   },
   {
     "id": "catar-piolho",
@@ -118,7 +118,7 @@
   {
     "id": "desorientar",
     "nome": "Desorientar",
-    "descricao": "Passiva) Criaturas que ataquem você (acertando ou não) ficam Confusas."
+    "descricao": "(Passiva) Criaturas que ataquem você (acertando ou não) ficam Confusas."
   },
   {
     "id": "devorador-de-energia",
@@ -143,7 +143,7 @@
   {
     "id": "ecolocalização",
     "nome": "Ecolocalização",
-    "descricao": " (Custo: 1 Sucesso em um CHAMAR) Uma criatura à sua escolha fica Exposta."
+    "descricao": " (Custo: 1 Sucesso em CHAMAR) Uma criatura à sua escolha fica Exposta."
   },
   {
     "id": "eletroreceptividade",
@@ -228,12 +228,12 @@
   {
     "id": "fotossintese",
     "nome": "Fotossíntese",
-    "descricao": "Custo: 3 Ações. Se você estiver sob o céu aberto, restaure sua Resistência ao máximo."
+    "descricao": "(Custo: 3 Ações) Se você estiver sob o céu aberto, restaure seu Vigor ao máximo."
   },
   {
     "id": "gigantesco",
     "nome": "Gigantesco",
-    "descricao": "Passivo. Considere todas as criaturas como estando 3 Pernadas mais próximas de você do que realmente estão."
+    "descricao": "(Passiva) Considere todas as criaturas como estando 3 Pernadas mais próximas de você do que realmente estão."
   },
   {
     "id": "hibernador",
@@ -313,12 +313,12 @@
   {
     "id": "ostentar",
     "nome": "Ostentar",
-    "descricao": "Custo: 2 Ações. Faça uma EXIBIÇÃO PODEROSA. Se tiver sucesso, você e seus aliados curam [A] de Resistência. Cores brilhantes ou grandes ornamentações transmitem sua confiança."
+    "descricao": "(Custo: 2 Ações) Faça um EXIBIR PODEROSO. Se passar, todas as criaturas à sua escolha recuperam [A] de Vigor."
   },
   {
     "id": "paciencia",
     "nome": "Paciência",
-    "descricao": "Passivo. Você pode Preparar-se até 3 vezes por turno."
+    "descricao": "(Passiva) Você pode Preparar-se até 3 vezes por turno."
   },
   {
     "id": "parasita-de-ninhada",
@@ -363,12 +363,12 @@
   {
     "id": "reflexos-naturais",
     "nome": "Reflexos Naturais",
-    "descricao": "Passivo. Você sofre apenas metade do dano de ataques LIGEIROS (GOLPES e TIROS)."
+    "descricao": "(Passiva) Você sofre apenas metade do dano de ataques LIGEIROS (GOLPES e TIROS)."
   },
   {
     "id": "regeneracao",
     "nome": "Regeneração",
-    "descricao": "Custo: 1 Sucesso. Recupere 1 de Durabilidade. Se seu Utensílio atingir Durabilidade 0, ele quebra e você perde a capacidade de usá-lo. Use esse Traço para recuperar a Durabilidade do Utensílio. Se sua Durabilidade for maior que 0, você já pode usá-lo normalmente novamente."
+    "descricao": "(Custo: 1 Sucesso) Recupere 1 de Durabilidade de uma de suas PARTES."
   },
   {
     "id": "regeneracao-2-a-5",
@@ -378,7 +378,7 @@
   {
     "id": "resistente-a-impacto",
     "nome": "Resistente a Impacto",
-    "descricao": "(Passiva) Nada pode empurrar ou puxar você, a menos que você permita ou esteja sob a condição Capturado."
+    "descricao": "(Passiva) Você não pode ficar Atordoado."
   },
   {
     "id": "robusto",
@@ -403,7 +403,7 @@
   {
     "id": "sentidos-agucados",
     "nome": "Sentidos Aguçados",
-    "descricao": "Passiva. Se for o guia, você tem vantagem na sua primeira rolagem durante um Evento. Seus Sentidos Aguçados se manifestam como a visão de uma águia, permitindo localizar o perigo ao longe."
+    "descricao": "(Passiva). Se for o guia, você tem vantagem na sua primeira rolagem durante um Evento. Seus Sentidos Aguçados se manifestam como a visão de uma águia, permitindo localizar o perigo ao longe."
   },
   {
     "id": "sopro-de-fogo",
@@ -428,7 +428,7 @@
   {
     "id": "velocidade",
     "nome": "Velocidade",
-    "descricao": "Custo: 1 Sucesso LIGEIRO. Você pode se mover sem gastar Ações."
+    "descricao": "(Custo: 1 Sucesso LIGEIRO) Você pode se mover sem gastar Ações."
   },
   {
     "id": "veneno",
@@ -463,6 +463,6 @@
   {
     "id": "tece-teias",
     "nome": "Tece Teias",
-    "descricao": "Custo: 2 Ações. Faça um teste de MANUFATURA CAPCIOSA. Se for bem-sucedido, a próxima vez que uma criatura hostil se mover em sua direção, ela sofre [A] de dano na Parte e não pode se mover até o início do próximo turno."
+    "descricao": "(Custo: 2 Ações) Faça um MANUFATURAR SAGAZ. Se passar, na próxima vez em que uma criatura hostil se Mover em sua direção, ela sofre [A] Dano à Parte e não pode se Mover até o início do próximo turno."
   }
 ]
