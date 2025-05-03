@@ -534,6 +534,7 @@ document.addEventListener("DOMContentLoaded", function() {
     nameInput.id = "custom-utensilio-nome";
     nameInput.className = "form-control";
     nameInput.required = true;
+    nameInput.placeholder = "Digite o nome do utensílio";
     
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "button-container";
