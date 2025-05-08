@@ -2135,3 +2135,126 @@ input[type="file"]::file-selector-button:hover {
   font-size: 1rem;
   font-weight: 500;
 }
+
+/* Estilos para formulários personalizados */
+.custom-tecnica-form,
+.custom-traco-form {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-tecnica-form h3,
+.custom-traco-form h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.custom-tecnica-form .form-group,
+.custom-traco-form .form-group {
+  margin-bottom: 20px;
+}
+
+.custom-tecnica-form label,
+.custom-traco-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+.custom-tecnica-form input[type="text"],
+.custom-tecnica-form textarea,
+.custom-tecnica-form select,
+.custom-traco-form input[type="text"],
+.custom-traco-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.custom-tecnica-form input[type="text"]:focus,
+.custom-tecnica-form textarea:focus,
+.custom-tecnica-form select:focus,
+.custom-traco-form input[type="text"]:focus,
+.custom-traco-form textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.custom-tecnica-form textarea,
+.custom-traco-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.custom-tecnica-form .form-actions,
+.custom-traco-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.custom-tecnica-form .btn,
+.custom-traco-form .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.custom-tecnica-form .btn-success,
+.custom-traco-form .btn-success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.custom-tecnica-form .btn-success:hover,
+.custom-traco-form .btn-success:hover {
+  background-color: #45a049;
+}
+
+.custom-tecnica-form .btn.secondary,
+.custom-traco-form .btn.secondary {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.custom-tecnica-form .btn.secondary:hover,
+.custom-traco-form .btn.secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsividade para os formulários personalizados */
+@media (max-width: 768px) {
+  .custom-tecnica-form,
+  .custom-traco-form {
+    padding: 15px;
+  }
+
+  .custom-tecnica-form h3,
+  .custom-traco-form h3 {
+    font-size: 1.3em;
+  }
+
+  .custom-tecnica-form .form-actions,
+  .custom-traco-form .form-actions {
+    flex-direction: column;
+  }
+
+  .custom-tecnica-form .btn,
+  .custom-traco-form .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
