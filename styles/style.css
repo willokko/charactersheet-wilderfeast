@@ -1260,7 +1260,6 @@ input[type="file"]::file-selector-button:hover {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
-  max-height: 70vh;
   overflow-y: auto;
   padding-right: 0.5rem;
 }
