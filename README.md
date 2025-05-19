@@ -2,33 +2,6 @@
 
 Sistema de fichas de personagem para o jogo WilderFeast.
 
-## Estrutura do Projeto
-
-O projeto foi reorganizado em uma estrutura de diretórios mais semântica:
-
-```
-/
-├── index.html                # Página principal (listagem de personagens)
-├── styles/                   # Arquivos CSS
-│   └── style.css             # Estilos globais da aplicação
-├── scripts/                  # Arquivos JavaScript
-│   ├── common.js             # Funções utilitárias comuns
-│   ├── index.js              # Script da página principal
-│   ├── create.js             # Script da página de criação
-│   ├── edit.js               # Script da página de edição
-│   ├── view.js               # Script da página de visualização
-│   ├── script.js             # Scripts adicionais
-│   └── json-fix.js           # Utilitário para correção de JSON
-├── pages/                    # Páginas HTML secundárias
-│   ├── create.html           # Página de criação de personagem
-│   ├── edit.html             # Página de edição de personagem
-│   ├── view.html             # Página de visualização de personagem
-│   └── traits.html           # Página de traços
-└── data/                     # Arquivos de dados
-    ├── traits.json           # Dados dos traços
-    └── utensil.json          # Dados dos utensílios
-```
-
 ## Funcionalidades
 
 - Listagem de personagens
@@ -43,10 +16,6 @@ O projeto foi reorganizado em uma estrutura de diretórios mais semântica:
 - A aplicação utiliza localStorage para armazenar os dados dos personagens
 - Os arquivos JSON (traits.json e utensil.json) contêm dados estáticos para traços e utensílios
 - A interface é responsiva e adaptada para diferentes tamanhos de tela
-
-## Problemas Conhecidos
-
-- Na página de traços (traits.html), pode ocorrer um erro ao carregar os traços. Isso pode ser devido a problemas com o caminho do arquivo traits.json.
 
 ## Como Usar
 
