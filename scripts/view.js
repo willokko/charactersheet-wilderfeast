@@ -112,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       characterDetailsContainer.innerHTML = detailsHTML;
       
-      // Renderizar os itens do inventário
-      renderInventarioItems(currentCharacter.inventario || []);
+      // Renderizar os itens do inventário (será substituído pela versão com ações depois)
+      // renderInventarioItems(currentCharacter.inventario || []);
       
       // Adicionar evento ao botão de alternar visualização
       const toggleViewButton = document.getElementById("toggle-view");
@@ -487,6 +487,382 @@ document.addEventListener("DOMContentLoaded", function() {
         e.stopPropagation();
       });
     });
+  }
+
+  /* ========================================
+     MENU MOBILE - Navegação entre seções
+     ======================================== */
+  
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuModal = document.getElementById('mobile-menu-modal');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+  const mainColumns = document.querySelector('.main-columns');
+  
+  // Abrir menu mobile
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenuModal.classList.add('show');
+    });
+  }
+  
+  // Fechar menu mobile
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', function() {
+      mobileMenuModal.classList.remove('show');
+    });
+  }
+  
+  // Fechar ao clicar fora do conteúdo
+  if (mobileMenuModal) {
+    mobileMenuModal.addEventListener('click', function(e) {
+      if (e.target === mobileMenuModal) {
+        mobileMenuModal.classList.remove('show');
+      }
+    });
+  }
+  
+  // Função para ocultar todas as seções
+  function hideAllSections() {
+    // Ocultar todas as colunas individuais
+    const allColumns = document.querySelectorAll('.main-columns .column');
+    allColumns.forEach(col => col.style.display = 'none');
+    
+    // Ocultar inventário
+    if (inventarioContainer) inventarioContainer.style.display = 'none';
+  }
+  
+  // Função para mostrar seções específicas
+  function showSection(section) {
+    hideAllSections();
+    
+    if (section === 'inventario') {
+      // Mostrar inventário
+      if (inventarioContainer) {
+        inventarioContainer.style.display = 'block';
+        inventarioContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (section === 'estilos-habilidades') {
+      // Mostrar estilos e habilidades (ambas são small-column)
+      const allColumns = document.querySelectorAll('.main-columns .column');
+      const smallColumns = document.querySelectorAll('.main-columns .column.small-column');
+      
+      // Mostrar as duas primeiras colunas (Estilos e Habilidades)
+      if (smallColumns.length >= 2) {
+        smallColumns[0].style.display = 'block'; // Estilos
+        smallColumns[1].style.display = 'block'; // Habilidades
+        smallColumns[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (section === 'utensilio') {
+      // Mostrar utensílio (terceira coluna, primeira large-column)
+      const allColumns = document.querySelectorAll('.main-columns .column');
+      const largeColumns = document.querySelectorAll('.main-columns .column.large-column');
+      
+      if (largeColumns.length >= 1) {
+        largeColumns[0].style.display = 'block'; // Utensílio
+        largeColumns[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (section === 'tracos') {
+      // Mostrar traços (quarta coluna, segunda large-column)
+      const largeColumns = document.querySelectorAll('.main-columns .column.large-column');
+      
+      if (largeColumns.length >= 2) {
+        largeColumns[1].style.display = 'block'; // Traços
+        largeColumns[1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+  
+  // Inicializar visualização padrão no mobile (Estilos & Habilidades)
+  // Usar setTimeout para garantir que o DOM está completamente renderizado
+  setTimeout(() => {
+    if (window.innerWidth <= 768) {
+      showSection('estilos-habilidades');
+    }
+  }, 100);
+  
+  // Navegação entre seções
+  mobileMenuItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const section = this.getAttribute('data-section');
+      
+      // Fechar o menu
+      mobileMenuModal.classList.remove('show');
+      
+      // Mostrar a seção selecionada
+      showSection(section);
+    });
+  });
+  
+  // Listener para redimensionamento da janela
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth <= 768) {
+        // Se entrou no modo mobile, mostrar seção padrão
+        const allColumns = document.querySelectorAll('.main-columns .column');
+        const hasVisibleColumn = Array.from(allColumns).some(col => col.style.display !== 'none');
+        
+        if (!hasVisibleColumn && inventarioContainer.style.display !== 'block') {
+          showSection('estilos-habilidades');
+        }
+      } else {
+        // Se saiu do modo mobile, mostrar todas as colunas
+        const allColumns = document.querySelectorAll('.main-columns .column');
+        allColumns.forEach(col => col.style.display = '');
+        if (inventarioContainer) inventarioContainer.style.display = 'none';
+      }
+    }, 250);
+  });
+
+  /* ========================================
+     MODAL DE ITEM DO INVENTÁRIO
+     ======================================== */
+  
+  const itemModal = document.getElementById('item-modal');
+  const itemModalClose = document.getElementById('item-modal-close');
+  const itemCancelBtn = document.getElementById('item-cancel-btn');
+  const itemForm = document.getElementById('item-form');
+  const itemModalTitle = document.getElementById('item-modal-title');
+  
+  let editingItemIndex = null;
+  
+  // Adicionar botão "Adicionar Item" ao inventário
+  if (inventarioContainer) {
+    const addItemBtn = document.createElement('button');
+    addItemBtn.className = 'add-item-btn';
+    addItemBtn.innerHTML = '<span>➕</span><span>Adicionar Item</span>';
+    
+    // Inserir o botão após o título do inventário
+    const inventarioTitulo = inventarioContainer.querySelector('.inventario-titulo');
+    if (inventarioTitulo) {
+      inventarioTitulo.insertAdjacentElement('afterend', addItemBtn);
+    }
+    
+    // Evento para abrir modal de adicionar item
+    addItemBtn.addEventListener('click', function() {
+      openItemModal();
+    });
+  }
+  
+  // Função para abrir o modal
+  function openItemModal(itemIndex = null) {
+    editingItemIndex = itemIndex;
+    
+    if (itemIndex !== null && currentCharacter && currentCharacter.inventario) {
+      // Modo edição
+      const item = currentCharacter.inventario[itemIndex];
+      itemModalTitle.textContent = 'Editar Item';
+      document.getElementById('item-nome').value = item.nome || '';
+      document.getElementById('item-quantidade').value = item.quantidade || 1;
+      document.getElementById('item-descricao').value = item.descricao || '';
+    } else {
+      // Modo adicionar
+      itemModalTitle.textContent = 'Adicionar Item';
+      document.getElementById('item-nome').value = '';
+      document.getElementById('item-quantidade').value = 1;
+      document.getElementById('item-descricao').value = '';
+    }
+    
+    itemModal.classList.add('show');
+  }
+  
+  // Função para fechar o modal
+  function closeItemModal() {
+    itemModal.classList.remove('show');
+    editingItemIndex = null;
+  }
+  
+  // Eventos de fechar modal
+  if (itemModalClose) {
+    itemModalClose.addEventListener('click', closeItemModal);
+  }
+  
+  if (itemCancelBtn) {
+    itemCancelBtn.addEventListener('click', closeItemModal);
+  }
+  
+  if (itemModal) {
+    itemModal.addEventListener('click', function(e) {
+      if (e.target === itemModal) {
+        closeItemModal();
+      }
+    });
+  }
+  
+  // Submeter formulário de item
+  if (itemForm) {
+    itemForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nome = document.getElementById('item-nome').value.trim();
+      const quantidade = parseInt(document.getElementById('item-quantidade').value) || 1;
+      const descricao = document.getElementById('item-descricao').value.trim();
+      
+      if (!nome) {
+        alert('Por favor, insira o nome do item.');
+        return;
+      }
+      
+      // Inicializar inventário se não existir
+      if (!currentCharacter.inventario) {
+        currentCharacter.inventario = [];
+      }
+      
+      const itemData = {
+        nome: nome,
+        quantidade: quantidade,
+        descricao: descricao
+      };
+      
+      if (editingItemIndex !== null) {
+        // Editar item existente
+        currentCharacter.inventario[editingItemIndex] = itemData;
+      } else {
+        // Adicionar novo item
+        currentCharacter.inventario.push(itemData);
+      }
+      
+      // Salvar e atualizar UI
+      saveCharacterData();
+      renderInventarioItemsWithActions(currentCharacter.inventario);
+      closeItemModal();
+    });
+  }
+  
+  // Atualizar renderInventarioItems para incluir botões de ação
+  function renderInventarioItemsWithActions(items) {
+    if (!inventarioItemsContainer) return;
+    
+    if (!items || items.length === 0) {
+      inventarioItemsContainer.innerHTML = `<p class="no-items">Nenhum item no inventário.</p>`;
+      return;
+    }
+    
+    let itemsHTML = '';
+    
+    items.forEach((item, index) => {
+      itemsHTML += `
+        <div class="inventario-item">
+          <div class="inventario-cabecalho">
+            <h4 class="inventario-nome">${item.nome}</h4>
+            <div class="inventario-quantidade">
+              <span class="inventario-quantidade-editable" data-index="${index}">${item.quantidade}</span>
+            </div>
+            <div class="inventario-item-actions">
+              <button class="item-action-btn item-edit-btn" data-index="${index}" title="Editar">✏️</button>
+              <button class="item-action-btn item-delete-btn" data-index="${index}" title="Excluir">🗑️</button>
+            </div>
+            <button class="inventario-toggle">▼</button>
+          </div>
+          <div class="inventario-detalhes">
+            <p class="inventario-descricao">${item.descricao || "Sem descrição."}</p>
+          </div>
+        </div>
+      `;
+    });
+    
+    inventarioItemsContainer.innerHTML = itemsHTML;
+    
+    // Eventos para toggle de detalhes
+    const toggleButtons = document.querySelectorAll(".inventario-toggle");
+    toggleButtons.forEach(toggle => {
+      toggle.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const detalhes = this.closest('.inventario-cabecalho').nextElementSibling;
+        
+        if (detalhes.classList.contains("aberto")) {
+          detalhes.classList.remove("aberto");
+          this.classList.remove("aberto");
+        } else {
+          detalhes.classList.add("aberto");
+          this.classList.add("aberto");
+        }
+      });
+    });
+    
+    // Eventos para edição inline de quantidade
+    const quantidadeEditables = document.querySelectorAll(".inventario-quantidade-editable");
+    quantidadeEditables.forEach(span => {
+      span.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const index = parseInt(this.getAttribute('data-index'));
+        const currentValue = parseInt(this.textContent);
+        
+        // Criar input temporário
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'inventario-quantidade-input';
+        input.value = currentValue;
+        input.min = 1;
+        input.style.width = '60px';
+        
+        // Substituir span por input
+        this.replaceWith(input);
+        input.focus();
+        input.select();
+        
+        // Salvar ao perder foco ou pressionar Enter
+        const saveValue = () => {
+          const newValue = parseInt(input.value) || 1;
+          
+          if (currentCharacter && currentCharacter.inventario && currentCharacter.inventario[index]) {
+            currentCharacter.inventario[index].quantidade = newValue;
+            saveCharacterData();
+          }
+          
+          // Restaurar span
+          const newSpan = document.createElement('span');
+          newSpan.className = 'inventario-quantidade-editable';
+          newSpan.setAttribute('data-index', index);
+          newSpan.textContent = newValue;
+          input.replaceWith(newSpan);
+          
+          // Re-adicionar evento de clique
+          newSpan.addEventListener('click', arguments.callee);
+        };
+        
+        input.addEventListener('blur', saveValue);
+        input.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            saveValue();
+          }
+        });
+      });
+    });
+    
+    // Eventos para botões de editar
+    const editButtons = document.querySelectorAll(".item-edit-btn");
+    editButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const index = parseInt(this.getAttribute('data-index'));
+        openItemModal(index);
+      });
+    });
+    
+    // Eventos para botões de excluir
+    const deleteButtons = document.querySelectorAll(".item-delete-btn");
+    deleteButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const index = parseInt(this.getAttribute('data-index'));
+        
+        if (confirm('Tem certeza que deseja excluir este item?')) {
+          if (currentCharacter && currentCharacter.inventario) {
+            currentCharacter.inventario.splice(index, 1);
+            saveCharacterData();
+            renderInventarioItemsWithActions(currentCharacter.inventario);
+          }
+        }
+      });
+    });
+  }
+  
+  // Substituir a chamada original de renderInventarioItems
+  if (currentCharacter && currentCharacter.inventario) {
+    renderInventarioItemsWithActions(currentCharacter.inventario);
   }
 });
 

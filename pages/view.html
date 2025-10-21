@@ -58,6 +58,74 @@
     </div>
   </div>
 
+  <!-- Botão de Menu Mobile (Flutuante) -->
+  <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+      <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+      <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+      <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+    </svg>
+  </button>
+
+  <!-- Modal de Menu Mobile -->
+  <div id="mobile-menu-modal" class="mobile-menu-modal">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <h2>Menu de Navegação</h2>
+        <button id="mobile-menu-close" class="mobile-menu-close">&times;</button>
+      </div>
+      <div class="mobile-menu-buttons">
+        <button class="mobile-menu-item" data-section="estilos-habilidades">
+          <span class="menu-icon">🏋️⚡</span>
+          <span>Estilos & Habilidades</span>
+        </button>
+        <button class="mobile-menu-item" data-section="utensilio">
+          <span class="menu-icon">🔧</span>
+          <span>Utensílio</span>
+        </button>
+        <button class="mobile-menu-item" data-section="tracos">
+          <span class="menu-icon">🎭</span>
+          <span>Traços</span>
+        </button>
+        <button class="mobile-menu-item" data-section="inventario">
+          <span class="menu-icon">🎒</span>
+          <span>Inventário</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Adicionar/Editar Item do Inventário -->
+  <div id="item-modal" class="item-modal">
+    <div class="item-modal-content">
+      <div class="item-modal-header">
+        <h3 id="item-modal-title">Adicionar Item</h3>
+        <button id="item-modal-close" class="item-modal-close">&times;</button>
+      </div>
+      <div class="item-modal-body">
+        <form id="item-form">
+          <div class="form-group">
+            <label for="item-nome">Nome do Item</label>
+            <input type="text" id="item-nome" required>
+          </div>
+          <div class="form-group">
+            <label for="item-quantidade">Quantidade</label>
+            <input type="number" id="item-quantidade" min="1" value="1" required>
+          </div>
+          <div class="form-group">
+            <label for="item-descricao">Descrição (opcional)</label>
+            <textarea id="item-descricao" rows="3"></textarea>
+          </div>
+          <div class="item-modal-actions">
+            <button type="button" id="item-cancel-btn" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="../scripts/common.js"></script>
   <script src="../scripts/view.js"></script>
 </body>

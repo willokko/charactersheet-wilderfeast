@@ -190,4 +190,42 @@
   
   .inventario-detalhes.aberto {
     display: block;
-  }  
+  }
+
+  /* Estilos para os botões de ação do inventário */
+  .inventario-item-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .inventario-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .inventario-nome {
+    flex: 1;
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  /* Ajustes mobile para inventário */
+  @media (max-width: 768px) {
+    .inventario-cabecalho {
+      flex-wrap: wrap;
+    }
+
+    .inventario-item-actions {
+      order: 3;
+      width: 100%;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    .inventario-nome {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }

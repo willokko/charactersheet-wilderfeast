@@ -2290,3 +2290,400 @@ input[type="file"]::file-selector-button:hover {
     margin-bottom: 10px;
   }
 }
+
+/* ========================================
+   MOBILE MENU - Botão Flutuante e Modal
+   ======================================== */
+
+/* Botão de menu mobile flutuante */
+.mobile-menu-btn {
+  display: none; /* Oculto por padrão (desktop) */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5c7e38, #7ca850);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-btn:active {
+  transform: scale(0.95);
+}
+
+/* Modal de menu mobile */
+.mobile-menu-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-menu-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-content {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #5c7e38;
+}
+
+.mobile-menu-header h2 {
+  margin: 0;
+  color: #c9b67a;
+  font-size: 1.5rem;
+  font-family: 'Philosopher', serif;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #bdc3c7;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  color: #e9573f;
+}
+
+.mobile-menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background-color: rgba(20, 26, 15, 0.8);
+  border: 1px solid #5c7e38;
+  border-radius: 8px;
+  color: #c9b67a;
+  font-size: 1.1rem;
+  font-family: 'Philosopher', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.mobile-menu-item:hover {
+  background-color: rgba(36, 46, 26, 0.9);
+  border-color: #7ca850;
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-item:active {
+  transform: translateX(3px);
+}
+
+.mobile-menu-item .menu-icon {
+  font-size: 1.5rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* ========================================
+   MODAL DE ITEM DO INVENTÁRIO
+   ======================================== */
+
+.item-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1001;
+  animation: fadeIn 0.3s ease;
+}
+
+.item-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-modal-content {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  padding: 0;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.3s ease;
+  overflow: hidden;
+}
+
+.item-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(20, 26, 15, 0.8);
+  border-bottom: 2px solid #5c7e38;
+}
+
+.item-modal-header h3 {
+  margin: 0;
+  color: #c9b67a;
+  font-size: 1.4rem;
+  font-family: 'Philosopher', serif;
+}
+
+.item-modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #bdc3c7;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.item-modal-close:hover {
+  color: #e9573f;
+}
+
+.item-modal-body {
+  padding: 20px;
+}
+
+.item-modal-body .form-group {
+  margin-bottom: 15px;
+}
+
+.item-modal-body label {
+  display: block;
+  margin-bottom: 5px;
+  color: #c9b67a;
+  font-weight: bold;
+}
+
+.item-modal-body input[type="text"],
+.item-modal-body input[type="number"],
+.item-modal-body textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: #1a1a1a;
+  border: 1px solid #5c7e38;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.item-modal-body input[type="text"]:focus,
+.item-modal-body input[type="number"]:focus,
+.item-modal-body textarea:focus {
+  outline: none;
+  border-color: #7ca850;
+  box-shadow: 0 0 8px rgba(92, 126, 56, 0.3);
+}
+
+.item-modal-body textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.item-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Botão de adicionar item no inventário */
+.add-item-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #5c7e38, #7ca850);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+}
+
+.add-item-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+}
+
+.add-item-btn:active {
+  transform: translateY(0);
+}
+
+/* Ícones de ação nos itens do inventário */
+.inventario-item-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.item-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.item-action-btn:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.item-edit-btn {
+  color: #3498db;
+}
+
+.item-delete-btn {
+  color: #e74c3c;
+}
+
+/* Quantidade editável inline */
+.inventario-quantidade-editable {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  min-width: 40px;
+  text-align: center;
+}
+
+.inventario-quantidade-editable:hover {
+  background-color: rgba(92, 126, 56, 0.2);
+}
+
+.inventario-quantidade-editable.editing {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   MEDIA QUERIES - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Mostrar botão de menu mobile */
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  /* Ajustar o botão de toggle view para mobile */
+  .toggle-view-btn {
+    display: none;
+  }
+
+  /* No mobile, main-columns mantém o grid mas as colunas são controladas via JS */
+  .main-columns {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+
+  /* Colunas ocupam largura total no mobile */
+  .main-columns .column {
+    grid-column: 1 / -1;
+    scroll-margin-top: 20px;
+  }
+
+  /* Inventário oculto por padrão no mobile */
+  .inventario-container {
+    display: none;
+  }
+
+  /* Ajustar header para mobile */
+  header nav {
+    justify-content: space-between;
+  }
+
+  /* Ajustar contador de resistência para mobile */
+  .resistance-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resistance-slider-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Ajustar inventário para mobile */
+  .inventario-container {
+    padding: 10px;
+  }
+
+  .inventario-item {
+    padding: 12px;
+  }
+}
