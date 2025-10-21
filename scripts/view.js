@@ -70,7 +70,9 @@ document.addEventListener("DOMContentLoaded", function() {
             ${currentCharacter.utensilio ? `
               <div class="tool-info">
                 <p><strong>Nome:</strong> ${currentCharacter.utensilio.nome}</p>
-                <p><strong>Resistência:</strong> ${currentCharacter.utensilio.resistencia}</p>
+                <p><strong>Resistência:</strong> 
+                  <input type="number" id="utensilio-resistencia" class="utensilio-resistencia-input" value="${currentCharacter.utensilio.resistencia}" min="0" max="999">
+                </p>
               </div>
               
               ${currentCharacter.utensilio.tecnicas && currentCharacter.utensilio.tecnicas.length > 0 ? `
@@ -135,6 +137,9 @@ document.addEventListener("DOMContentLoaded", function() {
       
       // Configurar o contador de resistência
       configureResistanceCounter(currentCharacter);
+
+      // Configurar o input de resistência do utensílio
+      configureUtensilioResistance();
 
       // Configuração do checkbox "Soltar o Bicho"
       const soltarBichoCheckbox = document.getElementById('soltarBicho');
@@ -270,6 +275,33 @@ document.addEventListener("DOMContentLoaded", function() {
     
     resistanceSlider.addEventListener("input", function() {
       updateResistance(parseInt(this.value));
+    });
+  }
+  
+  // Configurar o input de resistência do utensílio
+  function configureUtensilioResistance() {
+    const utensilioResistenciaInput = document.getElementById("utensilio-resistencia");
+    
+    if (!utensilioResistenciaInput || !currentCharacter || !currentCharacter.utensilio) return;
+    
+    // Event listener para salvar mudanças na resistência do utensílio
+    utensilioResistenciaInput.addEventListener("change", function() {
+      const novaResistencia = parseInt(this.value) || 0;
+      
+      // Garantir que o valor está dentro dos limites
+      const resistenciaFinal = Math.max(0, Math.min(999, novaResistencia));
+      this.value = resistenciaFinal;
+      
+      // Atualizar o utensílio do personagem
+      currentCharacter.utensilio.resistencia = resistenciaFinal;
+      
+      // Salvar no localStorage
+      saveCharacterData();
+    });
+    
+    // Prevenir que o input perca o foco ao clicar
+    utensilioResistenciaInput.addEventListener("click", function(e) {
+      e.stopPropagation();
     });
   }
   

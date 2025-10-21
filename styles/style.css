@@ -1520,6 +1520,7 @@ input[type="file"]::file-selector-button:hover {
   text-shadow: inherit;
   cursor: pointer;
   transition: all 0.2s ease;
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -1585,6 +1586,38 @@ input[type="file"]::file-selector-button:hover {
   font-size: 0.9rem;
   font-weight: bold;
   padding: 0.2rem 0.4rem;
+}
+
+/* Estilo para o input de resistência do utensílio */
+.utensilio-resistencia-input {
+  background: transparent;
+  border: none;
+  color: #e9573f;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 60px;
+  text-align: center;
+  padding: 0.2rem 0.4rem;
+  transition: background-color 0.2s ease;
+}
+
+.utensilio-resistencia-input::-webkit-outer-spin-button,
+.utensilio-resistencia-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.utensilio-resistencia-input:hover {
+  background-color: rgba(233, 87, 63, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.utensilio-resistencia-input:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  outline: none;
+  cursor: text;
 }
 
 /* Barra de progresso que parece sangue */
